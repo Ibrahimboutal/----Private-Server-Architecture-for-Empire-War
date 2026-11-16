@@ -255,3 +255,22 @@ class MarketEngine:
             await self._owned(db, user_id, city_id)
             row = await self._one(db, "SELECT COUNT(*) AS count FROM market_listings WHERE user_id=? AND cid=?", (user_id, city_id))
             return row["count"]
+
+    async def cancel_sell(self, user_id: int, city_id: int, trade_id: object) -> dict[str, Any]:
+        """Cancel an owned local listing using the captured response shape."""
+        if type(trade_id) is not int or not 1 <= trade_id <= 2**31 - 1:
+            raise EconomyError(900103, "Invalid tradeId")
+        async with self.resources._transaction() as db:
+            await self._owned(db, user_id, city_id)
+            async with db.execute(
+                    "SELECT trade_json FROM market_listings WHERE id=? AND user_id=? AND cid=?",
+                    (trade_id, user_id, city_id)) as cursor:
+                row = await cursor.fetchone()
+            if row is None:
+                raise EconomyError(900102, "Trade is not owned by this session")
+            trade = json.loads(row["trade_json"])
+            await db.execute("DELETE FROM market_listings WHERE id=?", (trade_id,))
+            await self._event(db, user_id, city_id,
+                              {"type": "Market", "action": "cancelSell", "tradeId": trade_id},
+                              None, "cancelled", 0, None, False, False, 0)
+            return self._response("cancelSell", trade=trade)

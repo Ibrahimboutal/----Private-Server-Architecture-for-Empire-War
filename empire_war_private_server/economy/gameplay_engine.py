@@ -19,6 +19,7 @@ from typing import Any
 import aiosqlite
 
 from .resource_engine import BALANCES, CityResource, EconomyError, ResourceEngine
+from .client_catalog import load_client_catalog
 from .time_util import float32, signed, time_to_finish_now_gold
 
 PROFILE_ID = "captured-phase2-v1"
@@ -67,10 +68,27 @@ class GameplayEngine:
             "data/city_layout.json").read_text(encoding="utf-8"))
         if layout["version"] != 1:
             raise ValueError("unsupported city layout version")
-        self._city_layout = [] if quarry else layout["buildings"]
+        self._city_layout = [] if quarry else self._complete_city_layout(layout["buildings"])
         self._inspection_views = {
             (entry["bid"], entry["level"]): entry["view"] for entry in self._city_layout
         }
+        self._layout_upgrades = {}
+        if not quarry:
+            for entry in self._city_layout:
+                current = entry["view"]["currBuilding"]
+                following = entry["view"]["nextBuilding"]
+                if (entry["level"], following["level"]) != (1, 2):
+                    continue
+                if following["upgradeTime"] <= 0:
+                    continue
+                costs = {name: following[f"{name}Need"] for name in BALANCES}
+                costs["people"] = 0
+                resources._validate_costs(costs)
+                self._layout_upgrades[(entry["bid"], 2)] = {
+                    "bid": entry["bid"], "target_level": 2, "costs": costs,
+                    "duration_seconds": following["upgradeTime"],
+                    "conditions": deepcopy(current["conditions"]),
+                }
         expected_effects = {"peopleWorking": 40, "rockAdd": 266, "rockMax": 20000} if quarry else {"peopleMax": 200, "peopleStable": 180}
         if self._effects != expected_effects:
             raise ValueError("unexpected captured building effects")
@@ -90,6 +108,41 @@ class GameplayEngine:
             if quote["conditions"] or quote["costs"]["people"] != 0:
                 raise ValueError("unverified building prerequisite or population effect")
             self._duration(quote)
+
+    @staticmethod
+    def _complete_city_layout(captured_layout: list[dict[str, Any]]) -> list[dict[str, Any]]:
+        """Add catalog buildings that have no captured placement/detail quote.
+
+        These entries make the complete local city visible and inspectable. They
+        intentionally have no economic quote, so mutation remains unsupported
+        until captured costs and effects are available.
+        """
+        result = deepcopy(captured_layout)
+        present = {entry["bid"] for entry in result}
+        fallback_xy = {
+            7: 160, 12: 161, 14: 162, 16: 163,
+            17: 164, 18: 165, 19: 166, 20: 167,
+        }
+        for item in load_client_catalog()["cfgBuilding"]:
+            bid = item["bid"]
+            if bid in present or bid not in fallback_xy:
+                continue
+            name = item["name"]
+            summary = item["summary"]
+            description = item["description"].replace("\n", " ")
+            def quote(level: int) -> dict[str, Any]:
+                return {
+                    "bid": bid, "description": description, "foodNeed": 0,
+                    "goldNeed": 0, "ironNeed": 0, "level": level, "name": name,
+                    "peopleNeed": 0, "rockNeed": 0, "summary": summary,
+                    "upgradeTime": 0, "woodNeed": 0, "conditions": [],
+                }
+            result.append({
+                "bid": bid, "level": 1, "xy": fallback_xy[bid], "inner": 1,
+                "layout_row": 0, "detail_row": 0,
+                "view": {"currBuilding": quote(1), "nextBuilding": quote(2)},
+            })
+        return result
 
     def _now(self) -> int:
         value = self.clock()
@@ -125,12 +178,31 @@ class GameplayEngine:
             if existing is not None:
                 if existing["scenario_id"] != self.profile_id:
                     raise EconomyError(UNSUPPORTED, "City belongs to a different research scenario")
+                if self.profile_id != QUARRY_PROFILE_ID:
+                    desired = ([(entry["bid"], entry["level"], entry["xy"], entry["inner"])
+                                for entry in self._city_layout]
+                               + [(5, 1, 102, 1), (9, 1, 144, 1)])
+                    current = {row["bid"] for row in await self._all(
+                        db, "SELECT bid FROM buildings WHERE cid=?", (city_id,))}
+                    additions = [entry for entry in desired if entry[0] not in current]
+                    if additions:
+                        await db.executemany(
+                            "INSERT INTO buildings(cid,bid,level,xy,inner) VALUES (?,?,?,?,?)",
+                            [(city_id, *entry) for entry in additions])
+                        await self.resources._audit(
+                            db, user_id, city_id, "scenario_layout_expand",
+                            {"building_ids": sorted(current)},
+                            {"building_ids": sorted(current | {entry[0] for entry in additions})},
+                            {"added": additions})
                 return
             if await self._one(db, "SELECT id FROM buildings WHERE cid=?", (city_id,)):
                 raise EconomyError(UNSUPPORTED, "Refusing to replace an existing city layout")
             await db.execute("INSERT INTO scenario_cities(cid,scenario_id) VALUES (?,?)", (city_id, self.profile_id))
             # Synthetic layout: instance IDs are allocated locally, never copied.
-            layout = [(3, 1, 51, 0)] if self.profile_id == QUARRY_PROFILE_ID else [(5, 1, 102, 1), (9, 1, 144, 1)]
+            layout = ([(3, 1, 51, 0)] if self.profile_id == QUARRY_PROFILE_ID
+                      else ([(entry["bid"], entry["level"], entry["xy"], entry["inner"])
+                             for entry in self._city_layout]
+                            + [(5, 1, 102, 1), (9, 1, 144, 1)]))
             await db.executemany("INSERT INTO buildings(cid,bid,level,xy,inner) VALUES (?,?,?,?,?)",
                                  [(city_id, *entry) for entry in layout])
             await db.executemany("INSERT INTO troops(cid,sid,count) VALUES (?,?,0)", [(city_id, sid) for sid in self._armies])
@@ -205,6 +277,8 @@ class GameplayEngine:
                                       city_id: int, bid: int) -> None:
         """Apply only observed level 1→2 deltas inside the upgrade transaction."""
         if (bid, 2) not in self._buildings:
+            if (bid, 2) in self._layout_upgrades:
+                return
             raise EconomyError(UNSUPPORTED, "No captured completion effects")
         before = await self.resources._read(db, user_id, city_id)
         after = self._effect_snapshot(before)
@@ -340,6 +414,36 @@ class GameplayEngine:
                 {"qid": qid, "sid": sid, "count": count, "duration_s": duration, "building_id": building["id"], "resource_audit_id": result.audit_id}, {})
             return await self._barracks_view(db, building, now)
 
+    async def dissolve_soldier(self, user_id: int, city_id: int, sid: object,
+                               count: object, x: object, y: object) -> dict[str, Any]:
+        """Remove owned troops and return the captured barracks response."""
+        integer(sid, "sid")
+        integer(count, "soldierCount")
+        integer(x, "x", 0, 9)
+        integer(y, "y", 0, 9)
+        if sid not in self._armies:
+            raise EconomyError(UNSUPPORTED, "Troop has no approved draft scenario")
+        async with self.resources._transaction() as db:
+            await self._require_city(db, user_id, city_id)
+            now = self._now()
+            await self._settle(db, user_id, city_id, now)
+            building = await self._one(
+                db, "SELECT * FROM buildings WHERE cid=? AND xy=? AND inner=1 AND bid=9",
+                (city_id, 100 + 10 * x + y))
+            if building is None:
+                raise EconomyError(13000, "No barracks at this location")
+            troop = await self._one(db, "SELECT count FROM troops WHERE cid=? AND sid=?",
+                                    (city_id, sid))
+            if troop is None or troop["count"] < count:
+                raise EconomyError(900103, "Insufficient soldiers")
+            await db.execute("UPDATE troops SET count=count-? WHERE cid=? AND sid=?",
+                             (count, city_id, sid))
+            await self.resources._audit(
+                db, user_id, city_id, "dissolveSoldier",
+                {"sid": sid, "count": troop["count"]},
+                {"sid": sid, "count": troop["count"] - count}, {})
+            return await self._barracks_view(db, building, now)
+
     async def upgrade(self, user_id: int, city_id: int, bid: int, x: int, y: int, inner: int, *, immediate: bool = False) -> dict[str, Any]:
         """Execute only the selected captured transition; ignore client prices."""
         integer(bid, "buildingId")
@@ -350,20 +454,43 @@ class GameplayEngine:
             await self._require_city(db, user_id, city_id)
             now = self._now()
             await self._settle(db, user_id, city_id, now)
-            building = await self._one(db, "SELECT * FROM buildings WHERE cid=? AND xy=? AND inner=?", (city_id, 100*inner + 10*x + y, inner))
+            building = await self._one(db, "SELECT * FROM buildings WHERE cid=? AND xy=? AND inner=?",
+                                       (city_id, 100 * inner + 10 * x + y, inner))
+            if building is None:
+                # Some client screens retain a stale grid coordinate after a
+                # city refresh. Resolve only an unambiguous owned instance;
+                # never select among multiple buildings of the same type.
+                candidates = await self._all(
+                    db, "SELECT * FROM buildings WHERE cid=? AND bid=? ORDER BY id",
+                    (city_id, bid))
+                if len(candidates) == 1:
+                    building = candidates[0]
+                else:
+                    building = None
             if building is None or building["bid"] != bid:
                 raise EconomyError(900103, "buildingId does not match the building at this location")
             quote = self._buildings.get((bid, building["level"] + 1))
+            if quote is None:
+                quote = self._layout_upgrades.get((bid, building["level"] + 1))
             if quote is None or building["level"] != 1:
                 raise EconomyError(UNSUPPORTED, "Building transition has no approved captured quote")
-            if bid == 3 and not immediate:
+            if bid == 3 and self.profile_id == QUARRY_PROFILE_ID and not immediate:
                 raise EconomyError(UNSUPPORTED, "Quarry fixture supports only the captured instant upgrade")
+            levels = {row["bid"]: row["level"] for row in await self._all(
+                db, "SELECT bid,MAX(level) AS level FROM buildings WHERE cid=? GROUP BY bid",
+                (city_id,))}
+            for condition in quote["conditions"]:
+                required_bid = condition.get("required_bid")
+                required_level = condition.get("upgradeNeedLevel", 0)
+                if required_bid is not None and levels.get(required_bid, 0) < required_level:
+                    raise EconomyError(UNSUPPORTED, "Building prerequisite is not met")
             if building["state"] != 0:
                 raise EconomyError(BUSY, "Building already has an upgrade in progress")
             if await self._one(db, "SELECT id FROM buildings WHERE cid=? AND state=1", (city_id,)):
                 raise EconomyError(BUSY, "The local scenario permits one building upgrade at a time")
             resource = await self.resources._read(db, user_id, city_id)
-            self._effect_snapshot(resource)
+            if (bid, 2) in self._buildings:
+                self._effect_snapshot(resource)
             costs = quote["costs"]
             shortages = {key for key, cost in costs.items() if getattr(resource, key) < cost}
             duration = self._duration(quote)

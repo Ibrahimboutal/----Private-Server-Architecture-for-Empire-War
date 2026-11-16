@@ -41,9 +41,40 @@ async def test_seed_idempotent_and_synthetic_currency_is_separate(lab):
     assert await lab.game.snapshot(1, 1) == before
     assert before["money"] == 100
     assert before["resources"]["gold"] == 12345
-    assert [(b["bid"], b["level"], b["xy"]) for b in before["buildings"]] == [(5, 1, 102), (9, 1, 144)]
+    assert [(b["bid"], b["level"], b["xy"]) for b in before["buildings"]] == [
+        (1, 1, 10), (2, 1, 21), (4, 1, 22), (3, 1, 51),
+        (6, 1, 120), (10, 1, 132), (11, 1, 142), (8, 1, 105),
+        (13, 1, 111), (15, 1, 154), (7, 1, 160), (12, 1, 161),
+        (14, 1, 162), (16, 1, 163), (17, 1, 164), (18, 1, 165),
+        (19, 1, 166), (20, 1, 167), (5, 1, 102), (9, 1, 144),
+    ]
     assert {troop["sid"] for troop in before["troops"]} == {1, 2}
     assert all(troop["id"] > 0 and troop["cid"] == 1 and troop["count"] == 0 for troop in before["troops"])
+
+
+async def test_all_catalog_buildings_are_seeded_and_inspectable(lab):
+    snapshot = await lab.game.snapshot(1, 1)
+    assert {building["bid"] for building in snapshot["buildings"]} == set(range(1, 21))
+    by_bid = {building["bid"]: building for building in snapshot["buildings"]}
+    for bid, name in [(1, "Farm"), (2, "Sawmill"), (4, "Mine"), (6, "Senate"), (20, "City Wall")]:
+        info = await lab.game.building_info(1, 1, by_bid[bid]["id"])
+        assert info["building"]["bid"] == bid
+        assert info["currBuilding"]["name"] == name
+        assert info["nextBuilding"]["name"] == name
+    with pytest.raises(EconomyError) as error:
+        await lab.game.upgrade(1, 1, 20, 6, 7, 1)
+    assert error.value.ret == 900105
+
+
+async def test_existing_city_is_expanded_without_resetting_progress(lab):
+    async with lab.ledger._connection() as db:
+        await db.execute("DELETE FROM buildings WHERE cid=? AND bid NOT IN (5, 9)", (1,))
+        await db.execute("UPDATE buildings SET level=2 WHERE cid=? AND bid=5", (1,))
+    await lab.game.seed_city(1, 1, premium_money=99999)
+    snapshot = await lab.game.snapshot(1, 1)
+    assert {building["bid"] for building in snapshot["buildings"]} == set(range(1, 21))
+    assert next(building["level"] for building in snapshot["buildings"] if building["bid"] == 5) == 2
+    assert snapshot["money"] == 100
 
 
 async def test_draft_costs_and_queue_duration_match_captured_50_auxiliary(lab):
@@ -58,6 +89,17 @@ async def test_draft_costs_and_queue_duration_match_captured_50_auxiliary(lab):
     assert resources.gold == 12345
     assert all(t["count"] == 0 for t in (await lab.game.snapshot(1, 1))["troops"])
     assert len(await rows(lab, "draft_queues")) == 1
+
+
+async def test_dissolve_soldier_decrements_owned_troops_atomically(lab):
+    async with lab.ledger._connection() as db:
+        await db.execute("UPDATE troops SET count=100 WHERE cid=? AND sid=?", (1, 2))
+    result = await lab.game.dissolve_soldier(1, 1, 2, 40, 4, 4)
+    assert result["armys"][1]["count"] == 60
+    assert next(t["count"] for t in (await lab.game.snapshot(1, 1))["troops"] if t["sid"] == 2) == 60
+    with pytest.raises(EconomyError) as error:
+        await lab.game.dissolve_soldier(1, 1, 2, 61, 4, 4)
+    assert error.value.ret == 900103
 
 
 async def test_pending_queue_fifo_restart_catchup_and_exactly_once(lab):
@@ -165,6 +207,34 @@ async def test_timed_house_upgrade_matches_captured_transition(lab):
     with pytest.raises(EconomyError) as error:
         await lab.game.upgrade(1, 1, 5, 0, 2, 1)
     assert error.value.ret == 900105
+
+
+async def test_captured_farm_upgrade_uses_layout_cost_and_duration(lab):
+    result = await lab.game.upgrade(1, 1, 1, 1, 0, 0)
+    building = result["building"]
+    assert building["bid"] == 1 and building["level"] == 1 and building["state"] == 1
+    assert building["stateEndtime"] - building["stateStarttime"] == 55
+    resources = await lab.ledger.get_resources(1, 1)
+    assert (resources.food, resources.wood, resources.iron, resources.rock) == (49900, 49400, 49700, 49600)
+    lab.now[0] += 55
+    completed = await lab.game.check_queue(1, 1, building["id"], 3)
+    assert completed["building"]["level"] == 2
+    assert completed["building"]["state"] == 0
+
+
+async def test_captured_senate_upgrade_does_not_debit_occupancy(lab):
+    result = await lab.game.upgrade(1, 1, 6, 2, 0, 1)
+    assert result["building"]["bid"] == 6
+    assert result["building"]["state"] == 1
+    resources = await lab.ledger.get_resources(1, 1)
+    assert (resources.food, resources.wood, resources.iron, resources.rock, resources.people) == (
+        49600, 44000, 49800, 45000, 1000)
+
+
+async def test_upgrade_recovers_unique_building_after_stale_grid_coordinates(lab):
+    result = await lab.game.upgrade(1, 1, 1, 9, 9, 0)
+    assert result["building"]["bid"] == 1
+    assert result["building"]["state"] == 1
 
 
 async def test_immediate_upgrade_debits_premium_not_city_gold(lab):

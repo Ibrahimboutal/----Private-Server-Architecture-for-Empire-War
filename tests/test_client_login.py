@@ -59,6 +59,34 @@ async def test_bridge_is_explicit_and_authenticates_only_seeded_credentials(ledg
     assert (await router.dispatch({**SYNC, "cityId": 2}, context))["ret"] == 900102
 
 
+async def test_change_tax_updates_owned_city_and_rejects_invalid_values(ledger):
+    router = PacketRouter(ledger, SessionManager(), synthetic_credentials=LOCAL)
+    context = ConnectionContext()
+    assert (await router.dispatch(CLIENT, context))["ret"] == 0
+    changed = await router.dispatch(
+        {"type": "City", "action": "changeTax", "cityId": 1001, "newTax": 100}, context)
+    assert changed == {"type": "City", "action": "changeTax", "ret": 0}
+    assert (await router.dispatch(SYNC, context))["cityRes"]["tax"] == 100
+    invalid = await router.dispatch(
+        {"type": "City", "action": "changeTax", "cityId": 1001, "newTax": 101}, context)
+    assert invalid["ret"] == 900103
+
+
+async def test_daily_sign_in_is_idempotent_and_visible_in_sign_info(ledger):
+    router = PacketRouter(ledger, SessionManager(), synthetic_credentials=LOCAL)
+    context = ConnectionContext()
+    assert (await router.dispatch(CLIENT, context))["ret"] == 0
+    first = await router.dispatch({"type": "Sign", "action": "signToday"}, context)
+    second = await router.dispatch({"type": "Sign", "action": "signToday"}, context)
+    assert first["ret"] == second["ret"] == 0
+    assert first["signCount"] == second["signCount"] == 1
+    info = await router.dispatch({"type": "Sign", "action": "getSignInfo"}, context)
+    assert info["userSignInfo"]["signCount"] == 1
+    assert info["userSignInfo"]["todayIsSign"] is True
+    event_variant = await router.dispatch({"type": "Event", "action": "signToday", "diff": 0}, context)
+    assert event_variant == {"type": "Event", "action": "signToday", "ret": 0}
+
+
 async def test_different_client_accounts_share_only_local_city_without_registration(ledger):
     router = PacketRouter(ledger, SessionManager(), synthetic_credentials=LOCAL)
     responses = []

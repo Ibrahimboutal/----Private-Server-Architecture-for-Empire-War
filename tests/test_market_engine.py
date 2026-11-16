@@ -76,6 +76,23 @@ async def test_captured_listing_deducts_food_and_persists_owned_view(lab):
     assert json.loads(audit[0]["packet_json"]) == REQUEST
 
 
+async def test_cancel_sell_removes_owned_listing_and_returns_trade(lab):
+    listed = await sell(lab.market)
+    trade_id = listed["trade"]["id"]
+    cancelled = await lab.market.cancel_sell(1, 1, trade_id)
+    assert cancelled["ret"] == 0
+    assert cancelled["trade"] == listed["trade"]
+    assert await rows(lab.ledger, "market_listings") == []
+    assert (await lab.market.own_trades(1, 1))["tradingList"] == []
+
+
+async def test_cancel_sell_rejects_another_city_listing(lab):
+    await sell(lab.market)
+    with pytest.raises(EconomyError) as error:
+        await lab.market.cancel_sell(2, 1, 1)
+    assert error.value.ret == 900102
+
+
 async def test_repeated_request_is_a_second_paid_listing(lab):
     for _ in range(2):
         assert (await sell(lab.market, requestId="same-local-request"))["ret"] == 0

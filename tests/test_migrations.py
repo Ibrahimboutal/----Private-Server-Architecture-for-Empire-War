@@ -34,7 +34,7 @@ async def test_upgrade_preserves_v1_accounts_balances_and_audit(tmp_path):
     before = await engine.get_resources(1, 1)
     await engine.initialize()
     await engine.initialize()
-    assert await versions(engine) == [5, 5]
+    assert await versions(engine) == [6, 6]
     assert await engine.get_resources(1, 1) == before
     assert await engine.authenticate("legacy-local", "password") == (1, 1)
     async with engine._connection() as db:
@@ -53,7 +53,7 @@ async def test_refuse_incompatible_pair_without_modifying_state(tmp_path, mode):
         engine.audit_database.unlink()
     else:
         async with aiosqlite.connect(engine.audit_database) as db:
-            sql = {"future": "PRAGMA user_version=6", "mismatch": "PRAGMA user_version=2",
+            sql = {"future": "PRAGMA user_version=7", "mismatch": "PRAGMA user_version=2",
                    "unowned_audit": "PRAGMA application_id=42"}[mode]
             await db.execute(sql)
     original = engine.database.read_bytes()
@@ -85,13 +85,13 @@ async def test_failed_migration_rolls_back_ddl_versions_and_data(tmp_path, monke
             assert "money" not in {row[1] for row in await cur.fetchall()}
     monkeypatch.setattr(resource_engine, "files", original_files)
     await engine.initialize()
-    assert await versions(engine) == [5, 5]
+    assert await versions(engine) == [6, 6]
 
 
 async def test_fresh_pair_has_matching_versions_and_unique_active_queue(tmp_path):
     engine = ResourceEngine(tmp_path / "state.db", tmp_path / "audit.db")
     await engine.initialize()
-    assert await versions(engine) == [5, 5]
+    assert await versions(engine) == [6, 6]
     async with engine._connection() as db:
         async with db.execute("SELECT name FROM sqlite_master WHERE type='index'") as cur:
             assert "draft_one_active_per_building" in {row[0] for row in await cur.fetchall()}
@@ -110,7 +110,7 @@ async def test_wire_timestamp_migration_is_audited_once(tmp_path, source_version
             old_events = [tuple(row) for row in await cur.fetchall()]
     await engine.initialize()
     await engine.initialize()
-    assert await versions(engine) == [5, 5]
+    assert await versions(engine) == [6, 6]
     assert (await engine.get_resources(1, 1)).lastupdate == expected
     async with engine._connection() as db:
         async with db.execute("SELECT * FROM audit.economy_events ORDER BY id") as cur:

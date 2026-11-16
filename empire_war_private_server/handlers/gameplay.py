@@ -13,7 +13,8 @@ async def dispatch_gameplay(request: dict[str, Any], session: Session,
                             gameplay: GameplayEngine) -> dict[str, Any] | None:
     kind, action = request.get("type"), request.get("action")
     supported = {
-        ("Army", "startDraftQueue"), ("Building", "getBuildingInfo"),
+        ("Army", "startDraftQueue"), ("Army", "dissolveSoldier"),
+        ("Building", "getBuildingInfo"),
         ("Building", "getBuildingState"), ("Building", "upgrade"),
         ("Building", "upgradeImmediatelyByGoldWhenLackRes"),
         ("User", "getAllQueue"), ("User", "checkAQueue"),
@@ -24,6 +25,9 @@ async def dispatch_gameplay(request: dict[str, Any], session: Session,
     uid = session.user_id
     if action == "startDraftQueue":
         payload = await gameplay.start_draft(uid, city_id, request.get("sid"),
+            request.get("soldierCount"), request.get("x"), request.get("y"))
+    elif action == "dissolveSoldier":
+        payload = await gameplay.dissolve_soldier(uid, city_id, request.get("sid"),
             request.get("soldierCount"), request.get("x"), request.get("y"))
     elif action in ("upgrade", "upgradeImmediatelyByGoldWhenLackRes"):
         # Deliberately never read clientMoneyCost or client-declared resource costs.

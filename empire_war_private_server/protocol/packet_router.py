@@ -15,8 +15,12 @@ from ..handlers.synch_city_resource import synch_city_resource
 from ..handlers.sell_to_user import dispatch_market
 from ..handlers.get_server_version import get_server_version
 from ..handlers.client_startup import dispatch_client_startup
+from ..handlers.compat_views import dispatch_compat_views
 from ..handlers.city_info import read_city_state
+from ..handlers.city_mutations import dispatch_city_mutations
+from ..handlers.sign import dispatch_sign
 from ..handlers.profile_views import dispatch_profile_views
+from ..handlers.world_views import dispatch_world_views
 from .city_position import RESEARCH_MAP_CID, owned_city, project_city_fields
 
 
@@ -70,6 +74,18 @@ class PacketRouter:
                     startup.update(onlineStep=reward["step"], onlineTimeLeft=reward["timeLeft"],
                                    nextOnlineRewardTime=reward["nextOnlineRewardTime"])
                 return startup
+            response = dispatch_world_views(request, session)
+            if response is not None:
+                return project_city_fields(response, session)
+            response = await dispatch_city_mutations(request, session, self.engine)
+            if response is not None:
+                return project_city_fields(response, session)
+            response = await dispatch_sign(request, session, self.engine)
+            if response is not None:
+                return project_city_fields(response, session)
+            response = await dispatch_compat_views(request, session, self.gameplay, self.engine)
+            if response is not None:
+                return project_city_fields(response, session)
             response = await dispatch_profile_views(request, session, self.engine, self.gameplay)
             if response is not None:
                 return project_city_fields(response, session)

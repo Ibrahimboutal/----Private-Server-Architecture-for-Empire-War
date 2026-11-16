@@ -193,7 +193,7 @@ class ResourceEngine:
         """
         from sqlite3 import complete_statement  # SQL parser only; no synchronous DB I/O.
 
-        current_version = 5
+        current_version = 6
 
         async def metadata(db: aiosqlite.Connection, schema: str) -> tuple[int, int, bool]:
             async with db.execute(f"PRAGMA {schema}.application_id") as cursor:
@@ -232,6 +232,7 @@ class ResourceEngine:
             3: files("empire_war_private_server").joinpath("migrations/003_wire_time_seconds.sql").read_text(encoding="utf-8"),
             4: files("empire_war_private_server").joinpath("migrations/004_market.sql").read_text(encoding="utf-8"),
             5: files("empire_war_private_server").joinpath("migrations/005_online_rewards.sql").read_text(encoding="utf-8"),
+            6: files("empire_war_private_server").joinpath("migrations/006_signins.sql").read_text(encoding="utf-8"),
         }
         self.database.parent.mkdir(parents=True, exist_ok=True)
         self.audit_database.parent.mkdir(parents=True, exist_ok=True)
