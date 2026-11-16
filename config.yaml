@@ -1,0 +1,14 @@
+# Phase 1: the existing proxy listens on 9999 and can use this as upstream 1024.
+host: 127.0.0.1
+port: 1024
+database: runtime/state.db
+audit_database: runtime/audit.db
+max_connections: 32
+max_frame_bytes: 1048576
+max_decoded_bytes: 8388608
+read_timeout_seconds: 30
+requests_per_second: 20
+session_ttl_seconds: 3600
+# Synthetic fixtures only; never use official credentials.
+synthetic_passport: research-local
+synthetic_password: local-test-only

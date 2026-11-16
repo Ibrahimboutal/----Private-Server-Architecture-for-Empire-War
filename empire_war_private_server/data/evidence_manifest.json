@@ -1,0 +1,40 @@
+{
+  "source_database": "game_protocol_v2.db",
+  "login_row_ids": [
+    4,
+    127,
+    317,
+    371,
+    533,
+    1570,
+    1942,
+    2484,
+    3018,
+    3848,
+    6662,
+    10026,
+    10310,
+    14828,
+    15288,
+    22958,
+    23711,
+    23724,
+    23743,
+    23840,
+    24228,
+    24658,
+    24834,
+    28035,
+    29699,
+    30824,
+    31154,
+    31222
+  ],
+  "troop_count": 99,
+  "captured_personal_values_exported": false,
+  "login_shape_sha256": "1ec564b59b7dab90ad5132c42216bafdf2bffd0a48ffc97eaf55b2480e562972",
+  "notes": [
+    "Login shape fields are zero/empty placeholders, not claimed gameplay defaults.",
+    "Costs copied only from explicit cfgSoldier numeric fields; not inferred from resource deltas."
+  ]
+}

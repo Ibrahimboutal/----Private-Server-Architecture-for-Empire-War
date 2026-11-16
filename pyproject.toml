@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "empire-war-private-server"
+version = "0.1.0"
+description = "Loopback-only Empire War interoperability research foundations"
+requires-python = ">=3.11"
+dependencies = ["aiosqlite>=0.20,<1", "PyYAML>=6,<7"]
+
+[project.optional-dependencies]
+test = ["pytest>=8,<10", "pytest-asyncio>=0.24,<2"]
+
+[project.scripts]
+empire-war-local = "empire_war_private_server.main:main"
+
+[tool.setuptools.packages.find]
+include = ["empire_war_private_server*"]
+
+[tool.setuptools.package-data]
+empire_war_private_server = ["data/*.json", "economy/*.yaml", "migrations/*.sql"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+
