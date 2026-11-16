@@ -125,7 +125,6 @@ class GameplayEngine:
             if existing is not None:
                 if existing["scenario_id"] != self.profile_id:
                     raise EconomyError(UNSUPPORTED, "City belongs to a different research scenario")
-                await self._complete_layout(db, user_id, city_id)
                 return
             if await self._one(db, "SELECT id FROM buildings WHERE cid=?", (city_id,)):
                 raise EconomyError(UNSUPPORTED, "Refusing to replace an existing city layout")
@@ -140,24 +139,6 @@ class GameplayEngine:
             await self.resources._audit(db, user_id, city_id, "scenario_seed",
                 {"money": before["money"]}, {"money": premium_money, "scenario": self.profile_id,
                     "buildings": layout, "troops": {str(sid): 0 for sid in self._armies}}, {})
-            await self._complete_layout(db, user_id, city_id)
-
-    async def _complete_layout(self, db: aiosqlite.Connection, user_id: int, city_id: int) -> None:
-        """Add captured starter plots once, preserving occupied plots and progress."""
-        occupied = {(row["xy"], row["inner"]) for row in await self._all(
-            db, "SELECT xy,inner FROM buildings WHERE cid=?", (city_id,))}
-        additions = []
-        for entry in self._city_layout:
-            plot = entry["xy"], entry["inner"]
-            if plot in occupied:
-                continue
-            await db.execute("INSERT INTO buildings(cid,bid,level,xy,inner) VALUES (?,?,?,?,?)",
-                             (city_id, entry["bid"], entry["level"], *plot))
-            additions.append({key: entry[key] for key in ("bid", "level", "xy", "inner")})
-            occupied.add(plot)
-        if additions:
-            await self.resources._audit(db, user_id, city_id, "city_layout_seed", {},
-                                        {"added_buildings": additions}, {})
 
     async def _inspection_view(self, db: aiosqlite.Connection, building: aiosqlite.Row) -> dict[str, Any] | None:
         """Use captured detail quotes with local prerequisite counts and state."""
