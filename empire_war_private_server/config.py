@@ -23,14 +23,28 @@ class ServerConfig:
     session_ttl_seconds: int = 3600
     synthetic_passport: str = "research-local"
     synthetic_password: str = "local-test-only"
+    gameplay_scenario: str = "captured-phase2-v1"
+    market_scenario: str = "captured-market-food-v1"
+    simulate_int32_crash: bool = False
+    overflow_breaker_threshold: int = 3
+    simulation_delay_ms: int = 100
 
     def __post_init__(self) -> None:
         if self.host != "127.0.0.1":
             raise ValueError("the server must bind only to 127.0.0.1")
+        if self.gameplay_scenario not in ("disabled", "captured-phase2-v1", "captured-quarry-shortage-v1"):
+            raise ValueError("unknown gameplay_scenario")
+        if self.market_scenario not in ("disabled", "captured-market-food-v1"):
+            raise ValueError("unknown market_scenario")
+        if type(self.simulate_int32_crash) is not bool:
+            raise ValueError("simulate_int32_crash must be boolean")
+        if self.simulate_int32_crash and self.market_scenario == "disabled":
+            raise ValueError("simulation requires the market scenario")
         bounds = {"port": (1, 65535), "max_connections": (1, 128),
                   "max_frame_bytes": (64, 5_000_000), "max_decoded_bytes": (64, 8_388_608),
                   "read_timeout_seconds": (1, 300), "requests_per_second": (1, 100),
-                  "session_ttl_seconds": (1, 3600)}
+                  "session_ttl_seconds": (1, 3600), "overflow_breaker_threshold": (1, 100),
+                  "simulation_delay_ms": (0, 1000)}
         for name, (lower, upper) in bounds.items():
             value = getattr(self, name)
             if type(value) is not int or not lower <= value <= upper:

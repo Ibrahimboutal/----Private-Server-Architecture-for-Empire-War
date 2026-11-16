@@ -1,0 +1,13 @@
+# Separate local state for bounded failure comparison. Stop other servers using
+# port 1024 first. The breaker remains disabled after it trips, across restarts.
+host: 127.0.0.1
+port: 1024
+database: runtime/market-research/state.db
+audit_database: runtime/market-research/audit.db
+synthetic_passport: research-local
+synthetic_password: local-test-only
+gameplay_scenario: captured-phase2-v1
+market_scenario: captured-market-food-v1
+simulate_int32_crash: true
+overflow_breaker_threshold: 3
+simulation_delay_ms: 100

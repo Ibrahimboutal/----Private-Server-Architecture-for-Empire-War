@@ -1,0 +1,9 @@
+# Independent fixed Quarry 1→2 shortage experiment. Stop the default server
+# first: this uses the same loopback port but separate synthetic state/audit.
+host: 127.0.0.1
+port: 1024
+database: runtime/quarry/state.db
+audit_database: runtime/quarry/audit.db
+synthetic_passport: research-local
+synthetic_password: local-test-only
+gameplay_scenario: captured-quarry-shortage-v1

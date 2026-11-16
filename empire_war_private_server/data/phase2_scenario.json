@@ -1,0 +1,497 @@
+{
+  "version": 1,
+  "profile_id": "captured-phase2-v1",
+  "provenance": {
+    "database": "game_protocol_v2.db",
+    "login_config_row": 4,
+    "draft_response_row": 14481,
+    "draft_pending_row": 14491,
+    "draft_limit_row": 14485,
+    "house_quote_row": 24882,
+    "house_upgrade_row": 24885,
+    "house_completion_row": 24904,
+    "house_immediate_rows": [
+      26546,
+      26551,
+      26554,
+      26555
+    ],
+    "quarry_shortage_rows": [
+      14607,
+      14611,
+      14613,
+      14617,
+      14620,
+      14621
+    ],
+    "note": "Independent captured quotes composed into a synthetic scenario; no general bonus formula inferred."
+  },
+  "draft": {
+    "barracks_bid": 9,
+    "barracks_level": 1,
+    "max_count": 50,
+    "queue_limit": 2,
+    "army_entries": [
+      {
+        "sid": 1,
+        "sname": "Peasant",
+        "ap": 5,
+        "carry": 200,
+        "description": "Peasants can transport resources and weaponry. They have barely any combat skills.",
+        "dp": 10,
+        "draftTime": 43.4782612323761,
+        "foodNeed": 50,
+        "foodUse": 2,
+        "goldNeed": 0,
+        "hp": 100,
+        "ironNeed": 10,
+        "peopleNeed": 1,
+        "range": 10,
+        "rockNeed": 0,
+        "speed": 180,
+        "woodNeed": 150
+      },
+      {
+        "sid": 2,
+        "sname": "Auxiliary",
+        "ap": 50,
+        "carry": 20,
+        "description": "Auxiliaries can be recruited and trained in large numbers for a small cost. They have only basic training and few combat skills.",
+        "dp": 50,
+        "draftTime": 21.73913061618805,
+        "foodNeed": 80,
+        "foodUse": 3,
+        "goldNeed": 0,
+        "hp": 200,
+        "ironNeed": 50,
+        "peopleNeed": 1,
+        "range": 20,
+        "rockNeed": 0,
+        "speed": 200,
+        "woodNeed": 100
+      }
+    ],
+    "chief_hero_shape": {
+      "affairsAdd": 0,
+      "affairsArmorAdd": 0,
+      "affairsBase": 0,
+      "affairsGoodsAddPercent": 0,
+      "armorList": [],
+      "awakenLevel": 0,
+      "braveryAdd": 0,
+      "braveryArmorAdd": 0,
+      "braveryBase": 0,
+      "braveryGoodsAddPercent": 0,
+      "canAwaken": 0,
+      "cid": 0,
+      "commandAdd": 0,
+      "commandArmorAdd": 0,
+      "commandBase": 0,
+      "exp": 0,
+      "face": 0,
+      "hid": 0,
+      "icTalentList": [],
+      "introduce": "",
+      "lastTricked": 0,
+      "leadBookAddPercent": 0,
+      "leadGoodsAddPercent": 0,
+      "leadSkillAddPercent": 0,
+      "level": 0,
+      "loyalty": 0,
+      "name": "",
+      "npcid": 0,
+      "rename": 0,
+      "sex": 0,
+      "star": 0,
+      "state": 0,
+      "suitEffectList": [],
+      "time": 0,
+      "uid": 0,
+      "wisdomAdd": 0,
+      "wisdomArmorAdd": 0,
+      "wisdomBase": 0,
+      "wisdomGoodsAddPercent": 0
+    },
+    "current_building": {
+      "bid": 9,
+      "level": 1,
+      "name": "Barracks",
+      "description": "Single Training Limit:50|Training Queue: 1|Occupants: 4",
+      "summary": "Troops can be trained or demobilized at the Barracks.",
+      "foodNeed": 250,
+      "woodNeed": 1200,
+      "ironNeed": 500,
+      "rockNeed": 1500,
+      "goldNeed": 0,
+      "peopleNeed": 0,
+      "upgradeTime": 75.18797302246094,
+      "canUpgrade": 0,
+      "conditions": [
+        {
+          "canUpgrade": true,
+          "collegeBuilding": false,
+          "currentOwn": 1,
+          "type": 0,
+          "upgradeNeedLevel": 1,
+          "upgradeNeedName": "Muster Field"
+        }
+      ]
+    },
+    "next_building": {
+      "bid": 9,
+      "level": 2,
+      "name": "Barracks",
+      "description": "Single Training Limit:100|Training Queues: 2|Occupants: 12",
+      "summary": "Troops can be trained or demobilized at the Barracks.",
+      "foodNeed": 500,
+      "woodNeed": 2400,
+      "ironNeed": 1000,
+      "rockNeed": 3000,
+      "goldNeed": 0,
+      "peopleNeed": 0,
+      "upgradeTime": 285.71429443359375,
+      "canUpgrade": 0,
+      "conditions": [
+        {
+          "canUpgrade": true,
+          "collegeBuilding": false,
+          "currentOwn": 1,
+          "type": 0,
+          "upgradeNeedLevel": 1,
+          "upgradeNeedName": "Muster Field"
+        }
+      ]
+    },
+    "duration_rule": "trunc(float32(float32(count) * float32(draftTime)))"
+  },
+  "buildings": [
+    {
+      "bid": 5,
+      "target_level": 1,
+      "costs": {
+        "food": 100,
+        "wood": 500,
+        "iron": 50,
+        "rock": 100,
+        "gold": 0,
+        "people": 0
+      },
+      "duration_seconds": 3,
+      "conditions": [],
+      "wire_info": {
+        "bid": 5,
+        "level": 1,
+        "name": "House",
+        "description": "Population Capacity: 100",
+        "summary": "Houses provide your citizens with shelter.",
+        "foodNeed": 100,
+        "woodNeed": 500,
+        "ironNeed": 50,
+        "rockNeed": 100,
+        "goldNeed": 0,
+        "peopleNeed": 0,
+        "upgradeTime": 3,
+        "canUpgrade": 0,
+        "conditions": []
+      },
+      "source_row": 24882
+    },
+    {
+      "bid": 5,
+      "target_level": 2,
+      "costs": {
+        "food": 200,
+        "wood": 1000,
+        "iron": 100,
+        "rock": 200,
+        "gold": 0,
+        "people": 0
+      },
+      "duration_seconds": 60,
+      "conditions": [],
+      "wire_info": {
+        "bid": 5,
+        "level": 2,
+        "name": "House",
+        "description": "Population Capacity: 300",
+        "summary": "Houses provide your citizens with shelter.",
+        "foodNeed": 200,
+        "woodNeed": 1000,
+        "ironNeed": 100,
+        "rockNeed": 200,
+        "goldNeed": 0,
+        "peopleNeed": 0,
+        "upgradeTime": 60,
+        "canUpgrade": 0,
+        "conditions": []
+      },
+      "source_row": 24882
+    }
+  ],
+  "house_effects": {
+    "peopleMax": 200,
+    "peopleStable": 180
+  },
+  "house_level2_view": {
+    "currBuilding": {
+      "bid": 5,
+      "level": 2,
+      "name": "House",
+      "description": "Population Capacity: 300",
+      "summary": "Houses provide your citizens with shelter.",
+      "foodNeed": 200,
+      "woodNeed": 1000,
+      "ironNeed": 100,
+      "rockNeed": 200,
+      "goldNeed": 0,
+      "peopleNeed": 0,
+      "upgradeTime": 45.80152893066406,
+      "canUpgrade": 0,
+      "conditions": []
+    },
+    "nextBuilding": {
+      "bid": 5,
+      "level": 3,
+      "name": "House",
+      "description": "Population Capacity: 600",
+      "summary": "Houses provide your citizens with shelter.",
+      "foodNeed": 400,
+      "woodNeed": 2000,
+      "ironNeed": 200,
+      "rockNeed": 400,
+      "goldNeed": 0,
+      "peopleNeed": 0,
+      "upgradeTime": 133.58779907226562,
+      "canUpgrade": 0,
+      "conditions": [
+        {
+          "canUpgrade": true,
+          "collegeBuilding": false,
+          "currentOwn": 2,
+          "type": 0,
+          "upgradeNeedLevel": 2,
+          "upgradeNeedName": "Senate"
+        }
+      ]
+    }
+  },
+  "quarry": {
+    "quotes": [
+      {
+        "bid": 3,
+        "target_level": 1,
+        "costs": {
+          "food": 180,
+          "wood": 500,
+          "iron": 400,
+          "rock": 150,
+          "gold": 0,
+          "people": 0
+        },
+        "duration_seconds": 2.2556393146514893,
+        "conditions": [],
+        "wire_info": {
+          "bid": 3,
+          "level": 1,
+          "name": "Quarry",
+          "description": "Production Rate: 100/hour|Employs: 20 People|Production Limit: 10,000|Researchable Skill: Mining Lv.1",
+          "summary": "Quarries produce Stone which is essential for construction and research.",
+          "foodNeed": 180,
+          "woodNeed": 500,
+          "ironNeed": 400,
+          "rockNeed": 150,
+          "goldNeed": 0,
+          "peopleNeed": 0,
+          "upgradeTime": 2.2556393146514893,
+          "canUpgrade": 1,
+          "conditions": []
+        },
+        "source_row": 14611
+      },
+      {
+        "bid": 3,
+        "target_level": 2,
+        "costs": {
+          "food": 360,
+          "wood": 1000,
+          "iron": 800,
+          "rock": 300,
+          "gold": 0,
+          "people": 0
+        },
+        "duration_seconds": 67.66917419433594,
+        "conditions": [],
+        "wire_info": {
+          "bid": 3,
+          "level": 2,
+          "name": "Quarry",
+          "description": "Production Rate: 300/hour|Employs: 60 People|Production Limit: 30,000|Researchable Skill: Mining Lv.2",
+          "summary": "Quarries produce Stone which is essential for construction and research.",
+          "foodNeed": 360,
+          "woodNeed": 1000,
+          "ironNeed": 800,
+          "rockNeed": 300,
+          "goldNeed": 0,
+          "peopleNeed": 0,
+          "upgradeTime": 67.66917419433594,
+          "canUpgrade": 1,
+          "conditions": []
+        },
+        "source_row": 14611
+      }
+    ],
+    "missing_wood_units": 822,
+    "goldCost": 6,
+    "effects": {
+      "peopleWorking": 40,
+      "rockAdd": 266,
+      "rockMax": 20000
+    },
+    "level2_view": {
+      "currBuilding": {
+        "bid": 3,
+        "level": 2,
+        "name": "Quarry",
+        "description": "Production Rate: 300/hour|Employs: 60 People|Production Limit: 30,000|Researchable Skill: Mining Lv.2",
+        "summary": "Quarries produce Stone which is essential for construction and research.",
+        "foodNeed": 360,
+        "woodNeed": 1000,
+        "ironNeed": 800,
+        "rockNeed": 300,
+        "goldNeed": 0,
+        "peopleNeed": 0,
+        "upgradeTime": 67.66917419433594,
+        "canUpgrade": 1,
+        "conditions": []
+      },
+      "nextBuilding": {
+        "bid": 3,
+        "level": 3,
+        "name": "Quarry",
+        "description": "Production Rate: 600/hour|Employs: 120 People|Production Limit: 60,000|Researchable Skill: Mining Lv.3",
+        "summary": "Quarries produce Stone which is essential for construction and research.",
+        "foodNeed": 720,
+        "woodNeed": 2000,
+        "ironNeed": 1600,
+        "rockNeed": 600,
+        "goldNeed": 0,
+        "peopleNeed": 0,
+        "upgradeTime": 225.5639190673828,
+        "canUpgrade": 1,
+        "conditions": []
+      }
+    }
+  },
+  "cfg_soldier": [
+    {
+      "sid": 1,
+      "name": "Peasant",
+      "description": "Peasants can transport resources and weaponry. They have barely any combat skills.",
+      "ap": 5,
+      "dp": 10,
+      "hp": 100,
+      "range": 10,
+      "speed": 180,
+      "carry": 200,
+      "foodNeed": 50,
+      "woodNeed": 150,
+      "rockNeed": 0,
+      "ironNeed": 10,
+      "goldNeed": 0,
+      "peopleNeed": 1,
+      "timeNeed": 60,
+      "foodUse": 2,
+      "type": 1,
+      "fromcity": 1
+    },
+    {
+      "sid": 2,
+      "name": "Auxiliary",
+      "description": "Auxiliaries can be recruited and trained in large numbers for a small cost. They have only basic training and few combat skills.",
+      "ap": 50,
+      "dp": 50,
+      "hp": 200,
+      "range": 20,
+      "speed": 200,
+      "carry": 20,
+      "foodNeed": 80,
+      "woodNeed": 100,
+      "rockNeed": 0,
+      "ironNeed": 50,
+      "goldNeed": 0,
+      "peopleNeed": 1,
+      "timeNeed": 30,
+      "foodUse": 3,
+      "type": 2,
+      "fromcity": 1
+    }
+  ],
+  "cfg_barracks_limits": [
+    {
+      "level": 1,
+      "soldierLimit": 50
+    },
+    {
+      "level": 2,
+      "soldierLimit": 100
+    },
+    {
+      "level": 3,
+      "soldierLimit": 300
+    },
+    {
+      "level": 4,
+      "soldierLimit": 600
+    },
+    {
+      "level": 5,
+      "soldierLimit": 1000
+    },
+    {
+      "level": 6,
+      "soldierLimit": 1500
+    },
+    {
+      "level": 7,
+      "soldierLimit": 2100
+    },
+    {
+      "level": 8,
+      "soldierLimit": 2800
+    },
+    {
+      "level": 9,
+      "soldierLimit": 3600
+    },
+    {
+      "level": 10,
+      "soldierLimit": 4500
+    }
+  ],
+  "cfg_building": [
+    {
+      "bid": 3,
+      "name": "Quarry",
+      "description": "Quarries produce Stone which is essential for construction and research. It also serves as ammunition for your Trebuchets. Upgrade your Quarries to increase your Stone production.",
+      "summary": "Quarries produce Stone which is essential for construction and research.",
+      "inner": 0,
+      "tableName": "rock"
+    },
+    {
+      "bid": 5,
+      "name": "House",
+      "description": "Houses provide your citizens with shelter. Upgrade your Houses to attract more people to settle in your city.",
+      "summary": "Houses provide your citizens with shelter.",
+      "inner": 1,
+      "tableName": "house"
+    },
+    {
+      "bid": 9,
+      "name": "Barracks",
+      "description": "Your troops are trained and housed in the Barracks. They can also be demobilized there. Increasing the level of your Barracks allows you to train more advanced troops and to add more training queues.",
+      "summary": "Troops can be trained or demobilized at the Barracks.",
+      "inner": 1,
+      "tableName": "army"
+    }
+  ]
+}

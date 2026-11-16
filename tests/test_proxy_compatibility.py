@@ -18,6 +18,8 @@ import pytest
 
 from empire_war_private_server.auth.session_manager import SessionManager
 from empire_war_private_server.config import ServerConfig
+from empire_war_private_server.economy.gameplay_engine import GameplayEngine
+from empire_war_private_server.economy.market_engine import MarketEngine
 from empire_war_private_server.economy.resource_engine import CityResource, ResourceEngine
 from empire_war_private_server.main import GameServer
 from empire_war_private_server.protocol.frame_parser import FrameCodec
@@ -59,8 +61,9 @@ def load_relay(monkeypatch: pytest.MonkeyPatch) -> Any:
 
 
 @pytest.mark.asyncio
+@pytest.mark.parametrize("phase2", [False, True], ids=["phase1", "phase2"])
 async def test_original_proxy_preserves_synthetic_server_wire_with_rewrite_disabled(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, phase2: bool
 ) -> None:
     relay = load_relay(monkeypatch)
     config = ServerConfig(database=tmp_path / "state.db", audit_database=tmp_path / "audit.db")
@@ -68,8 +71,15 @@ async def test_original_proxy_preserves_synthetic_server_wire_with_rewrite_disab
     await engine.initialize()
     passport, password = "proxy-fixture-user", "proxy-fixture-secret"
     resources = CityResource(cid=1, food=125.0, gold=250.0, wood=375.0, iron=500.0, rock=625.0, people=20)
+    if phase2:
+        resources = CityResource(cid=1, food=10000, gold=10000, wood=10000,
+                                 iron=10000, rock=10000, people=1000)
     await engine.seed_synthetic_user(passport, password, resources)
-    server = GameServer(config, PacketRouter(engine, SessionManager()))
+    gameplay = GameplayEngine(engine, clock=lambda: 1_800_000_000) if phase2 else None
+    if gameplay is not None:
+        await gameplay.seed_city(1, 1)
+    market = MarketEngine(engine, clock=lambda: 1_800_000_000) if phase2 else None
+    server = GameServer(config, PacketRouter(engine, SessionManager(), gameplay, market))
     recording = RecordingCodec()
     server.codec = recording
     upstream_port = await server.start(port=0)
@@ -115,6 +125,20 @@ async def test_original_proxy_preserves_synthetic_server_wire_with_rewrite_disab
             {"type": "User", "action": "doLogin", "passport": passport, "password": password},
             {"type": "City", "action": "synchCityResource", "cityId": 1},
         ]
+        if phase2:
+            requests.extend([
+                {"type": "Army", "action": "startDraftQueue", "cityId": 1,
+                 "sid": 2, "soldierCount": 50, "x": 4, "y": 4},
+                {"type": "Building", "action": "upgrade", "cityId": 1,
+                 "buildingId": 5, "inner": 1, "x": 0, "y": 2},
+                {"type": "City", "action": "synchCityResource", "cityId": 1},
+                {"type": "User", "action": "getAllQueue", "cityId": 1},
+                {"type": "Market", "action": "sellToUser", "cityId": 1,
+                 "resType": 0, "resCount": 1, "gold": 2147483646.0, "hour": 12, "unionSel": 0},
+                {"type": "Market", "action": "sellToUser", "cityId": 1,
+                 "resType": 0, "resCount": 1, "gold": 0.12, "hour": 12, "unionSel": 0},
+                {"type": "Market", "action": "doGetCityTrade", "cityId": 1},
+            ])
         for index, request in enumerate(requests):
             outgoing = codec.encode_frame(4, request)
             # The relay must preserve framing even when TCP fragments the header.
@@ -124,15 +148,42 @@ async def test_original_proxy_preserves_synthetic_server_wire_with_rewrite_disab
             incoming = await read_wire(reader)
             assert incoming == recording.sent[index]
             decoded = codec.decode_frame(incoming)
+            if request.get("gold") == 2147483646.0:
+                assert decoded.payload["ret"] == 19011
+                continue
             assert decoded.payload["ret"] == 0
             if index == 0:
                 assert decoded.packet_type == 8
                 assert decoded.payload["memCityResource"] == resources.to_wire()
-            else:
+            elif index == 1:
                 assert decoded.packet_type == 4
                 assert decoded.payload["cityRes"] == resources.to_wire()
-                assert decoded.payload["cityRes"]["food"] == 125.0
-        assert len(recording.sent) == 2
+                assert decoded.payload["cityRes"]["food"] == resources.food
+            elif request["action"] == "startDraftQueue":
+                queue = decoded.payload["queues"][0]
+                assert queue["count"] == 50 and queue["sid"] == 2
+                assert queue["originalTimeLeft"] == queue["timeLeft"] == 1086
+                assert queue["stateEndTime"] - queue["stateStartTime"] == 1086
+            elif request["action"] == "upgrade":
+                building = decoded.payload["building"]
+                assert building["bid"] == 5 and building["level"] == building["state"] == 1
+                assert building["stateEndtime"] - building["stateStarttime"] == 60
+                balances = decoded.payload["cityResource"]
+                assert {key: balances[key] for key in ("food", "wood", "iron", "rock", "gold", "people")} == {
+                    "food": 5800, "wood": 4000, "iron": 7400, "rock": 9800, "gold": 10000, "people": 950}
+            elif request["action"] == "synchCityResource":
+                assert decoded.payload["cityRes"]["food"] == 5800
+                assert decoded.payload["cityRes"]["wood"] == 4000
+            elif request["action"] == "getAllQueue":
+                assert len(decoded.payload["soldierQueue"]) == 1
+                assert len(decoded.payload["buildingQueue"]) == 1
+                assert decoded.payload["soldierQueue"][0]["count"] == 50
+            elif request["action"] == "sellToUser":
+                assert decoded.payload["trade"]["count"] == 1
+                assert decoded.payload["trade"]["price"] == 0.12
+            elif request["action"] == "doGetCityTrade":
+                assert len(decoded.payload["tradingList"]) == 1
+        assert len(recording.sent) == len(requests)
         writer.close()
         await writer.wait_closed()
         writer = None
@@ -154,8 +205,8 @@ async def test_original_proxy_preserves_synthetic_server_wire_with_rewrite_disab
             rows = database.execute(
                 "SELECT action_name,payload_json,payload_hex,raw_captured FROM captured_packets"
             ).fetchall()
-            assert len(rows) == 4
-            assert sorted(row[0] for row in rows) == ["doLogin", "doLogin", "synchCityResource", "synchCityResource"]
+            assert len(rows) == 2 * len(requests)
+            assert sorted(row[0] for row in rows) == sorted(request["action"] for request in requests for _ in range(2))
             assert all(row[2] is None and row[3] == 0 for row in rows)
             assert all(password not in (row[1] or "") for row in rows)
             assert database.execute("SELECT count(*) FROM injection_log").fetchone()[0] == 0

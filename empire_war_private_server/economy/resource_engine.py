@@ -185,21 +185,71 @@ class ResourceEngine:
                 raise
 
     async def initialize(self) -> None:
-        """Create only dedicated emulator files, never migrate capture databases."""
+        """Atomically initialize/migrate the owned state and audit database pair.
+
+        Existing accounts, resources and audit records are never reset. A missing
+        counterpart, mismatched version or unowned database fails before opening
+        either file for writing. Versions are checked again under the write lock.
+        """
+        from sqlite3 import complete_statement  # SQL parser only; no synchronous DB I/O.
+
+        current_version = 4
+
+        async def metadata(db: aiosqlite.Connection, schema: str) -> tuple[int, int, bool]:
+            async with db.execute(f"PRAGMA {schema}.application_id") as cursor:
+                application_id = (await cursor.fetchone())[0]
+            async with db.execute(f"PRAGMA {schema}.user_version") as cursor:
+                version = (await cursor.fetchone())[0]
+            async with db.execute(f"SELECT COUNT(*) FROM {schema}.sqlite_master") as cursor:
+                empty = (await cursor.fetchone())[0] == 0
+            return application_id, version, empty
+
+        def checked_version(info: tuple[int, int, bool]) -> int:
+            application_id, version, empty = info
+            if application_id == 0 and version == 0 and empty:
+                return 0  # Pristine DB, including a rolled-back fresh migration.
+            if application_id != APPLICATION_ID:
+                raise ValueError("refusing to modify a database not owned by this emulator")
+            if not 1 <= version <= current_version:
+                raise ValueError("unsupported emulator schema version")
+            return version
+
+        if self.database.exists() and self.audit_database.exists() and self.database.samefile(self.audit_database):
+            raise ValueError("state and audit must be different files")
+        versions: list[int] = []
         for path in (self.database, self.audit_database):
-            if path.exists() and path.stat().st_size:
+            if not path.exists() or path.stat().st_size == 0:
+                versions.append(0)
+            else:
                 async with aiosqlite.connect(path.as_uri() + "?mode=ro", uri=True) as existing:
-                    async with existing.execute("PRAGMA application_id") as cursor:
-                        if (await cursor.fetchone())[0] != APPLICATION_ID:
-                            raise ValueError("refusing to modify a database not owned by this emulator")
-                    async with existing.execute("PRAGMA user_version") as cursor:
-                        if (await cursor.fetchone())[0] != 1:
-                            raise ValueError("unsupported emulator schema version")
+                    versions.append(checked_version(await metadata(existing, "main")))
+        if versions[0] != versions[1]:
+            raise ValueError("state/audit schema mismatch or missing database counterpart")
+
+        scripts = {
+            1: files("empire_war_private_server").joinpath("migrations/001_sqlite.sql").read_text(encoding="utf-8"),
+            2: files("empire_war_private_server").joinpath("migrations/002_gameplay.sql").read_text(encoding="utf-8"),
+            3: files("empire_war_private_server").joinpath("migrations/003_wire_time_seconds.sql").read_text(encoding="utf-8"),
+            4: files("empire_war_private_server").joinpath("migrations/004_market.sql").read_text(encoding="utf-8"),
+        }
         self.database.parent.mkdir(parents=True, exist_ok=True)
         self.audit_database.parent.mkdir(parents=True, exist_ok=True)
-        async with self._connection() as db:
-            schema = files("empire_war_private_server").joinpath("migrations/001_sqlite.sql").read_text(encoding="utf-8")
-            await db.executescript(schema)
+        async with self._transaction() as db:
+            locked_versions = [checked_version(await metadata(db, schema)) for schema in ("main", "audit")]
+            if locked_versions[0] != locked_versions[1]:
+                raise ValueError("state/audit schema mismatch or missing database counterpart")
+            for target_version in range(locked_versions[0] + 1, current_version + 1):
+                statement = ""
+                for line in scripts[target_version].splitlines(keepends=True):
+                    statement += line
+                    if complete_statement(statement):
+                        await db.execute(statement)
+                        statement = ""
+                if statement.strip():
+                    raise ValueError("incomplete migration SQL statement")
+            final_versions = [checked_version(await metadata(db, schema)) for schema in ("main", "audit")]
+            if final_versions != [current_version, current_version]:
+                raise ValueError("migration did not set matching schema versions")
 
     async def seed_synthetic_user(self, passport: str, password: str,
                                   resources: CityResource) -> None:
@@ -287,7 +337,7 @@ class ResourceEngine:
         values = before.to_wire()
         for name, amount in costs.items():
             values[name] -= amount
-        values["lastupdate"] = time.time_ns() // 1_000_000
+        values["lastupdate"] = time.time_ns() // 1_000_000_000
         after = CityResource(**values)
         for name, amount in costs.items():
             # At very large float32 balances a small subtraction can disappear.

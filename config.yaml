@@ -1,4 +1,4 @@
-# Phase 1: the existing proxy listens on 9999 and can use this as upstream 1024.
+# The existing proxy listens on 9999 and can use this as upstream 1024.
 host: 127.0.0.1
 port: 1024
 database: runtime/state.db
@@ -12,3 +12,11 @@ session_ttl_seconds: 3600
 # Synthetic fixtures only; never use official credentials.
 synthetic_passport: research-local
 synthetic_password: local-test-only
+# Approved fixed capture-derived quotes; use disabled for protocol-only behavior.
+gameplay_scenario: captured-phase2-v1
+# Phase 3 fixed listing + safe arithmetic guard. Simulation delays (at most 1s)
+# then closes only the triggering connection; it never crashes the process.
+market_scenario: captured-market-food-v1
+simulate_int32_crash: false
+overflow_breaker_threshold: 3
+simulation_delay_ms: 100

@@ -13,6 +13,7 @@ from empire_war_private_server.economy.resource_engine import (
     CityResource, EconomyError, ResourceEngine, load_troop_costs,
 )
 from empire_war_private_server.economy.time_util import CostDomainError
+from empire_war_private_server.economy import resource_engine
 
 
 @pytest.fixture
@@ -37,6 +38,15 @@ async def test_all_resources_checked_before_any_deduction(engine):
     assert error.value.ret == 13003
     assert await engine.get_resources(1, 1) == before
     assert await count_rows(engine.audit_database, "economy_events") == 1  # Seed only.
+
+
+async def test_deduction_wire_clock_uses_seconds_and_audit_uses_milliseconds(engine, monkeypatch):
+    monkeypatch.setattr(resource_engine.time, "time_ns", lambda: 1_800_000_000_987_654_321)
+    result = await engine.validate_and_deduct_resources(1, 1, {"wood": 1})
+    assert result.resources.lastupdate == 1_800_000_000
+    async with engine._connection() as db:
+        async with db.execute("SELECT created_ms FROM audit.economy_events WHERE id=?", (result.audit_id,)) as cur:
+            assert (await cur.fetchone())[0] == 1_800_000_000_987
 
 
 async def test_concurrent_deductions_serialize_without_overspend(engine):

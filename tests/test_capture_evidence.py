@@ -63,3 +63,55 @@ def test_login_fixture_contains_no_captured_scalar_values():
         else:
             assert value in (None, False, 0, 0.0, "")
     check(shape)
+
+
+def test_phase2_quotes_match_selected_captures(captures):
+    profile = json.loads((ROOT / "empire_war_private_server/data/phase2_scenario.json").read_text(encoding="utf-8"))
+    def row(row_id):
+        return json.loads(captures.execute("SELECT payload_json FROM captured_packets WHERE id=?", (row_id,)).fetchone()[0])
+    draft = row(14481)
+    for quote in profile["draft"]["army_entries"]:
+        original = next(a for a in draft["armys"] if a["sid"] == quote["sid"])
+        assert all(original[key] == value for key, value in quote.items())
+    house = row(24882)
+    for quote in profile["buildings"]:
+        original = house["currBuilding" if quote["target_level"] == 1 else "nextBuilding"]
+        assert all(original[key] == value for key, value in quote["wire_info"].items())
+        assert quote["costs"] == {name: original[f"{name}Need"] for name in quote["costs"]}
+    assert profile["draft"]["queue_limit"] == row(14485)["soldierQueue"][0]["queueLimit"]
+    assert all(value in (0, 0.0, "", False, None) or value == [] for value in profile["draft"]["chief_hero_shape"].values())
+    quarry = row(14611)
+    for quote in profile["quarry"]["quotes"]:
+        original = quarry["currBuilding" if quote["target_level"] == 1 else "nextBuilding"]
+        assert all(original[key] == value for key, value in quote["wire_info"].items())
+        assert quote["costs"] == {name: original[f"{name}Need"] for name in quote["costs"]}
+    assert profile["quarry"]["goldCost"] == row(14617)["goldCost"]
+    assert profile["quarry"]["missing_wood_units"] == quarry["nextBuilding"]["woodNeed"] - int(row(14607)["cityRes"]["wood"])
+    for effects, old, new in ((profile["house_effects"], row(26551)["cityResource"], row(26554)["cityRes"]),
+                              (profile["quarry"]["effects"], row(14617)["cityResource"], row(14620)["cityRes"])):
+        assert effects == {key: new[key] - old[key] for key in effects}
+    for preview, original in ((profile["house_level2_view"], row(26555)),
+                              (profile["quarry"]["level2_view"], row(14621))):
+        for field, values in preview.items():
+            assert all(original[field][key] == value for key, value in values.items())
+
+
+def test_market_fixture_shapes_and_isolated_debit_match_captures(captures):
+    profile = json.loads((ROOT / "empire_war_private_server/data/market_scenario.json").read_text(encoding="utf-8"))
+    def row(row_id):
+        return json.loads(captures.execute("SELECT payload_json FROM captured_packets WHERE id=?", (row_id,)).fetchone()[0])
+    request, response = row(19126), row(19127)
+    assert profile["request"] == {key: request[key] for key in profile["request"]}
+    assert set(profile["trade_template"]) == set(response["trade"])
+    assert set(profile["own_list_template"]) == set(row(19135)["tradingList"][0])
+    reset = {"id", "cid", "buycid", "generateTime", "unionid", "distance"}
+    for template, original in ((profile["trade_template"], response["trade"]),
+                                (profile["own_list_template"], row(19135)["tradingList"][0])):
+        assert all(value == (0 if key in reset else original[key]) for key, value in template.items())
+    assert profile["get_user_sell_data"] == row(19112)["citySellData"]
+    a, b, c = [row(index)["cityRes"] for index in (19104, 19119, 19132)]
+    assert b["lastupdate"] - a["lastupdate"] == c["lastupdate"] - b["lastupdate"] == 20
+    for key in a:
+        delta = (c[key] - b[key]) - (b[key] - a[key])
+        assert delta == pytest.approx(-1 if key == "food" else 0, abs=1e-7)
+    assert profile["costs"] == {"food": 1}

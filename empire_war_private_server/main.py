@@ -12,6 +12,8 @@ import time
 from .auth.session_manager import ConnectionContext, SessionManager
 from .config import ServerConfig
 from .economy.resource_engine import CityResource, ResourceEngine
+from .economy.gameplay_engine import GameplayEngine
+from .economy.market_engine import MarketEngine, SimulatedMarketDisconnect
 from .network_isolation import install_loopback_guard
 from .protocol.frame_parser import FrameCodec, ProtocolError
 from .protocol.packet_router import PacketRouter
@@ -29,6 +31,7 @@ class GameServer:
         self._server: asyncio.Server | None = None
         self._clients: set[asyncio.Task[None]] = set()
         self._closing = False
+        self._queue_worker: asyncio.Task[None] | None = None
 
     async def start(self, *, port: int | None = None) -> int:
         """Start on configured port; port=0 is reserved for isolated test fixtures."""
@@ -39,7 +42,21 @@ class GameServer:
             self._accept, self.config.host, self.config.port if port is None else port,
             limit=self.config.max_frame_bytes + 5, backlog=self.config.max_connections,
         )
+        if self.router.gameplay is not None:
+            self._queue_worker = asyncio.create_task(self._advance_queues(), name="local-gameplay-queues")
         return self._server.sockets[0].getsockname()[1]
+
+    async def _advance_queues(self) -> None:
+        """Queries also settle work; this worker handles otherwise idle clients."""
+        assert self.router.gameplay is not None
+        while True:
+            try:
+                await self.router.gameplay.settle_due()
+            except asyncio.CancelledError:
+                raise
+            except Exception as exc:
+                LOGGER.error("Queue advancement failed (%s)", type(exc).__name__)
+            await asyncio.sleep(1)
 
     async def _accept(self, reader: asyncio.StreamReader, writer: asyncio.StreamWriter) -> None:
         task = asyncio.current_task()
@@ -64,10 +81,15 @@ class GameServer:
                 count += 1
                 if count > self.config.requests_per_second:
                     break
-                response = await self.router.dispatch(frame.payload, context)
+                response = await self.router.dispatch(frame.payload, context, frame_metadata={
+                    "packet_type": frame.packet_type, "wire_length": frame.wire_length,
+                    "plaintext_length": frame.plaintext_length})
                 writer.write(self.codec.encode_payload(response))
                 async with asyncio.timeout(self.config.read_timeout_seconds):
                     await writer.drain()
+        except SimulatedMarketDisconnect as exc:
+            LOGGER.info("Bounded local market simulation; closing one connection")
+            await asyncio.sleep(exc.delay_ms / 1000)
         except (ProtocolError, TimeoutError, ConnectionError, asyncio.IncompleteReadError):
             LOGGER.info("Closed invalid, disconnected, or idle local connection")
         except asyncio.CancelledError:
@@ -88,6 +110,10 @@ class GameServer:
         server, self._server = self._server, None
         if server is not None:
             server.close()
+        if self._queue_worker is not None:
+            self._queue_worker.cancel()
+            await asyncio.gather(self._queue_worker, return_exceptions=True)
+            self._queue_worker = None
         clients = tuple(self._clients)
         for task in clients:
             task.cancel()
@@ -108,15 +134,26 @@ async def run(config: ServerConfig) -> None:
     engine = ResourceEngine(config.database, config.audit_database)
     await engine.initialize()
     await engine.seed_synthetic_user(config.synthetic_passport, config.synthetic_password,
-        CityResource(cid=1, food=10000.0, wood=10000.0, iron=10000.0, rock=10000.0,
+        CityResource(cid=1, food=10000.0,
+                     wood=178.0 if config.gameplay_scenario == "captured-quarry-shortage-v1" else 10000.0,
+                     iron=10000.0, rock=10000.0,
                      gold=10000.0, people=1000, foodMax=100000.0, woodMax=100000.0,
                      ironMax=100000.0, rockMax=100000.0, goldMax=100000.0,
                      peopleMax=1000, morale=100, moraleStable=100,
-                     lastupdate=time.time_ns() // 1_000_000))
+                     lastupdate=time.time_ns() // 1_000_000_000))
     sessions = SessionManager(config.session_ttl_seconds, config.max_connections)
-    server = GameServer(config, PacketRouter(engine, sessions))
+    gameplay = None
+    if config.gameplay_scenario != "disabled":
+        gameplay = GameplayEngine(engine, scenario_id=config.gameplay_scenario)
+        await gameplay.seed_city(1, 1)
+    market = None
+    if config.market_scenario != "disabled":
+        market = MarketEngine(engine, simulate_int32_crash=config.simulate_int32_crash,
+                              overflow_breaker_threshold=config.overflow_breaker_threshold,
+                              simulation_delay_ms=config.simulation_delay_ms)
+    server = GameServer(config, PacketRouter(engine, sessions, gameplay, market))
     port = await server.start()
-    LOGGER.info("Phase 1 research server listening on 127.0.0.1:%d", port)
+    LOGGER.info("Research server listening on 127.0.0.1:%d; gameplay=%s", port, config.gameplay_scenario)
     try:
         await server.serve_forever()
     finally:
