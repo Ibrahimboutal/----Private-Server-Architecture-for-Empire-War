@@ -25,6 +25,102 @@ The transport audit's large export line numbers refer to its original export,
 not the shortened `.c.txt` file's physical line numbers. Focused TimeUtil line
 references above refer to the supplied `gold_logic_focus.c` directly.
 
+## Public TCP startup handshake
+
+Capture rows 1→2→3 are `User/getServerVersion` request, successful version
+response, then `User/doLogin` request. The same order appears at 124→125→126
+and 314→315→316. All 28 version responses in the provided database agree:
+`ret=0`, integer `version=1719`, and
+`marketApkUrl="market://details?id=com.feelingtouch.empirewaronline"`.
+All 26 retained requests use `marketId=0`, `packageChannel="FT"`, and
+`phoneOs="android"`. These are static compatibility fields, not account data.
+
+The native `GetServerVersionResponse::decode` at physical line 544003 in
+`GhidraProjects/game_logic_output.c` reads `version` as int and `marketApkUrl`
+as string. `UserHandler::onMessage` at line 255476 passes the response version
+to `GameController::setRemoteVersion`. The emulator now routes this exact
+handshake before its session requirement, without authenticating a player or
+renewing a session. This is distinct from HTTP account/server discovery.
+
+The LDPlayer report on 16 November showed `getServerVersion` reaching the local
+proxy but receiving the emulator's `900101`, exposing the missing public route.
+Prior synthetic login tests skipped this request; the smoke client and startup
+regressions now include it.
+
+## Client login adapter and startup data
+
+The actual client now reaches `doLogin` but previously received `900101` because
+its account strings did not match the explicitly synthetic account. The optional
+`synthetic_client_login` adapter is a **local research policy**, not a recovered
+authentication algorithm. It validates the two string fields, discards their
+values, and authenticates only the configured seeded account. Every bridged
+connection receives a fresh local UUID for user/city 1. Registration and HTTP
+authentication remain unimplemented. The supplied default config enables this
+mode; the configuration class default is false. Native `DoLoginRequest::encode`
+at physical lines 537111–537119 serializes passport/password as C++ strings,
+including empty strings. The adapter accepts empty strings because their values
+are discarded; strict authentication still requires nonempty matching values.
+Null, non-string and over-limit inputs remain rejected. The follow-up local
+trace exposed the original adapter's unnecessary nonempty-string requirement.
+
+Native `UserHandler` invokes `ConfigManager::refresh` and
+`DataManager::refreshLogin` at physical lines 253901–253905 in
+`GhidraProjects/game_logic_output.c`. The prior login shape left required display
+catalogs empty. `tools/extract_client_catalog.py` now exports eleven explicitly
+allowlisted static tables and `gameVersion=1719` from successful captured login
+responses, with provenance in `data/client_catalog.json`. Ten tables agree
+across all 28 responses; `cfgMonsterInfoList` has five variants and deliberately
+uses the row 4 Harpy display set. Names/descriptions are static catalog text, not
+player names. Unknown fields, endpoints and credential-like text are rejected.
+This supplies client lookup data without enabling more gameplay mutations.
+
+Authenticated startup response shapes come from these request/response pairs:
+
+| Route | Capture rows | Local fixture behavior |
+| --- | --- | --- |
+| `User/setUserPhoneInfo` | 5 / 6 | Validate bounded metadata, acknowledge, discard it |
+| `Mail/getUnreadCount` | 9 / 11 | Zero unread mail/report counts |
+| `Event/getApkUpgradeReward` | 10 / 13 | Captured Android/android/11520 acknowledgement, no payout |
+| `Event/getLoginShowInfo` | 16 / 21; shape 24856 | Empty inactive promotions; synthetic user ID; signed/finished flags suppress unavailable claims |
+| `Shop/getProductKeyList` | 17 / 20 | Empty product list |
+| `Event/getQuestEvent` | 18 / 19 | Empty event list |
+| `User/getPayInfo` | 22 / 23 | Empty offers/rewards and disabled payment routes |
+
+Except for the exact no-payload acknowledgements and captured empty quest list,
+these values describe the synthetic empty account; they do not reproduce
+captured player state or claim an official reward formula. Login-show row 24856
+establishes the shape without optional `heroSubscribe`; inactive national-war
+state is the captured `-1`. No reward balance or claim record is mutated.
+
+The supplied transport log establishes a login rejection, not a native crash.
+Read-only ADB crash/main/system inspection found no matching crash marker and
+the game process remained alive during diagnosis. City-screen compatibility
+still requires observing the client after the corrected login.
+
+## City position during startup
+
+The screenshot showed Research City with unknown coordinates. In the same
+session, resource sync and building state succeeded while `City/dummyChangePosition`
+repeatedly returned the emulator's unsupported-action code 900104.
+At physical line 185363 of `GhidraProjects/game_logic_output.c` the error
+handler checks both `cid % 1000` and `cid / 1000` (integer division) against
+the inclusive range 1 through 500. Lines 185391–185420 resend the request and
+attach a scene response listener when the city ID fails that check. ID 1 has
+quotient zero. The response decoder reads integer `targetCid` at line 487538.
+
+Both recorded exchanges, rows 23417–23420 and 25103–25106, send the current
+user's `userId`, receive `targetCid`, then send `User/getCityInfo` using that
+ID as `cityId`. The city-info reply includes the selected city, city list,
+resources, troops and buildings. Research City now uses the fixed synthetic
+map position (1, 1), encoded as 1001, for Android login and position recovery.
+That ID resolves to the existing owned SQLite city and its live snapshot.
+
+The separate startup acknowledgement `Event/saveGcmReg` has two string inputs
+in the native encoder (539720, 539725). Captured reply rows 3026, 22971,
+23774 and 24250 all have only the type, action and successful return code.
+The local handler discards the registration data. The local proxy redacts
+`regId` and `gcmRegId` when writing new captures.
+
 ## Phase 2 capture-derived scenario
 
 `empire_war_private_server/data/phase2_scenario.json` bundles a barracks

@@ -49,7 +49,7 @@ async def test_v3_market_migration_preserves_accounts_gameplay_and_audit(tmp_pat
     before = await old_rows(engine)
     await engine.initialize()
     await engine.initialize()
-    assert await versions(engine) == [4, 4]
+    assert await versions(engine) == [5, 5]
     assert await old_rows(engine) == before
     assert await engine.authenticate("market-migration-fixture", "local-only") == (1, 1)
     async with engine._connection() as db:

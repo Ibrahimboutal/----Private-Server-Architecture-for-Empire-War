@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "source_row": 22617,
+  "targets": [
+    {
+      "description": "Upgrade Senate to Level 2",
+      "id": 1,
+      "targetCount": 1,
+      "targetId": 6,
+      "targetLevel": 2,
+      "targetType": 1,
+      "useWhichData": 1
+    },
+    {
+      "description": "Join or create an Alliance",
+      "id": 3,
+      "targetCount": 1,
+      "targetId": 0,
+      "targetLevel": 0,
+      "targetType": 10,
+      "useWhichData": 0
+    },
+    {
+      "description": "Build 4 Level 2 Houses",
+      "id": 4,
+      "targetCount": 4,
+      "targetId": 5,
+      "targetLevel": 2,
+      "targetType": 1,
+      "useWhichData": 0
+    }
+  ],
+  "rewards": [
+    {
+      "res": {
+        "count": 1000,
+        "type": 1
+      }
+    },
+    {
+      "res": {
+        "count": 3000,
+        "type": 2
+      }
+    },
+    {
+      "res": {
+        "count": 2000,
+        "type": 3
+      }
+    },
+    {
+      "res": {
+        "count": 1000,
+        "type": 4
+      }
+    }
+  ]
+}

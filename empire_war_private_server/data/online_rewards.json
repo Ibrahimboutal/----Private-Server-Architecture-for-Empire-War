@@ -1,0 +1,513 @@
+{
+  "version": 1,
+  "catalog_rows": [
+    1164,
+    1170,
+    1514,
+    1520,
+    1627,
+    1633,
+    2839,
+    2845,
+    6979,
+    6985,
+    7612,
+    7620,
+    7625,
+    9172,
+    9178,
+    10276,
+    10282,
+    11086,
+    11092,
+    11179,
+    11185,
+    11456,
+    11464,
+    12413,
+    12420,
+    14345,
+    14355,
+    18797,
+    18804,
+    23016,
+    25365,
+    25373,
+    25577,
+    25584,
+    25738,
+    25744,
+    26177,
+    26183,
+    30038,
+    30044,
+    30955,
+    30963
+  ],
+  "claim_rows": {
+    "0": 1629,
+    "1": 1166,
+    "2": 1516,
+    "3": 7616,
+    "4": 2841,
+    "5": 18800
+  },
+  "stages": [
+    {
+      "needOnlineTime": 90,
+      "packageGoods": {
+        "artifact": false,
+        "canOpen": false,
+        "count": 1,
+        "description": "Open to receive 500 Wood, 5 x 1 min Hourglass.",
+        "directUse": 1,
+        "gid": 21016,
+        "name": "Online Pack I",
+        "position": 4449,
+        "redGid": 21016,
+        "resourceType": 0,
+        "special": "",
+        "subType": 0,
+        "subTypeDes": "",
+        "type": 4,
+        "value": 25,
+        "cid": 0,
+        "endtime": 0,
+        "state": 0,
+        "stateEndtime": 0,
+        "userName": ""
+      },
+      "goodsList": [
+        {
+          "artifact": false,
+          "canOpen": false,
+          "count": 5,
+          "description": "Reduces the building or research time of one task by 1 minute. These items can be used consecutively.",
+          "directUse": 0,
+          "gid": 99,
+          "name": "1 min Hourglass",
+          "position": 1501,
+          "redGid": 99,
+          "resourceType": 0,
+          "special": "This item can be used on buildings or technologies that are being upgraded.",
+          "subType": 0,
+          "subTypeDes": "",
+          "type": 1,
+          "value": 5,
+          "cid": 0,
+          "endtime": 0,
+          "state": 0,
+          "stateEndtime": 0,
+          "userName": ""
+        }
+      ],
+      "resList": [
+        {
+          "type": 2,
+          "count": 500
+        }
+      ]
+    },
+    {
+      "needOnlineTime": 180,
+      "packageGoods": {
+        "artifact": false,
+        "canOpen": false,
+        "count": 1,
+        "description": "Open to receive 500 Stone, 500 Silver, 5 x 1 min Hourglass.",
+        "directUse": 1,
+        "gid": 21017,
+        "name": "Online Pack II",
+        "position": 4448,
+        "redGid": 21017,
+        "resourceType": 0,
+        "special": "",
+        "subType": 0,
+        "subTypeDes": "",
+        "type": 4,
+        "value": 130,
+        "cid": 0,
+        "endtime": 0,
+        "state": 0,
+        "stateEndtime": 0,
+        "userName": ""
+      },
+      "goodsList": [
+        {
+          "artifact": false,
+          "canOpen": false,
+          "count": 5,
+          "description": "Reduces the building or research time of one task by 1 minute. These items can be used consecutively.",
+          "directUse": 0,
+          "gid": 99,
+          "name": "1 min Hourglass",
+          "position": 1501,
+          "redGid": 99,
+          "resourceType": 0,
+          "special": "This item can be used on buildings or technologies that are being upgraded.",
+          "subType": 0,
+          "subTypeDes": "",
+          "type": 1,
+          "value": 5,
+          "cid": 0,
+          "endtime": 0,
+          "state": 0,
+          "stateEndtime": 0,
+          "userName": ""
+        }
+      ],
+      "resList": [
+        {
+          "type": 5,
+          "count": 500
+        },
+        {
+          "type": 3,
+          "count": 500
+        }
+      ]
+    },
+    {
+      "needOnlineTime": 300,
+      "packageGoods": {
+        "artifact": false,
+        "canOpen": false,
+        "count": 1,
+        "description": "Open to receive 500 Food, 500 Iron, 500 Silver, 3 x 3 min Hourglass.",
+        "directUse": 1,
+        "gid": 21018,
+        "name": "Online Pack III",
+        "position": 4447,
+        "redGid": 21018,
+        "resourceType": 0,
+        "special": "",
+        "subType": 0,
+        "subTypeDes": "",
+        "type": 4,
+        "value": 160,
+        "cid": 0,
+        "endtime": 0,
+        "state": 0,
+        "stateEndtime": 0,
+        "userName": ""
+      },
+      "goodsList": [
+        {
+          "artifact": false,
+          "canOpen": false,
+          "count": 3,
+          "description": "Reduces the building or research time of one task by 3 minutes. These items can be used consecutively.",
+          "directUse": 0,
+          "gid": 98,
+          "name": "3 min Hourglass",
+          "position": 1500,
+          "redGid": 98,
+          "resourceType": 0,
+          "special": "This item can be used on buildings or technologies that are being upgraded.",
+          "subType": 0,
+          "subTypeDes": "",
+          "type": 1,
+          "value": 15,
+          "cid": 0,
+          "endtime": 0,
+          "state": 0,
+          "stateEndtime": 0,
+          "userName": ""
+        }
+      ],
+      "resList": [
+        {
+          "type": 5,
+          "count": 500
+        },
+        {
+          "type": 4,
+          "count": 500
+        },
+        {
+          "type": 1,
+          "count": 500
+        }
+      ]
+    },
+    {
+      "needOnlineTime": 900,
+      "packageGoods": {
+        "artifact": false,
+        "canOpen": false,
+        "count": 1,
+        "description": "Open to receive 1,000 Iron, 1,000 Silver, 5 x 3 min Hourglass.",
+        "directUse": 1,
+        "gid": 21019,
+        "name": "Online Pack IV",
+        "position": 4446,
+        "redGid": 21019,
+        "resourceType": 0,
+        "special": "",
+        "subType": 0,
+        "subTypeDes": "",
+        "type": 4,
+        "value": 220,
+        "cid": 0,
+        "endtime": 0,
+        "state": 0,
+        "stateEndtime": 0,
+        "userName": ""
+      },
+      "goodsList": [
+        {
+          "artifact": false,
+          "canOpen": false,
+          "count": 5,
+          "description": "Reduces the building or research time of one task by 3 minutes. These items can be used consecutively.",
+          "directUse": 0,
+          "gid": 98,
+          "name": "3 min Hourglass",
+          "position": 1500,
+          "redGid": 98,
+          "resourceType": 0,
+          "special": "This item can be used on buildings or technologies that are being upgraded.",
+          "subType": 0,
+          "subTypeDes": "",
+          "type": 1,
+          "value": 15,
+          "cid": 0,
+          "endtime": 0,
+          "state": 0,
+          "stateEndtime": 0,
+          "userName": ""
+        }
+      ],
+      "resList": [
+        {
+          "type": 5,
+          "count": 1000
+        },
+        {
+          "type": 4,
+          "count": 1000
+        }
+      ]
+    },
+    {
+      "needOnlineTime": 3600,
+      "packageGoods": {
+        "artifact": false,
+        "canOpen": false,
+        "count": 1,
+        "description": "Open to receive 2,000 Silver, 2 x 15 min Hourglass.",
+        "directUse": 1,
+        "gid": 21020,
+        "name": "Online Pack V",
+        "position": 4445,
+        "redGid": 21020,
+        "resourceType": 0,
+        "special": "",
+        "subType": 0,
+        "subTypeDes": "",
+        "type": 4,
+        "value": 2,
+        "cid": 0,
+        "endtime": 0,
+        "state": 0,
+        "stateEndtime": 0,
+        "userName": ""
+      },
+      "goodsList": [
+        {
+          "artifact": false,
+          "canOpen": false,
+          "count": 3,
+          "description": "Open to receive 1 Rock Crystal. After receiving your Rock Crystal, head over to the Workshop and use it to upgrade a Sacred Relic.",
+          "directUse": 1,
+          "gid": 999899,
+          "name": "1 Rock Crystals",
+          "position": 5500,
+          "redGid": 999899,
+          "resourceType": 0,
+          "special": "",
+          "subType": 0,
+          "subTypeDes": "",
+          "type": 5,
+          "value": 20,
+          "cid": 0,
+          "endtime": 0,
+          "state": 0,
+          "stateEndtime": 0,
+          "userName": ""
+        },
+        {
+          "artifact": false,
+          "canOpen": false,
+          "count": 2,
+          "description": "Reduces the building or research time of one task by 15 minutes. These items can be used consecutively.",
+          "directUse": 0,
+          "gid": 8,
+          "name": "15 min Hourglass",
+          "position": 1498,
+          "redGid": 8,
+          "resourceType": 0,
+          "special": "This item can be used on buildings or technologies that are being upgraded.",
+          "subType": 0,
+          "subTypeDes": "",
+          "type": 1,
+          "value": 70,
+          "cid": 0,
+          "endtime": 0,
+          "state": 0,
+          "stateEndtime": 0,
+          "userName": ""
+        }
+      ],
+      "resList": [
+        {
+          "type": 5,
+          "count": 2000
+        }
+      ]
+    },
+    {
+      "needOnlineTime": 7200,
+      "packageGoods": {
+        "artifact": false,
+        "canOpen": false,
+        "count": 1,
+        "description": "Open to receive 4,000 Food, 4,000 Wood, 4,000 Stone, 4000 Iron.",
+        "directUse": 1,
+        "gid": 21021,
+        "name": "Online Pack VI",
+        "position": 4444,
+        "redGid": 21021,
+        "resourceType": 0,
+        "special": "",
+        "subType": 0,
+        "subTypeDes": "",
+        "type": 4,
+        "value": 2,
+        "cid": 0,
+        "endtime": 0,
+        "state": 0,
+        "stateEndtime": 0,
+        "userName": ""
+      },
+      "goodsList": [],
+      "resList": [
+        {
+          "type": 4,
+          "count": 4000
+        },
+        {
+          "type": 3,
+          "count": 4000
+        },
+        {
+          "type": 2,
+          "count": 4000
+        },
+        {
+          "type": 1,
+          "count": 4000
+        }
+      ]
+    },
+    {
+      "needOnlineTime": 10800,
+      "packageGoods": {
+        "artifact": false,
+        "canOpen": false,
+        "count": 1,
+        "description": "Open to receive 5,000 Silver, 5 x 3 min Hourglass, 3 x 15 min Hourglass.",
+        "directUse": 1,
+        "gid": 21022,
+        "name": "Online Pack VII",
+        "position": 4443,
+        "redGid": 21022,
+        "resourceType": 0,
+        "special": "",
+        "subType": 0,
+        "subTypeDes": "",
+        "type": 4,
+        "value": 20,
+        "cid": 0,
+        "endtime": 0,
+        "state": 0,
+        "stateEndtime": 0,
+        "userName": ""
+      },
+      "goodsList": [
+        {
+          "artifact": false,
+          "canOpen": false,
+          "count": 5,
+          "description": "Open to receive 1 Rock Crystal. After receiving your Rock Crystal, head over to the Workshop and use it to upgrade a Sacred Relic.",
+          "directUse": 1,
+          "gid": 999899,
+          "name": "1 Rock Crystals",
+          "position": 5500,
+          "redGid": 999899,
+          "resourceType": 0,
+          "special": "",
+          "subType": 0,
+          "subTypeDes": "",
+          "type": 5,
+          "value": 20,
+          "cid": 0,
+          "endtime": 0,
+          "state": 0,
+          "stateEndtime": 0,
+          "userName": ""
+        },
+        {
+          "artifact": false,
+          "canOpen": false,
+          "count": 3,
+          "description": "Reduces the building or research time of one task by 15 minutes. These items can be used consecutively.",
+          "directUse": 0,
+          "gid": 8,
+          "name": "15 min Hourglass",
+          "position": 1498,
+          "redGid": 8,
+          "resourceType": 0,
+          "special": "This item can be used on buildings or technologies that are being upgraded.",
+          "subType": 0,
+          "subTypeDes": "",
+          "type": 1,
+          "value": 70,
+          "cid": 0,
+          "endtime": 0,
+          "state": 0,
+          "stateEndtime": 0,
+          "userName": ""
+        },
+        {
+          "artifact": false,
+          "canOpen": false,
+          "count": 5,
+          "description": "Reduces the building or research time of one task by 3 minutes. These items can be used consecutively.",
+          "directUse": 0,
+          "gid": 98,
+          "name": "3 min Hourglass",
+          "position": 1500,
+          "redGid": 98,
+          "resourceType": 0,
+          "special": "This item can be used on buildings or technologies that are being upgraded.",
+          "subType": 0,
+          "subTypeDes": "",
+          "type": 1,
+          "value": 15,
+          "cid": 0,
+          "endtime": 0,
+          "state": 0,
+          "stateEndtime": 0,
+          "userName": ""
+        }
+      ],
+      "resList": [
+        {
+          "type": 5,
+          "count": 5000
+        }
+      ]
+    }
+  ]
+}

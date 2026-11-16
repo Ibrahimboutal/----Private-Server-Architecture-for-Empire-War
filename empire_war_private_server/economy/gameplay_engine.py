@@ -63,6 +63,14 @@ class GameplayEngine:
         if set(self._armies) != (set() if quarry else {1, 2}) or set(self._buildings) != {(expected_bid, 1), (expected_bid, 2)}:
             raise ValueError("unexpected supported scenario entries")
         self._effects = self._profile["quarry"]["effects"] if quarry else self._profile["house_effects"]
+        layout = json.loads(files("empire_war_private_server").joinpath(
+            "data/city_layout.json").read_text(encoding="utf-8"))
+        if layout["version"] != 1:
+            raise ValueError("unsupported city layout version")
+        self._city_layout = [] if quarry else layout["buildings"]
+        self._inspection_views = {
+            (entry["bid"], entry["level"]): entry["view"] for entry in self._city_layout
+        }
         expected_effects = {"peopleWorking": 40, "rockAdd": 266, "rockMax": 20000} if quarry else {"peopleMax": 200, "peopleStable": 180}
         if self._effects != expected_effects:
             raise ValueError("unexpected captured building effects")
@@ -117,6 +125,7 @@ class GameplayEngine:
             if existing is not None:
                 if existing["scenario_id"] != self.profile_id:
                     raise EconomyError(UNSUPPORTED, "City belongs to a different research scenario")
+                await self._complete_layout(db, user_id, city_id)
                 return
             if await self._one(db, "SELECT id FROM buildings WHERE cid=?", (city_id,)):
                 raise EconomyError(UNSUPPORTED, "Refusing to replace an existing city layout")
@@ -131,6 +140,46 @@ class GameplayEngine:
             await self.resources._audit(db, user_id, city_id, "scenario_seed",
                 {"money": before["money"]}, {"money": premium_money, "scenario": self.profile_id,
                     "buildings": layout, "troops": {str(sid): 0 for sid in self._armies}}, {})
+            await self._complete_layout(db, user_id, city_id)
+
+    async def _complete_layout(self, db: aiosqlite.Connection, user_id: int, city_id: int) -> None:
+        """Add captured starter plots once, preserving occupied plots and progress."""
+        occupied = {(row["xy"], row["inner"]) for row in await self._all(
+            db, "SELECT xy,inner FROM buildings WHERE cid=?", (city_id,))}
+        additions = []
+        for entry in self._city_layout:
+            plot = entry["xy"], entry["inner"]
+            if plot in occupied:
+                continue
+            await db.execute("INSERT INTO buildings(cid,bid,level,xy,inner) VALUES (?,?,?,?,?)",
+                             (city_id, entry["bid"], entry["level"], *plot))
+            additions.append({key: entry[key] for key in ("bid", "level", "xy", "inner")})
+            occupied.add(plot)
+        if additions:
+            await self.resources._audit(db, user_id, city_id, "city_layout_seed", {},
+                                        {"added_buildings": additions}, {})
+
+    async def _inspection_view(self, db: aiosqlite.Connection, building: aiosqlite.Row) -> dict[str, Any] | None:
+        """Use captured detail quotes with local prerequisite counts and state."""
+        recorded = self._inspection_views.get((building["bid"], building["level"]))
+        if recorded is None:
+            return None
+        view = deepcopy(recorded)
+        levels = {row["bid"]: row["level"] for row in await self._all(
+            db, "SELECT bid,MAX(level) AS level FROM buildings WHERE cid=? GROUP BY bid",
+            (building["cid"],))}
+        for label in ("currBuilding", "nextBuilding"):
+            quote = view[label]
+            for condition in quote["conditions"]:
+                required_bid = condition.pop("required_bid")
+                condition["currentOwn"] = levels.get(required_bid, 0)
+                condition["canUpgrade"] = condition["currentOwn"] >= condition["upgradeNeedLevel"]
+            # These additional captured inspection quotes have no enabled
+            # economic transition. The server can display them consistently.
+            quote["canUpgrade"] = 2  # Captured disabled enum; no mutation is supported.
+        if building["bid"] == 10:
+            view.update(freshLastTime=0, heroCount=0, recruitHeros=[])
+        return {"building": self._building_wire(building), **view}
 
     async def _require_city(self, db: aiosqlite.Connection, user_id: int, city_id: int) -> None:
         integer(user_id, "userId")
@@ -383,6 +432,9 @@ class GameplayEngine:
                 return {"building": self._building_wire(building), **await self._barracks_view(db, building, now)}
             current = self._buildings.get((building["bid"], building["level"]))
             if current is None:
+                inspection = await self._inspection_view(db, building)
+                if inspection is not None:
+                    return inspection
                 raise EconomyError(UNSUPPORTED, "Building has no captured information")
             if building["level"] == 2:
                 preview = self._profile["quarry"]["level2_view"] if building["bid"] == 3 else self._profile["house_level2_view"]

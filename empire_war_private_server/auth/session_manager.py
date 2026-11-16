@@ -7,7 +7,7 @@ The cache is process-local in Phase 1; restarting intentionally invalidates it.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 import time
 from uuid import uuid4
 
@@ -18,6 +18,11 @@ class Session:
     user_id: int
     city_id: int
     expires_at: float
+    map_city_id: int | None = None
+
+    @property
+    def wire_city_id(self) -> int:
+        return self.city_id if self.map_city_id is None else self.map_city_id
 
 
 class SessionManager:
@@ -32,12 +37,12 @@ class SessionManager:
         self.max_sessions = max_sessions
         self._sessions: dict[str, Session] = {}
 
-    def create(self, user_id: int, city_id: int) -> Session:
+    def create(self, user_id: int, city_id: int, *, map_city_id: int | None = None) -> Session:
         now = time.monotonic()
         self._sessions = {key: value for key, value in self._sessions.items() if value.expires_at > now}
         if len(self._sessions) >= self.max_sessions:
             raise ValueError("session capacity reached")
-        session = Session(str(uuid4()), user_id, city_id, now + self.ttl_seconds)
+        session = Session(str(uuid4()), user_id, city_id, now + self.ttl_seconds, map_city_id)
         self._sessions[session.session_id] = session
         return session
 
@@ -53,6 +58,12 @@ class SessionManager:
     def revoke(self, session_id: str | None) -> None:
         if session_id is not None:
             self._sessions.pop(session_id, None)
+
+    def position_city(self, session: Session, map_city_id: int) -> Session:
+        """Keep the existing authenticated session and expiry during city placement."""
+        placed = replace(session, map_city_id=map_city_id)
+        self._sessions[session.session_id] = placed
+        return placed
 
 
 @dataclass(slots=True)

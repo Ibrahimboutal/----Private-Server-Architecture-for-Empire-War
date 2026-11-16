@@ -6,7 +6,7 @@ from typing import Any
 
 from ..auth.session_manager import Session
 from ..economy.market_engine import MarketEngine
-from ..economy.resource_engine import EconomyError
+from ..protocol.city_position import owned_city
 
 
 async def dispatch_market(request: dict[str, Any], session: Session,
@@ -16,12 +16,10 @@ async def dispatch_market(request: dict[str, Any], session: Session,
     if request.get("type") != "Market" or request.get("action") not in (
             "sellToUser", "doGetCityTrade", "getUserSellData"):
         return None
-    city_id = request.get("cityId")
-    if type(city_id) is not int or city_id != session.city_id:
-        raise EconomyError(900102, "City is not owned by this session")
+    city_id = owned_city(request, session)
     if request["action"] == "sellToUser":
         return await market.sell_to_user(session.user_id, city_id, request,
-                                         frame_metadata=frame_metadata)
+                                         frame_metadata=frame_metadata, wire_city_id=session.wire_city_id)
     if request["action"] == "doGetCityTrade":
         return await market.own_trades(session.user_id, city_id)
     return await market.user_sell_data(session.user_id, city_id)

@@ -46,12 +46,56 @@ fails rather than changing the existing account silently. Keep research state
 separate from original captures; initialization rejects pre-existing databases
 without this emulator's application identifier and schema version.
 
+The supplied `config.yaml` now enables `synthetic_client_login: true` for
+LDPlayer testing. Any well-formed `User/doLogin` packet selects the same seeded
+Research User and Research City, after discarding the incoming account strings.
+This is an explicit local adapter, not official authentication or registration.
+No official identity or password is copied into the emulator's database. The
+library default and other scenario configs keep this adapter disabled; set the
+flag to `false` to require the exact synthetic credentials. Restart the server
+after changing this flag. Creating an account through the game's HTTP service
+is still outside this TCP implementation.
+
+The native client can send empty account strings. The adapter accepts those
+strings too; strict mode still requires nonempty matching credentials. Verify
+the adapter through the proxy with empty native-style account strings:
+
+```powershell
+.\.venv\Scripts\python.exe tools/local_smoke_client.py --port 9999 --client-login
+```
+
 Use the synthetic account for these examples. `User/doLogin` returns
-`memCityResource`, while `City/synchCityResource` returns `cityRes`. Both the
-synthetic user ID and city ID are `1`. With gameplay enabled, login also returns
-`sysBuildings`, `sysCitySoldiers`, `user.money` and configuration for the
-supported troop and building types. Read building instance IDs from
+`memCityResource`, while `City/synchCityResource` returns `cityRes`. The
+seeded user and its database city key are both `1`. Android login advertises
+city ID `1001`, the synthetic map square `(1, 1)`. Read `city.cid` from
+login for subsequent requests. The older research examples below start with
+city ID `1`. A client that requests `City/dummyChangePosition` uses the
+returned `targetCid` for `User/getCityInfo` and later requests on that connection.
+With gameplay enabled, login also returns
+`sysBuildings`, `sysCitySoldiers` and `user.money`. Login also returns the full
+captured static display catalogs and `gameVersion: 1719`, including 99 soldier
+types and 20 building types. Those display entries do not enable additional
+mutations: training/upgrades remain limited to the selected scenario. Read building instance IDs from
 `sysBuildings[].id` on login.
+
+The Android client first sends this public TCP handshake, before `doLogin`:
+
+```json
+{"type":"User","action":"getServerVersion","marketId":0,"packageChannel":"FT","phoneOs":"android"}
+```
+
+The server returns the captured `ret: 0`, `version: 1719` and `marketApkUrl`.
+This check does not create or renew a session; gameplay still requires login.
+Only the observed Android/FT/market-0 profile is enabled. The smoke client now
+checks this handshake before its synthetic login. If the proxy shows
+`getServerVersion ret=900101`, the server process is running older code and
+must be restarted. Restarting just the proxy does not reload server handlers.
+
+After login, the server acknowledges device metadata without retaining it and
+serves synthetic empty mail, event and store status for the captured startup
+queries. APK-upgrade acknowledgement supports the captured Android 11.520
+profile without issuing rewards. Payment offers, purchases, account creation
+and reward claims are not enabled by these responses.
 
 ## Phase 2 scenario
 
@@ -230,6 +274,67 @@ connection is explicitly to `127.0.0.1`.
 
 ## Existing ewo-proxy integration
 
+### LDPlayer routing
+
+The Android Wi-Fi **Manual proxy** setting is for HTTP. It does not route this
+game's binary TCP socket. Use **Proxy: None** for this local setup. The Windows
+server and proxy remain bound to `127.0.0.1`; entering a Windows LAN address in
+Android does not make them reachable on that address.
+
+`adb reverse tcp:1024 tcp:9999` provides a tunnel for Android connections to
+its local port 1024. It does not change the game's selected destination.
+The separate route helper adds an owned DNAT rule for that missing step:
+
+```powershell
+# Keep the local server and tools/local_proxy.py running in their terminals.
+.\.venv\Scripts\python.exe tools/local_android_route.py start --serial emulator-5554
+.\.venv\Scripts\python.exe tools/local_android_route.py status --serial emulator-5554
+.\.venv\Scripts\python.exe tools/local_android_route.py probe --serial emulator-5554
+```
+
+`start` verifies the host proxy's synthetic login, stops only Empire War to end
+any existing connection, then creates the `EW_LOCAL_TCP` NAT chain. This LDPlayer
+has no `iptables owner` matcher, so the rule covers **all emulator IPv4 TCP
+connections to destination port 1024**. It rewrites them to Android loopback,
+then the ADB tunnel carries them to Windows loopback port 9999. Other ports are
+unchanged. The helper never launches the game or changes its HTTP startup data.
+
+`probe` sends a synthetic login from Android `127.0.0.2:1024`; this exercises both
+the DNAT rule and the tunnel without an external destination. It prints `PASS`
+only after decoding the private server's synthetic login response. This device's
+ADB shell rewrites newlines, so the diagnostic base64-encodes its output; actual
+game TCP frames are not changed. A passing Windows smoke test alone proves only
+the Windows proxy/server path, not emulator routing or actual game readiness.
+
+Ownership is recorded beside the configured state DB. Cleanup removes only this
+helper's rules and any reverse mapping it created. A matching pre-existing
+reverse mapping is preserved:
+
+```powershell
+.\.venv\Scripts\python.exe tools/local_android_route.py stop --serial emulator-5554
+```
+
+Cleanup also stops Empire War rather than letting an existing session reconnect
+to its normal endpoint. After LDPlayer restarts, inspect `status`; if the owned
+record remains but device rules disappeared, run `stop`, then `start` to rebuild.
+Do not run the old capture launcher for this setup: it defaults to an external
+upstream and writes the original capture database.
+
+**Client readiness:** the native game also uses HTTP account/server discovery
+before its TCP login. That HTTP service is not implemented here. The default
+config's local login adapter handles clients that already reach `User/doLogin`,
+but does not redirect account creation or server discovery. A successful
+version/login/sync probe is not proof that the stock client loads its city.
+This route also does not block HTTP, HTTPS, IPv6 or other ports; it is not
+complete emulator egress isolation. Avoid the game's official account creation
+flow for these local tests; full offline startup still needs local integration.
+
+An existing client may already have selected/cached a server and reach the
+private TCP listener. Seeing its `getServerVersion` request proves this path;
+it does not establish that HTTP startup or subsequent account login is local.
+
+### Windows proxy
+
 The existing proxy has an unconditional resource response rewrite in its normal
 mode. A small opt-out (`--disable-resource-rewrite`) was added without changing
 that default. Use the dedicated local launcher for emulator tests:
@@ -262,6 +367,8 @@ arrive unchanged.
 | `economy/resource_engine.py` | The 32 decoded resource fields plus captured `vacation`; atomic deductions, ownership checks, audit and troop reservations | `MemCityResource::decode`, explicit local transaction policy |
 | `economy/troop_config.yaml` | 99 consistent SID base-cost records covering food/wood/iron/rock/gold/people | 28 successful `doLogin.cfgSoldier` captures; row IDs retained |
 | `handlers/do_login.py` | Synthetic account and response shape, UUID bound to TCP connection | Captured `User/doLogin` field names; local auth policy |
+| `economy/client_catalog.py` | Full static display tables and version 1719; preserves catalogs when a gameplay scenario selects a subset | All 28 successful login captures; fixed row 4 monster variant |
+| `handlers/client_startup.py` | Device acknowledgement and empty synthetic mail/events/store status | Captured response shapes, with local inactive fixture values |
 | `handlers/synch_city_resource.py` | Owned city snapshot under `cityRes` | Captured `City/synchCityResource` responses |
 | `economy/gameplay_engine.py` and `handlers/gameplay.py` | Draft charges, queue completion, building upgrades and queue queries for the selected scenario | Draft rows 14481/14491, House rows 24882/24885/24904, client decoders |
 | `data/phase2_scenario.json` | Fixed barracks, House and Quarry quotes/effects with source row IDs | Generated offline by `tools/extract_phase2_profile.py` |
@@ -279,11 +386,13 @@ Rebuild the sanitized fixtures explicitly with:
 .\.venv\Scripts\python.exe tools/extract_research_fixtures.py new-set-up/game_protocol_v2.db
 .\.venv\Scripts\python.exe tools/extract_phase2_profile.py new-set-up/game_protocol_v2.db
 .\.venv\Scripts\python.exe tools/extract_market_profile.py new-set-up/game_protocol_v2.db
+.\.venv\Scripts\python.exe tools/extract_client_catalog.py new-set-up/game_protocol_v2.db
 ```
 
 The first utility keeps empty object shapes and numeric base cost fields. The
 second exports selected static gameplay configuration and the fixed quotes.
-The third validates and exports the one-Food market fixture. All read the
+The third validates and exports the one-Food market fixture. The fourth retains
+only reviewed static catalog fields, excluding account data and endpoints. All read the
 capture database in read-only mode. The runtime uses the bundled
 fixtures and persists synthetic accounts in the configured state database.
 

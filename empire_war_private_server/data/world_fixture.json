@@ -1,0 +1,970 @@
+{
+  "version": 1,
+  "terrain": [
+    {
+      "level": 5,
+      "maxlevel": 5,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 1,
+      "updatetime": 0
+    },
+    {
+      "level": 6,
+      "maxlevel": 6,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 6,
+      "updatetime": 0
+    },
+    {
+      "level": 7,
+      "maxlevel": 7,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 2,
+      "updatetime": 0
+    },
+    {
+      "level": 5,
+      "maxlevel": 5,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 2,
+      "updatetime": 0
+    },
+    {
+      "level": 4,
+      "maxlevel": 4,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 1,
+      "updatetime": 0
+    },
+    {
+      "level": 5,
+      "maxlevel": 5,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 5,
+      "updatetime": 0
+    },
+    {
+      "level": 4,
+      "maxlevel": 4,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 4,
+      "updatetime": 0
+    },
+    {
+      "level": 1,
+      "maxlevel": 1,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 1,
+      "updatetime": 0
+    },
+    {
+      "level": 2,
+      "maxlevel": 2,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 1,
+      "updatetime": 0
+    },
+    {
+      "level": 7,
+      "maxlevel": 7,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 1,
+      "updatetime": 0
+    },
+    {
+      "level": 7,
+      "maxlevel": 7,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 1,
+      "updatetime": 0
+    },
+    {
+      "level": 6,
+      "maxlevel": 6,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 2,
+      "updatetime": 0
+    },
+    {
+      "level": 9,
+      "maxlevel": 9,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 5,
+      "updatetime": 0
+    },
+    {
+      "level": 9,
+      "maxlevel": 9,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 1,
+      "updatetime": 0
+    },
+    {
+      "level": 7,
+      "maxlevel": 7,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 1,
+      "updatetime": 0
+    },
+    {
+      "level": 8,
+      "maxlevel": 8,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 3,
+      "updatetime": 0
+    },
+    {
+      "level": 10,
+      "maxlevel": 10,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 6,
+      "updatetime": 0
+    },
+    {
+      "level": 5,
+      "maxlevel": 5,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 5,
+      "updatetime": 0
+    },
+    {
+      "level": 3,
+      "maxlevel": 3,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 1,
+      "updatetime": 0
+    },
+    {
+      "level": 10,
+      "maxlevel": 10,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 2,
+      "updatetime": 0
+    },
+    {
+      "level": 8,
+      "maxlevel": 8,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 5,
+      "updatetime": 0
+    },
+    {
+      "level": 5,
+      "maxlevel": 5,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 1,
+      "updatetime": 0
+    },
+    {
+      "level": 7,
+      "maxlevel": 7,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 6,
+      "updatetime": 0
+    },
+    {
+      "level": 9,
+      "maxlevel": 9,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 1,
+      "updatetime": 0
+    },
+    {
+      "level": 6,
+      "maxlevel": 6,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 6,
+      "updatetime": 0
+    },
+    {
+      "level": 4,
+      "maxlevel": 4,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 2,
+      "updatetime": 0
+    },
+    {
+      "level": 1,
+      "maxlevel": 1,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 2,
+      "updatetime": 0
+    },
+    {
+      "level": 9,
+      "maxlevel": 9,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 1,
+      "updatetime": 0
+    },
+    {
+      "level": 7,
+      "maxlevel": 7,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 6,
+      "updatetime": 0
+    },
+    {
+      "level": 5,
+      "maxlevel": 5,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 2,
+      "updatetime": 0
+    },
+    {
+      "level": 10,
+      "maxlevel": 10,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 1,
+      "updatetime": 0
+    },
+    {
+      "level": 3,
+      "maxlevel": 3,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 3,
+      "updatetime": 0
+    },
+    {
+      "level": 10,
+      "maxlevel": 10,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 1,
+      "updatetime": 0
+    },
+    {
+      "level": 4,
+      "maxlevel": 4,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 6,
+      "updatetime": 0
+    },
+    {
+      "level": 7,
+      "maxlevel": 7,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 5,
+      "updatetime": 0
+    },
+    {
+      "level": 5,
+      "maxlevel": 5,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 1,
+      "updatetime": 0
+    },
+    {
+      "level": 3,
+      "maxlevel": 3,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 3,
+      "updatetime": 0
+    },
+    {
+      "level": 7,
+      "maxlevel": 7,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 3,
+      "updatetime": 0
+    },
+    {
+      "level": 6,
+      "maxlevel": 6,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 2,
+      "updatetime": 0
+    },
+    {
+      "level": 9,
+      "maxlevel": 9,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 6,
+      "updatetime": 0
+    },
+    {
+      "level": 3,
+      "maxlevel": 3,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 6,
+      "updatetime": 0
+    },
+    {
+      "level": 3,
+      "maxlevel": 3,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 4,
+      "updatetime": 0
+    },
+    {
+      "level": 3,
+      "maxlevel": 3,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 5,
+      "updatetime": 0
+    },
+    {
+      "level": 6,
+      "maxlevel": 6,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 1,
+      "updatetime": 0
+    },
+    {
+      "level": 3,
+      "maxlevel": 3,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 3,
+      "updatetime": 0
+    },
+    {
+      "level": 3,
+      "maxlevel": 3,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 7,
+      "updatetime": 0
+    },
+    {
+      "level": 6,
+      "maxlevel": 6,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 7,
+      "updatetime": 0
+    },
+    {
+      "level": 4,
+      "maxlevel": 4,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 1,
+      "updatetime": 0
+    },
+    {
+      "level": 8,
+      "maxlevel": 8,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 6,
+      "updatetime": 0
+    },
+    {
+      "level": 10,
+      "maxlevel": 10,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 5,
+      "updatetime": 0
+    },
+    {
+      "level": 8,
+      "maxlevel": 8,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 3,
+      "updatetime": 0
+    },
+    {
+      "level": 2,
+      "maxlevel": 2,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 1,
+      "updatetime": 0
+    },
+    {
+      "level": 10,
+      "maxlevel": 10,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 7,
+      "updatetime": 0
+    },
+    {
+      "level": 8,
+      "maxlevel": 8,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 5,
+      "updatetime": 0
+    },
+    {
+      "level": 7,
+      "maxlevel": 7,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 1,
+      "updatetime": 0
+    },
+    {
+      "level": 2,
+      "maxlevel": 2,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 7,
+      "updatetime": 0
+    },
+    {
+      "level": 6,
+      "maxlevel": 6,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 6,
+      "updatetime": 0
+    },
+    {
+      "level": 4,
+      "maxlevel": 4,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 7,
+      "updatetime": 0
+    },
+    {
+      "level": 2,
+      "maxlevel": 2,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 2,
+      "updatetime": 0
+    },
+    {
+      "level": 7,
+      "maxlevel": 7,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 7,
+      "updatetime": 0
+    },
+    {
+      "level": 4,
+      "maxlevel": 4,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 1,
+      "updatetime": 0
+    },
+    {
+      "level": 6,
+      "maxlevel": 6,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 2,
+      "updatetime": 0
+    },
+    {
+      "level": 8,
+      "maxlevel": 8,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 1,
+      "updatetime": 0
+    },
+    {
+      "level": 5,
+      "maxlevel": 5,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 3,
+      "updatetime": 0
+    },
+    {
+      "level": 6,
+      "maxlevel": 6,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 3,
+      "updatetime": 0
+    },
+    {
+      "level": 8,
+      "maxlevel": 8,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 7,
+      "updatetime": 0
+    },
+    {
+      "level": 2,
+      "maxlevel": 2,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 1,
+      "updatetime": 0
+    },
+    {
+      "level": 2,
+      "maxlevel": 2,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 5,
+      "updatetime": 0
+    },
+    {
+      "level": 3,
+      "maxlevel": 3,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 5,
+      "updatetime": 0
+    },
+    {
+      "level": 8,
+      "maxlevel": 8,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 1,
+      "updatetime": 0
+    },
+    {
+      "level": 6,
+      "maxlevel": 6,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 4,
+      "updatetime": 0
+    },
+    {
+      "level": 8,
+      "maxlevel": 8,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 6,
+      "updatetime": 0
+    },
+    {
+      "level": 3,
+      "maxlevel": 3,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 3,
+      "updatetime": 0
+    },
+    {
+      "level": 7,
+      "maxlevel": 7,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 6,
+      "updatetime": 0
+    },
+    {
+      "level": 6,
+      "maxlevel": 6,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 1,
+      "updatetime": 0
+    },
+    {
+      "level": 9,
+      "maxlevel": 9,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 3,
+      "updatetime": 0
+    },
+    {
+      "level": 8,
+      "maxlevel": 8,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 1,
+      "updatetime": 0
+    },
+    {
+      "level": 1,
+      "maxlevel": 1,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 3,
+      "updatetime": 0
+    },
+    {
+      "level": 10,
+      "maxlevel": 10,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 6,
+      "updatetime": 0
+    },
+    {
+      "level": 8,
+      "maxlevel": 8,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 1,
+      "updatetime": 0
+    },
+    {
+      "level": 9,
+      "maxlevel": 9,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 1,
+      "updatetime": 0
+    },
+    {
+      "level": 7,
+      "maxlevel": 7,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 4,
+      "updatetime": 0
+    },
+    {
+      "level": 10,
+      "maxlevel": 10,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 6,
+      "updatetime": 0
+    },
+    {
+      "level": 7,
+      "maxlevel": 7,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 1,
+      "updatetime": 0
+    },
+    {
+      "level": 7,
+      "maxlevel": 7,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 6,
+      "updatetime": 0
+    },
+    {
+      "level": 2,
+      "maxlevel": 2,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 1,
+      "updatetime": 0
+    },
+    {
+      "level": 5,
+      "maxlevel": 5,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 1,
+      "updatetime": 0
+    },
+    {
+      "level": 1,
+      "maxlevel": 1,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 6,
+      "updatetime": 0
+    },
+    {
+      "level": 8,
+      "maxlevel": 8,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 1,
+      "updatetime": 0
+    },
+    {
+      "level": 1,
+      "maxlevel": 1,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 3,
+      "updatetime": 0
+    },
+    {
+      "level": 9,
+      "maxlevel": 9,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 2,
+      "updatetime": 0
+    },
+    {
+      "level": 10,
+      "maxlevel": 10,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 6,
+      "updatetime": 0
+    },
+    {
+      "level": 3,
+      "maxlevel": 3,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 6,
+      "updatetime": 0
+    },
+    {
+      "level": 2,
+      "maxlevel": 2,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 3,
+      "updatetime": 0
+    },
+    {
+      "level": 8,
+      "maxlevel": 8,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 1,
+      "updatetime": 0
+    },
+    {
+      "level": 9,
+      "maxlevel": 9,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 3,
+      "updatetime": 0
+    },
+    {
+      "level": 1,
+      "maxlevel": 1,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 3,
+      "updatetime": 0
+    },
+    {
+      "level": 5,
+      "maxlevel": 5,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 1,
+      "updatetime": 0
+    },
+    {
+      "level": 4,
+      "maxlevel": 4,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 2,
+      "updatetime": 0
+    },
+    {
+      "level": 3,
+      "maxlevel": 3,
+      "ownercid": 0,
+      "province": 14,
+      "state": 0,
+      "type": 6,
+      "updatetime": 0
+    }
+  ],
+  "city_tile": {
+    "level": 1,
+    "maxlevel": 1,
+    "province": 14,
+    "state": 0,
+    "type": 0,
+    "updatetime": 0
+  },
+  "city_info_shape": {
+    "attackedShowEndTime": 0,
+    "cid": 0,
+    "cityLevel": 0,
+    "cityName": "",
+    "flag": 0,
+    "prestige": 0,
+    "state": 0,
+    "type": 0,
+    "uid": 0,
+    "unionFlag": 0,
+    "unionId": 0,
+    "unionTag": "",
+    "userFace": 0,
+    "userName": ""
+  },
+  "empty_replies": {
+    "getMyFieldState": {
+      "action": "getMyFieldState",
+      "fieldStateList": [],
+      "ret": 0,
+      "type": "World"
+    },
+    "getTroopsInWorld": {
+      "action": "getTroopsInWorld",
+      "ret": 0,
+      "troops": [],
+      "type": "World"
+    },
+    "getMyUnionFriendRelation": {
+      "action": "getMyUnionFriendRelation",
+      "friendList": [],
+      "ret": 0,
+      "type": "Union"
+    }
+  },
+  "provenance": {
+    "database": "game_protocol_v2.db",
+    "terrain_row": 24015,
+    "city_tile_row": 87,
+    "city_info_shape_row": 92,
+    "empty_response_rows": [
+      81,
+      9419,
+      78
+    ],
+    "native_tile_id_lines": [
+      1908521,
+      1908523
+    ],
+    "native_block_id_line": 1948523,
+    "native_block_bounds_lines": [
+      1949830,
+      1949860
+    ],
+    "scope": "One captured neutral terrain block repeated over the synthetic map, one owned level-one city, no deployed armies or monsters."
+  }
+}

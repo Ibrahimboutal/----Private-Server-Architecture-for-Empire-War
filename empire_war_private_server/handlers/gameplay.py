@@ -6,7 +6,7 @@ from typing import Any
 
 from ..auth.session_manager import Session
 from ..economy.gameplay_engine import GameplayEngine
-from ..economy.resource_engine import EconomyError
+from ..protocol.city_position import owned_city
 
 
 async def dispatch_gameplay(request: dict[str, Any], session: Session,
@@ -20,9 +20,7 @@ async def dispatch_gameplay(request: dict[str, Any], session: Session,
     }
     if not isinstance(kind, str) or not isinstance(action, str) or (kind, action) not in supported:
         return None
-    city_id = request.get("cityId")
-    if type(city_id) is not int or city_id != session.city_id:
-        raise EconomyError(900102, "City is not owned by this session")
+    city_id = owned_city(request, session)
     uid = session.user_id
     if action == "startDraftQueue":
         payload = await gameplay.start_draft(uid, city_id, request.get("sid"),

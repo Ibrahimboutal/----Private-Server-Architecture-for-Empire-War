@@ -14,9 +14,10 @@ import pytest
 ROOT = Path(__file__).resolve().parents[1]
 
 
-@pytest.mark.parametrize("scenario,simulation", [("disabled", False), ("captured-phase2-v1", False),
-    ("captured-quarry-shortage-v1", False), ("captured-phase2-v1", True)])
-def test_server_entrypoint_and_smoke_client(tmp_path: Path, scenario: str, simulation: bool) -> None:
+@pytest.mark.parametrize("scenario,simulation,bridge", [("disabled", False, False),
+    ("captured-phase2-v1", False, False), ("captured-quarry-shortage-v1", False, False),
+    ("captured-phase2-v1", True, False), ("captured-phase2-v1", False, True)])
+def test_server_entrypoint_and_smoke_client(tmp_path: Path, scenario: str, simulation: bool, bridge: bool) -> None:
     # A short-lived loopback socket selects a free local test port. If another
     # process claims it first, server startup fails visibly rather than targeting it.
     with socket.socket() as probe:
@@ -29,6 +30,7 @@ def test_server_entrypoint_and_smoke_client(tmp_path: Path, scenario: str, simul
         "synthetic_passport": "cli-fixture", "synthetic_password": "fixture-only",
         "gameplay_scenario": scenario,
         "simulate_int32_crash": simulation,
+        "synthetic_client_login": bridge,
     }), encoding="utf-8")
     log_path = tmp_path / "server.log"
     with log_path.open("w", encoding="utf-8") as log:
@@ -44,11 +46,14 @@ def test_server_entrypoint_and_smoke_client(tmp_path: Path, scenario: str, simul
                 time.sleep(0.05)
             result = subprocess.run(
                 [sys.executable, "tools/local_smoke_client.py", "--config", str(config)]
-                + (["--exercise-gameplay"] if scenario != "disabled" else []),
+                + (["--exercise-gameplay"] if scenario != "disabled" else [])
+                + (["--client-login"] if bridge else []),
                 cwd=ROOT, capture_output=True, text=True, timeout=20,
             )
             assert result.returncode == 0, result.stderr
             assert "PASS:" in result.stdout
+            if bridge:
+                assert "client login maps to the synthetic account" in result.stdout
             if scenario != "disabled":
                 assert "capture-derived gameplay" in result.stdout
             market = subprocess.run(

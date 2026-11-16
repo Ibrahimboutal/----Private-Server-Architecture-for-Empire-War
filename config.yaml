@@ -12,6 +12,10 @@ session_ttl_seconds: 3600
 # Synthetic fixtures only; never use official credentials.
 synthetic_passport: research-local
 synthetic_password: local-test-only
+# Local client adapter: discard incoming account strings and log in as the
+# synthetic account above. No registration or official account authentication.
+# Set false to require exact synthetic credentials on every doLogin request.
+synthetic_client_login: true
 # Approved fixed capture-derived quotes; use disabled for protocol-only behavior.
 gameplay_scenario: captured-phase2-v1
 # Phase 3 fixed listing + safe arithmetic guard. Simulation delays (at most 1s)

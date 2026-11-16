@@ -1,0 +1,5660 @@
+{
+  "version": 1,
+  "game_version": 1719,
+  "catalogs": {
+    "cfgBarracksLimitList": [
+      {
+        "level": 1,
+        "soldierLimit": 50
+      },
+      {
+        "level": 2,
+        "soldierLimit": 100
+      },
+      {
+        "level": 3,
+        "soldierLimit": 300
+      },
+      {
+        "level": 4,
+        "soldierLimit": 600
+      },
+      {
+        "level": 5,
+        "soldierLimit": 1000
+      },
+      {
+        "level": 6,
+        "soldierLimit": 1500
+      },
+      {
+        "level": 7,
+        "soldierLimit": 2100
+      },
+      {
+        "level": 8,
+        "soldierLimit": 2800
+      },
+      {
+        "level": 9,
+        "soldierLimit": 3600
+      },
+      {
+        "level": 10,
+        "soldierLimit": 4500
+      }
+    ],
+    "cfgBuilding": [
+      {
+        "bid": 1,
+        "inner": 0,
+        "description": "Farms produce all of your Food. Food is consumed during construction, research and training. Food is also essential to sustain your troops, either at home or on an expedition. Upgrade your Farms to increase your Food production. ",
+        "name": "Farm",
+        "summary": "Farms produce all of your Food. Food is consumed during construction, research and training. Food is also essential to sustain your troops, either at home or on an expedition.",
+        "tableName": "farmland"
+      },
+      {
+        "bid": 2,
+        "inner": 0,
+        "description": "Sawmills produce Wood which can be used in construction, research and the manufacturing of weapons for your troops. Upgrade your Sawmills to increase your Wood production.",
+        "name": "Sawmill",
+        "summary": "Sawmills produce Wood which can be used in construction, research and the manufacturing of weapons for your troops.",
+        "tableName": "wood"
+      },
+      {
+        "bid": 3,
+        "inner": 0,
+        "description": "Quarries produce Stone which is essential for construction and research. It also serves as ammunition for your Trebuchets. Upgrade your Quarries to increase your Stone production.",
+        "name": "Quarry",
+        "summary": "Quarries produce Stone which is essential for construction and research.",
+        "tableName": "rock"
+      },
+      {
+        "bid": 4,
+        "inner": 0,
+        "description": "Mines produce Iron that can be used for making weapons and armor as well as in construction and research. Upgrade your Mines to increase your Iron production.",
+        "name": "Mine",
+        "summary": "Mines produce Iron that can be used for making weapons and armor as well as in construction and research.",
+        "tableName": "iron"
+      },
+      {
+        "bid": 5,
+        "inner": 1,
+        "description": "Houses provide your citizens with shelter. Upgrade your Houses to attract more people to settle in your city.",
+        "name": "House",
+        "summary": "Houses provide your citizens with shelter.",
+        "tableName": "house"
+      },
+      {
+        "bid": 6,
+        "inner": 1,
+        "description": "The Senate is the hub of the city. Here you can adjust the tax rate, pacify the public and collect resources. Upgrade your Senate to control more resource sites in the outer city and to increase your Silver capacity limit.",
+        "name": "Senate",
+        "summary": "The Senate is the hub of the city. Here you can adjust the tax rate and govern your people.",
+        "tableName": "goverment"
+      },
+      {
+        "bid": 7,
+        "inner": 1,
+        "description": "Research technologies at the Academy to improve your production, combat skills and construction. Only one technology can be researched at a time. When you control multiple cities, your Academies can share research, provided they’ve reached the required level. This avoids duplicating research.",
+        "name": "Academy",
+        "summary": "You can improve your production, construction and combat skills by researching technologies at the Academy.",
+        "tableName": "college"
+      },
+      {
+        "bid": 8,
+        "inner": 1,
+        "description": "You can dispatch troops, give orders, set strategies and check the status of your troops at the Muster Field. Upgrading your Muster Field allows you to dispatch more troops in higher numbers at the same time.",
+        "name": "Muster Field",
+        "summary": "You can dispatch troops, give orders, set strategies and check the status of your troops at the Muster Field.",
+        "tableName": "ground"
+      },
+      {
+        "bid": 9,
+        "inner": 1,
+        "description": "Your troops are trained and housed in the Barracks. They can also be demobilized there. Increasing the level of your Barracks allows you to train more advanced troops and to add more training queues.",
+        "name": "Barracks",
+        "summary": "Troops can be trained or demobilized at the Barracks.",
+        "tableName": "army"
+      },
+      {
+        "bid": 10,
+        "inner": 1,
+        "description": "A popular gathering place for local people. Heroes can be found and recruited in the Tavern. Upgrade your Tavern and it will attract higher level Heroes in greater numbers. ",
+        "name": "Tavern",
+        "summary": "A popular gathering place for local people. Heroes can be found and recruited in the Tavern.",
+        "tableName": "hotel"
+      },
+      {
+        "bid": 11,
+        "inner": 1,
+        "description": "The Villa serves as your Heroes' residence. There you can check their status, alter their strategies, reward them or even dismiss them. To recruit a Hero, there must be a vacancy for them at the Villa. Upgrade your Villa to increase the amount of Heroes you can recruit.",
+        "name": "Villa",
+        "summary": "The Villa serves as your Heroes' residence. ",
+        "tableName": "office"
+      },
+      {
+        "bid": 12,
+        "inner": 1,
+        "description": "The Embassy is used for Alliance affairs. With a Level 1 Embassy, you can join an Alliance. With a Level 2 Embassy, you can create your own. Upgrade your Embassy to increase the number of allied troops that it can accommodate. ",
+        "name": "Embassy",
+        "summary": "The Embassy is used for Alliance affairs.",
+        "tableName": "honglu"
+      },
+      {
+        "bid": 13,
+        "inner": 1,
+        "description": "At the Market, you can use Silver to trade resources and treasure with merchants and other players. Upgrade the level of your Market to perform more transactions simultaneously.",
+        "name": "Market",
+        "summary": "At the Market, you can use Silver to trade resources and treasure with merchants and other players.",
+        "tableName": "market"
+      },
+      {
+        "bid": 14,
+        "inner": 1,
+        "description": "Weapons are forged here by the blacksmith. You must build a Blacksmith's before you can raise a powerful army. ",
+        "name": "Blacksmith's",
+        "summary": "Weapons are forged here by the blacksmith. You must build a Blacksmith's before you can raise a powerful army. ",
+        "tableName": "blackmith"
+      },
+      {
+        "bid": 15,
+        "inner": 1,
+        "description": "Fortifications, siege weapons and other machinery are made at the Workshop. ",
+        "name": "Workshop",
+        "summary": "Fortifications, siege weapons and other machinery are made at the Workshop. ",
+        "tableName": "workshop"
+      },
+      {
+        "bid": 16,
+        "inner": 1,
+        "description": "Horses are trained and housed in the Stable. You must build a Stable before you can start recruiting a cavalry. ",
+        "name": "Stable",
+        "summary": "Horses are trained and housed in the Stable. You must build a Stable before you can start recruiting a cavalry. ",
+        "tableName": "barn"
+      },
+      {
+        "bid": 17,
+        "inner": 1,
+        "description": "Storehouses can protect Food, Stone, Wood and Iron from plunder. Upgrade your Storehouses to increase the amount of protected resources. ",
+        "name": "Storehouse",
+        "summary": "Storehouses can protect Food, Stone, Wood and Iron from plunder. ",
+        "tableName": "store"
+      },
+      {
+        "bid": 18,
+        "inner": 1,
+        "description": "Relay Stations can greatly increase the marching speed of your troops between your cities and those of your allies. Upgrade your Relay Stations to increase your army's marching speed. ",
+        "name": "Relay Station",
+        "summary": "Relay Stations can greatly increase the marching speed of your troops between your cities and those of your allies.",
+        "tableName": "dak"
+      },
+      {
+        "bid": 19,
+        "inner": 1,
+        "description": "Watchtowers, built on high ground, can be \nused for long-range observation and can \nprovide early warnings of enemy invasions. Upgrade the level of your Watchtower to receive more detailed warnings and intelligence.",
+        "name": "Watchtower",
+        "summary": "Watchtowers, built on high ground, can be used for long-range observation and can provide early warnings of enemy invasions. ",
+        "tableName": "balefire"
+      },
+      {
+        "bid": 20,
+        "inner": 1,
+        "description": "A City Wall protects against invaders and Fortifications can be built along it. The Defense of all troops, and the range of long-range units, will be increased when stationed within the City Wall. Upgrading your City Wall allows for more types of Fortifications to be built in greater numbers. ",
+        "name": "City Wall",
+        "summary": "A City Wall provides protection against invaders. Many types of Fortifications can be built atop your City Wall.",
+        "tableName": "wall"
+      }
+    ],
+    "cfgDefence": [
+      {
+        "ap": 0,
+        "areaNeed": 1,
+        "carry": 0,
+        "did": 1,
+        "dp": 0,
+        "foodNeed": 50,
+        "goldNeed": 0,
+        "hp": 0,
+        "ironNeed": 50,
+        "range": 2000,
+        "rockNeed": 100,
+        "speed": 0,
+        "timeNeed": 60,
+        "type": 13,
+        "woodNeed": 500,
+        "description": "Spike Traps are effective against any type of enemy unit. Spike Traps are consumable items.",
+        "name": "Spike Trap"
+      },
+      {
+        "ap": 0,
+        "areaNeed": 2,
+        "carry": 0,
+        "did": 2,
+        "dp": 180,
+        "foodNeed": 100,
+        "goldNeed": 0,
+        "hp": 1000,
+        "ironNeed": 150,
+        "range": 800,
+        "rockNeed": 0,
+        "speed": 0,
+        "timeNeed": 120,
+        "type": 14,
+        "woodNeed": 1200,
+        "description": "Barricades are sharp, wooden poles arranged into tight groups. They can inflict massive damage to fast-moving enemy units.",
+        "name": "Barricade"
+      },
+      {
+        "ap": 300,
+        "areaNeed": 3,
+        "carry": 0,
+        "did": 3,
+        "dp": 360,
+        "foodNeed": 200,
+        "goldNeed": 0,
+        "hp": 2000,
+        "ironNeed": 500,
+        "range": 1300,
+        "rockNeed": 1000,
+        "speed": 0,
+        "timeNeed": 180,
+        "type": 15,
+        "woodNeed": 2000,
+        "description": "Archer Towers built atop the City Wall provide your Archers with excellent vantage points for firing at the enemy. ",
+        "name": "Archer Tower"
+      },
+      {
+        "ap": 500,
+        "areaNeed": 5,
+        "carry": 0,
+        "did": 4,
+        "dp": 0,
+        "foodNeed": 300,
+        "goldNeed": 0,
+        "hp": 0,
+        "ironNeed": 0,
+        "range": 500,
+        "rockNeed": 0,
+        "speed": 0,
+        "timeNeed": 360,
+        "type": 16,
+        "woodNeed": 6000,
+        "description": "Falling Logs are a devastating defensive weapon and they can kill enemy troops in large numbers. Falling Logs are consumable items.",
+        "name": "Falling Logs"
+      },
+      {
+        "ap": 800,
+        "areaNeed": 8,
+        "carry": 0,
+        "did": 5,
+        "dp": 0,
+        "foodNeed": 600,
+        "goldNeed": 0,
+        "hp": 0,
+        "ironNeed": 0,
+        "range": 250,
+        "rockNeed": 8000,
+        "speed": 0,
+        "timeNeed": 600,
+        "type": 17,
+        "woodNeed": 0,
+        "description": "Boulders are very effective against enemy siege weapons. They are consumable items.",
+        "name": "Boulder"
+      }
+    ],
+    "cfgHeroLevel": [
+      {
+        "level": 1,
+        "totalExp": 0,
+        "upgradeExp": 0
+      },
+      {
+        "level": 2,
+        "totalExp": 100,
+        "upgradeExp": 100
+      },
+      {
+        "level": 3,
+        "totalExp": 500,
+        "upgradeExp": 400
+      },
+      {
+        "level": 4,
+        "totalExp": 1400,
+        "upgradeExp": 900
+      },
+      {
+        "level": 5,
+        "totalExp": 3000,
+        "upgradeExp": 1600
+      },
+      {
+        "level": 6,
+        "totalExp": 5500,
+        "upgradeExp": 2500
+      },
+      {
+        "level": 7,
+        "totalExp": 9100,
+        "upgradeExp": 3600
+      },
+      {
+        "level": 8,
+        "totalExp": 14000,
+        "upgradeExp": 4900
+      },
+      {
+        "level": 9,
+        "totalExp": 20400,
+        "upgradeExp": 6400
+      },
+      {
+        "level": 10,
+        "totalExp": 28500,
+        "upgradeExp": 8100
+      },
+      {
+        "level": 11,
+        "totalExp": 38500,
+        "upgradeExp": 10000
+      },
+      {
+        "level": 12,
+        "totalExp": 50600,
+        "upgradeExp": 12100
+      },
+      {
+        "level": 13,
+        "totalExp": 65000,
+        "upgradeExp": 14400
+      },
+      {
+        "level": 14,
+        "totalExp": 81900,
+        "upgradeExp": 16900
+      },
+      {
+        "level": 15,
+        "totalExp": 101500,
+        "upgradeExp": 19600
+      },
+      {
+        "level": 16,
+        "totalExp": 124000,
+        "upgradeExp": 22500
+      },
+      {
+        "level": 17,
+        "totalExp": 149600,
+        "upgradeExp": 25600
+      },
+      {
+        "level": 18,
+        "totalExp": 178500,
+        "upgradeExp": 28900
+      },
+      {
+        "level": 19,
+        "totalExp": 210900,
+        "upgradeExp": 32400
+      },
+      {
+        "level": 20,
+        "totalExp": 247000,
+        "upgradeExp": 36100
+      },
+      {
+        "level": 21,
+        "totalExp": 287000,
+        "upgradeExp": 40000
+      },
+      {
+        "level": 22,
+        "totalExp": 331100,
+        "upgradeExp": 44100
+      },
+      {
+        "level": 23,
+        "totalExp": 379500,
+        "upgradeExp": 48400
+      },
+      {
+        "level": 24,
+        "totalExp": 432400,
+        "upgradeExp": 52900
+      },
+      {
+        "level": 25,
+        "totalExp": 490000,
+        "upgradeExp": 57600
+      },
+      {
+        "level": 26,
+        "totalExp": 552500,
+        "upgradeExp": 62500
+      },
+      {
+        "level": 27,
+        "totalExp": 620100,
+        "upgradeExp": 67600
+      },
+      {
+        "level": 28,
+        "totalExp": 693000,
+        "upgradeExp": 72900
+      },
+      {
+        "level": 29,
+        "totalExp": 771400,
+        "upgradeExp": 78400
+      },
+      {
+        "level": 30,
+        "totalExp": 855500,
+        "upgradeExp": 84100
+      },
+      {
+        "level": 31,
+        "totalExp": 945500,
+        "upgradeExp": 90000
+      },
+      {
+        "level": 32,
+        "totalExp": 1041600,
+        "upgradeExp": 96100
+      },
+      {
+        "level": 33,
+        "totalExp": 1144000,
+        "upgradeExp": 102400
+      },
+      {
+        "level": 34,
+        "totalExp": 1252900,
+        "upgradeExp": 108900
+      },
+      {
+        "level": 35,
+        "totalExp": 1368500,
+        "upgradeExp": 115600
+      },
+      {
+        "level": 36,
+        "totalExp": 1491000,
+        "upgradeExp": 122500
+      },
+      {
+        "level": 37,
+        "totalExp": 1620600,
+        "upgradeExp": 129600
+      },
+      {
+        "level": 38,
+        "totalExp": 1757500,
+        "upgradeExp": 136900
+      },
+      {
+        "level": 39,
+        "totalExp": 1901900,
+        "upgradeExp": 144400
+      },
+      {
+        "level": 40,
+        "totalExp": 2054000,
+        "upgradeExp": 152100
+      },
+      {
+        "level": 41,
+        "totalExp": 2214000,
+        "upgradeExp": 160000
+      },
+      {
+        "level": 42,
+        "totalExp": 2382100,
+        "upgradeExp": 168100
+      },
+      {
+        "level": 43,
+        "totalExp": 2558500,
+        "upgradeExp": 176400
+      },
+      {
+        "level": 44,
+        "totalExp": 2743400,
+        "upgradeExp": 184900
+      },
+      {
+        "level": 45,
+        "totalExp": 2937000,
+        "upgradeExp": 193600
+      },
+      {
+        "level": 46,
+        "totalExp": 3139500,
+        "upgradeExp": 202500
+      },
+      {
+        "level": 47,
+        "totalExp": 3351100,
+        "upgradeExp": 211600
+      },
+      {
+        "level": 48,
+        "totalExp": 3572000,
+        "upgradeExp": 220900
+      },
+      {
+        "level": 49,
+        "totalExp": 3802400,
+        "upgradeExp": 230400
+      },
+      {
+        "level": 50,
+        "totalExp": 4042500,
+        "upgradeExp": 240100
+      },
+      {
+        "level": 51,
+        "totalExp": 4292500,
+        "upgradeExp": 250000
+      },
+      {
+        "level": 52,
+        "totalExp": 4552600,
+        "upgradeExp": 260100
+      },
+      {
+        "level": 53,
+        "totalExp": 4823000,
+        "upgradeExp": 270400
+      },
+      {
+        "level": 54,
+        "totalExp": 5103900,
+        "upgradeExp": 280900
+      },
+      {
+        "level": 55,
+        "totalExp": 5395500,
+        "upgradeExp": 291600
+      },
+      {
+        "level": 56,
+        "totalExp": 5698000,
+        "upgradeExp": 302500
+      },
+      {
+        "level": 57,
+        "totalExp": 6011600,
+        "upgradeExp": 313600
+      },
+      {
+        "level": 58,
+        "totalExp": 6336500,
+        "upgradeExp": 324900
+      },
+      {
+        "level": 59,
+        "totalExp": 6672900,
+        "upgradeExp": 336400
+      },
+      {
+        "level": 60,
+        "totalExp": 7021000,
+        "upgradeExp": 348100
+      },
+      {
+        "level": 61,
+        "totalExp": 7381000,
+        "upgradeExp": 360000
+      },
+      {
+        "level": 62,
+        "totalExp": 7753100,
+        "upgradeExp": 372100
+      },
+      {
+        "level": 63,
+        "totalExp": 8137500,
+        "upgradeExp": 384400
+      },
+      {
+        "level": 64,
+        "totalExp": 8534400,
+        "upgradeExp": 396900
+      },
+      {
+        "level": 65,
+        "totalExp": 8944000,
+        "upgradeExp": 409600
+      },
+      {
+        "level": 66,
+        "totalExp": 9366500,
+        "upgradeExp": 422500
+      },
+      {
+        "level": 67,
+        "totalExp": 9802100,
+        "upgradeExp": 435600
+      },
+      {
+        "level": 68,
+        "totalExp": 10251000,
+        "upgradeExp": 448900
+      },
+      {
+        "level": 69,
+        "totalExp": 10713400,
+        "upgradeExp": 462400
+      },
+      {
+        "level": 70,
+        "totalExp": 11189500,
+        "upgradeExp": 476100
+      },
+      {
+        "level": 71,
+        "totalExp": 11679500,
+        "upgradeExp": 490000
+      },
+      {
+        "level": 72,
+        "totalExp": 12183600,
+        "upgradeExp": 504100
+      },
+      {
+        "level": 73,
+        "totalExp": 12702000,
+        "upgradeExp": 518400
+      },
+      {
+        "level": 74,
+        "totalExp": 13234900,
+        "upgradeExp": 532900
+      },
+      {
+        "level": 75,
+        "totalExp": 13782500,
+        "upgradeExp": 547600
+      },
+      {
+        "level": 76,
+        "totalExp": 14345000,
+        "upgradeExp": 562500
+      },
+      {
+        "level": 77,
+        "totalExp": 14922600,
+        "upgradeExp": 577600
+      },
+      {
+        "level": 78,
+        "totalExp": 15515500,
+        "upgradeExp": 592900
+      },
+      {
+        "level": 79,
+        "totalExp": 16123900,
+        "upgradeExp": 608400
+      },
+      {
+        "level": 80,
+        "totalExp": 16748000,
+        "upgradeExp": 624100
+      },
+      {
+        "level": 81,
+        "totalExp": 17388000,
+        "upgradeExp": 640000
+      },
+      {
+        "level": 82,
+        "totalExp": 18044100,
+        "upgradeExp": 656100
+      },
+      {
+        "level": 83,
+        "totalExp": 18716500,
+        "upgradeExp": 672400
+      },
+      {
+        "level": 84,
+        "totalExp": 19405400,
+        "upgradeExp": 688900
+      },
+      {
+        "level": 85,
+        "totalExp": 20111000,
+        "upgradeExp": 705600
+      },
+      {
+        "level": 86,
+        "totalExp": 20833500,
+        "upgradeExp": 722500
+      },
+      {
+        "level": 87,
+        "totalExp": 21573100,
+        "upgradeExp": 739600
+      },
+      {
+        "level": 88,
+        "totalExp": 22330000,
+        "upgradeExp": 756900
+      },
+      {
+        "level": 89,
+        "totalExp": 23104400,
+        "upgradeExp": 774400
+      },
+      {
+        "level": 90,
+        "totalExp": 23896500,
+        "upgradeExp": 792100
+      },
+      {
+        "level": 91,
+        "totalExp": 24706500,
+        "upgradeExp": 810000
+      },
+      {
+        "level": 92,
+        "totalExp": 25534600,
+        "upgradeExp": 828100
+      },
+      {
+        "level": 93,
+        "totalExp": 26381000,
+        "upgradeExp": 846400
+      },
+      {
+        "level": 94,
+        "totalExp": 27245900,
+        "upgradeExp": 864900
+      },
+      {
+        "level": 95,
+        "totalExp": 28129500,
+        "upgradeExp": 883600
+      },
+      {
+        "level": 96,
+        "totalExp": 29032000,
+        "upgradeExp": 902500
+      },
+      {
+        "level": 97,
+        "totalExp": 29953600,
+        "upgradeExp": 921600
+      },
+      {
+        "level": 98,
+        "totalExp": 30894500,
+        "upgradeExp": 940900
+      },
+      {
+        "level": 99,
+        "totalExp": 31854900,
+        "upgradeExp": 960400
+      },
+      {
+        "level": 100,
+        "totalExp": 32835000,
+        "upgradeExp": 980100
+      }
+    ],
+    "cfgMonsterInfoList": [
+      {
+        "face": 103,
+        "level": 1,
+        "des": "No one can keep a foothold in my storm！",
+        "name": "Harpy"
+      },
+      {
+        "face": 103,
+        "level": 2,
+        "des": "No one can keep a foothold in my storm！",
+        "name": "Harpy"
+      },
+      {
+        "face": 103,
+        "level": 3,
+        "des": "No one can keep a foothold in my storm！",
+        "name": "Harpy"
+      },
+      {
+        "face": 103,
+        "level": 4,
+        "des": "No one can keep a foothold in my storm！",
+        "name": "Harpy"
+      },
+      {
+        "face": 103,
+        "level": 5,
+        "des": "No one can keep a foothold in my storm！",
+        "name": "Harpy"
+      },
+      {
+        "face": 104,
+        "level": 6,
+        "des": "Death is on my side!",
+        "name": "Three-Headed Dragon"
+      },
+      {
+        "face": 104,
+        "level": 7,
+        "des": "Death is on my side!",
+        "name": "Three-Headed Dragon"
+      },
+      {
+        "face": 104,
+        "level": 8,
+        "des": "Death is on my side!",
+        "name": "Three-Headed Dragon"
+      },
+      {
+        "face": 104,
+        "level": 9,
+        "des": "Death is on my side!",
+        "name": "Three-Headed Dragon"
+      },
+      {
+        "face": 104,
+        "level": 10,
+        "des": "Death is on my side!",
+        "name": "Three-Headed Dragon"
+      },
+      {
+        "face": 105,
+        "level": 11,
+        "des": "Give up your pointless struggle!",
+        "name": "Centaur"
+      },
+      {
+        "face": 105,
+        "level": 12,
+        "des": "Give up your pointless struggle!",
+        "name": "Centaur"
+      },
+      {
+        "face": 105,
+        "level": 13,
+        "des": "Give up your pointless struggle!",
+        "name": "Centaur"
+      },
+      {
+        "face": 105,
+        "level": 14,
+        "des": "Give up your pointless struggle!",
+        "name": "Centaur"
+      },
+      {
+        "face": 105,
+        "level": 15,
+        "des": "Give up your pointless struggle!",
+        "name": "Centaur"
+      },
+      {
+        "face": 106,
+        "level": 16,
+        "des": "You are the freshest meat for my barbecue party! ",
+        "name": "Core Hound"
+      },
+      {
+        "face": 106,
+        "level": 17,
+        "des": "You are the freshest meat for my barbecue party! ",
+        "name": "Core Hound"
+      },
+      {
+        "face": 106,
+        "level": 18,
+        "des": "You are the freshest meat for my barbecue party! ",
+        "name": "Core Hound"
+      },
+      {
+        "face": 106,
+        "level": 19,
+        "des": "You are the freshest meat for my barbecue party! ",
+        "name": "Core Hound"
+      },
+      {
+        "face": 106,
+        "level": 20,
+        "des": "You are the freshest meat for my barbecue party! ",
+        "name": "Core Hound"
+      }
+    ],
+    "cfgSoldier": [
+      {
+        "ap": 5,
+        "carry": 200,
+        "dp": 10,
+        "foodNeed": 50,
+        "foodUse": 2,
+        "fromcity": 1,
+        "goldNeed": 0,
+        "hp": 100,
+        "ironNeed": 10,
+        "peopleNeed": 1,
+        "range": 10,
+        "rockNeed": 0,
+        "sid": 1,
+        "speed": 180,
+        "timeNeed": 60,
+        "type": 1,
+        "woodNeed": 150,
+        "description": "Peasants can transport resources and weaponry. They have barely any combat skills.",
+        "name": "Peasant"
+      },
+      {
+        "ap": 50,
+        "carry": 20,
+        "dp": 50,
+        "foodNeed": 80,
+        "foodUse": 3,
+        "fromcity": 1,
+        "goldNeed": 0,
+        "hp": 200,
+        "ironNeed": 50,
+        "peopleNeed": 1,
+        "range": 20,
+        "rockNeed": 0,
+        "sid": 2,
+        "speed": 200,
+        "timeNeed": 30,
+        "type": 2,
+        "woodNeed": 100,
+        "description": "Auxiliaries can be recruited and trained in large numbers for a small cost. They have only basic training and few combat skills.",
+        "name": "Auxiliary"
+      },
+      {
+        "ap": 20,
+        "carry": 5,
+        "dp": 20,
+        "foodNeed": 120,
+        "foodUse": 5,
+        "fromcity": 1,
+        "goldNeed": 0,
+        "hp": 100,
+        "ironNeed": 150,
+        "peopleNeed": 1,
+        "range": 20,
+        "rockNeed": 0,
+        "sid": 3,
+        "speed": 3000,
+        "timeNeed": 120,
+        "type": 3,
+        "woodNeed": 200,
+        "description": "Scouts are trained with espionage skills. They move swiftly to infiltrate enemy cities to spy for intelligence. The more Scouts you send, the more detailed information you will receive.",
+        "name": "Scout"
+      },
+      {
+        "ap": 150,
+        "carry": 40,
+        "dp": 150,
+        "foodNeed": 150,
+        "foodUse": 6,
+        "fromcity": 1,
+        "goldNeed": 0,
+        "hp": 300,
+        "ironNeed": 100,
+        "peopleNeed": 1,
+        "range": 50,
+        "rockNeed": 0,
+        "sid": 4,
+        "speed": 300,
+        "timeNeed": 180,
+        "type": 4,
+        "woodNeed": 500,
+        "description": "Pikemen are highly effective against enemy cavalry. Their long pikes strike fear into the hearts of enemy horsemen.",
+        "name": "Pikeman"
+      },
+      {
+        "ap": 100,
+        "carry": 30,
+        "dp": 250,
+        "foodNeed": 200,
+        "foodUse": 7,
+        "fromcity": 1,
+        "goldNeed": 0,
+        "hp": 350,
+        "ironNeed": 400,
+        "peopleNeed": 1,
+        "range": 30,
+        "rockNeed": 0,
+        "sid": 5,
+        "speed": 275,
+        "timeNeed": 270,
+        "type": 5,
+        "woodNeed": 150,
+        "description": "Legionaries are equipped with swords and shields. They are effective against Archers as their shields offer good protection.",
+        "name": "Legionary"
+      },
+      {
+        "ap": 120,
+        "carry": 25,
+        "dp": 50,
+        "foodNeed": 300,
+        "foodUse": 9,
+        "fromcity": 1,
+        "goldNeed": 0,
+        "hp": 250,
+        "ironNeed": 300,
+        "peopleNeed": 2,
+        "range": 1200,
+        "rockNeed": 0,
+        "sid": 6,
+        "speed": 250,
+        "timeNeed": 420,
+        "type": 6,
+        "woodNeed": 350,
+        "description": "Archers provide an excellent long-distance attacking option but they are vulnerable at close range. ",
+        "name": "Archer"
+      },
+      {
+        "ap": 250,
+        "carry": 100,
+        "dp": 180,
+        "foodNeed": 1000,
+        "foodUse": 18,
+        "fromcity": 1,
+        "goldNeed": 0,
+        "hp": 500,
+        "ironNeed": 500,
+        "peopleNeed": 3,
+        "range": 80,
+        "rockNeed": 0,
+        "sid": 7,
+        "speed": 1000,
+        "timeNeed": 600,
+        "type": 7,
+        "woodNeed": 600,
+        "description": "Fast and responsive, the horsemen of the Light Cavalry are the ideal troops for raiding and plundering. ",
+        "name": "Light Cavalry"
+      },
+      {
+        "ap": 350,
+        "carry": 80,
+        "dp": 350,
+        "foodNeed": 2000,
+        "foodUse": 35,
+        "fromcity": 1,
+        "goldNeed": 0,
+        "hp": 1000,
+        "ironNeed": 2500,
+        "peopleNeed": 6,
+        "range": 70,
+        "rockNeed": 0,
+        "sid": 8,
+        "speed": 600,
+        "timeNeed": 1800,
+        "type": 8,
+        "woodNeed": 500,
+        "description": "Heavily armored horsemen are a devastating weapon on the battlefield. They can attack and defend with equal skill. ",
+        "name": "Armored Cavalry"
+      },
+      {
+        "ap": 10,
+        "carry": 5000,
+        "dp": 60,
+        "foodNeed": 600,
+        "foodUse": 10,
+        "fromcity": 1,
+        "goldNeed": 0,
+        "hp": 700,
+        "ironNeed": 350,
+        "peopleNeed": 4,
+        "range": 10,
+        "rockNeed": 0,
+        "sid": 9,
+        "speed": 150,
+        "timeNeed": 1200,
+        "type": 9,
+        "woodNeed": 1500,
+        "description": "These wagons move slowly but they can carry huge amounts of resources. Their crews have almost no combat skills.",
+        "name": "Transport Wagon"
+      },
+      {
+        "ap": 450,
+        "carry": 35,
+        "dp": 160,
+        "foodNeed": 2500,
+        "foodUse": 50,
+        "fromcity": 1,
+        "goldNeed": 0,
+        "hp": 320,
+        "ironNeed": 1800,
+        "peopleNeed": 5,
+        "range": 1400,
+        "rockNeed": 0,
+        "sid": 10,
+        "speed": 100,
+        "timeNeed": 3600,
+        "type": 10,
+        "woodNeed": 3000,
+        "description": "Ballistae can fire penetrating shots from long range. They can inflict huge damage on defensive weapons and positions. However, they are heavy and slow and therefore vulnerable to attacks at close range. ",
+        "name": "Ballista"
+      },
+      {
+        "ap": 250,
+        "carry": 45,
+        "dp": 600,
+        "foodNeed": 4000,
+        "foodUse": 100,
+        "fromcity": 1,
+        "goldNeed": 0,
+        "hp": 5000,
+        "ironNeed": 1500,
+        "peopleNeed": 10,
+        "range": 50,
+        "rockNeed": 0,
+        "sid": 11,
+        "speed": 120,
+        "timeNeed": 5400,
+        "type": 11,
+        "woodNeed": 6000,
+        "description": "Battering Rams can wreak havoc on an enemy's fortifications and defenses. However, due to their size, they can only move slowly.  ",
+        "name": "Battering Ram"
+      },
+      {
+        "ap": 600,
+        "carry": 75,
+        "dp": 200,
+        "foodNeed": 5000,
+        "foodUse": 250,
+        "fromcity": 1,
+        "goldNeed": 0,
+        "hp": 480,
+        "ironNeed": 1200,
+        "peopleNeed": 8,
+        "range": 1500,
+        "rockNeed": 8000,
+        "sid": 12,
+        "speed": 80,
+        "timeNeed": 7200,
+        "type": 12,
+        "woodNeed": 5000,
+        "description": "Trebuchets can fire boulders and other projectiles at your enemy's city, damaging fortifications and defenses. They take time to move, however, and so they are vulnerable to attack by enemy cavalry. ",
+        "name": "Trebuchet"
+      },
+      {
+        "ap": 55,
+        "carry": 20,
+        "dp": 50,
+        "foodNeed": 80,
+        "foodUse": 3,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 190,
+        "ironNeed": 50,
+        "peopleNeed": 1,
+        "range": 20,
+        "rockNeed": 0,
+        "sid": 13,
+        "speed": 210,
+        "timeNeed": 30,
+        "type": 2,
+        "woodNeed": 100,
+        "description": "Auxiliary",
+        "name": "Bandit Auxiliary"
+      },
+      {
+        "ap": 160,
+        "carry": 40,
+        "dp": 150,
+        "foodNeed": 150,
+        "foodUse": 6,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 290,
+        "ironNeed": 100,
+        "peopleNeed": 1,
+        "range": 50,
+        "rockNeed": 0,
+        "sid": 14,
+        "speed": 310,
+        "timeNeed": 180,
+        "type": 4,
+        "woodNeed": 500,
+        "description": "Pikeman",
+        "name": "Bandit Pikeman"
+      },
+      {
+        "ap": 110,
+        "carry": 30,
+        "dp": 250,
+        "foodNeed": 200,
+        "foodUse": 8,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 340,
+        "ironNeed": 400,
+        "peopleNeed": 1,
+        "range": 30,
+        "rockNeed": 0,
+        "sid": 15,
+        "speed": 280,
+        "timeNeed": 270,
+        "type": 5,
+        "woodNeed": 150,
+        "description": "Infantry",
+        "name": "Bandit Swordsman"
+      },
+      {
+        "ap": 130,
+        "carry": 25,
+        "dp": 50,
+        "foodNeed": 300,
+        "foodUse": 9,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 240,
+        "ironNeed": 300,
+        "peopleNeed": 2,
+        "range": 1000,
+        "rockNeed": 0,
+        "sid": 16,
+        "speed": 275,
+        "timeNeed": 420,
+        "type": 6,
+        "woodNeed": 350,
+        "description": "Archer",
+        "name": "Bandit Archer"
+      },
+      {
+        "ap": 260,
+        "carry": 100,
+        "dp": 180,
+        "foodNeed": 1000,
+        "foodUse": 20,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 490,
+        "ironNeed": 500,
+        "peopleNeed": 3,
+        "range": 80,
+        "rockNeed": 0,
+        "sid": 17,
+        "speed": 1200,
+        "timeNeed": 600,
+        "type": 7,
+        "woodNeed": 600,
+        "description": "Light Cavalry",
+        "name": "Bandit Horseman"
+      },
+      {
+        "ap": 60,
+        "carry": 35,
+        "dp": 40,
+        "foodNeed": 60,
+        "foodUse": 2,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 180,
+        "ironNeed": 30,
+        "peopleNeed": 1,
+        "range": 25,
+        "rockNeed": 0,
+        "sid": 18,
+        "speed": 220,
+        "timeNeed": 25,
+        "type": 2,
+        "woodNeed": 120,
+        "description": "Auxiliary",
+        "name": "Barbarian Auxiliary"
+      },
+      {
+        "ap": 130,
+        "carry": 50,
+        "dp": 120,
+        "foodNeed": 140,
+        "foodUse": 5,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 250,
+        "ironNeed": 80,
+        "peopleNeed": 1,
+        "range": 50,
+        "rockNeed": 0,
+        "sid": 19,
+        "speed": 320,
+        "timeNeed": 150,
+        "type": 4,
+        "woodNeed": 550,
+        "description": "Pikeman",
+        "name": "Barbarian Pikeman"
+      },
+      {
+        "ap": 110,
+        "carry": 40,
+        "dp": 200,
+        "foodNeed": 180,
+        "foodUse": 6,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 300,
+        "ironNeed": 375,
+        "peopleNeed": 1,
+        "range": 30,
+        "rockNeed": 0,
+        "sid": 20,
+        "speed": 300,
+        "timeNeed": 250,
+        "type": 5,
+        "woodNeed": 145,
+        "description": "Infantry",
+        "name": "Barbarian Swordsman"
+      },
+      {
+        "ap": 100,
+        "carry": 30,
+        "dp": 35,
+        "foodNeed": 275,
+        "foodUse": 8,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 200,
+        "ironNeed": 280,
+        "peopleNeed": 2,
+        "range": 800,
+        "rockNeed": 0,
+        "sid": 21,
+        "speed": 260,
+        "timeNeed": 400,
+        "type": 6,
+        "woodNeed": 300,
+        "description": "Archer",
+        "name": "Barbarian Archer"
+      },
+      {
+        "ap": 230,
+        "carry": 150,
+        "dp": 60,
+        "foodNeed": 850,
+        "foodUse": 15,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 350,
+        "ironNeed": 450,
+        "peopleNeed": 3,
+        "range": 60,
+        "rockNeed": 0,
+        "sid": 22,
+        "speed": 1100,
+        "timeNeed": 500,
+        "type": 7,
+        "woodNeed": 650,
+        "description": "Light Cavalry",
+        "name": "Barbarian Horseman"
+      },
+      {
+        "ap": 600,
+        "carry": 0,
+        "dp": 10,
+        "foodNeed": 23,
+        "foodUse": 0,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 5,
+        "ironNeed": 23,
+        "peopleNeed": 1,
+        "range": 2000,
+        "rockNeed": 0,
+        "sid": 23,
+        "speed": 100,
+        "timeNeed": 0,
+        "type": 6,
+        "woodNeed": 39,
+        "description": "Archer",
+        "name": "Dragon"
+      },
+      {
+        "ap": 6,
+        "carry": 200,
+        "dp": 20,
+        "foodNeed": 50,
+        "foodUse": 2,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 150,
+        "ironNeed": 10,
+        "peopleNeed": 1,
+        "range": 12,
+        "rockNeed": 0,
+        "sid": 31,
+        "speed": 216,
+        "timeNeed": 60,
+        "type": 1,
+        "woodNeed": 150,
+        "description": "Peasants can transport resources and weaponry. They have barely any combat skills.",
+        "name": "Elite Peasant"
+      },
+      {
+        "ap": 65,
+        "carry": 20,
+        "dp": 100,
+        "foodNeed": 80,
+        "foodUse": 3,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 300,
+        "ironNeed": 50,
+        "peopleNeed": 1,
+        "range": 24,
+        "rockNeed": 0,
+        "sid": 32,
+        "speed": 240,
+        "timeNeed": 30,
+        "type": 2,
+        "woodNeed": 100,
+        "description": "Auxiliaries can be recruited and trained in large numbers for a small cost. They have only basic training and few combat skills.",
+        "name": "Elite Auxiliary"
+      },
+      {
+        "ap": 26,
+        "carry": 5,
+        "dp": 40,
+        "foodNeed": 120,
+        "foodUse": 5,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 150,
+        "ironNeed": 150,
+        "peopleNeed": 1,
+        "range": 24,
+        "rockNeed": 0,
+        "sid": 33,
+        "speed": 3600,
+        "timeNeed": 120,
+        "type": 3,
+        "woodNeed": 200,
+        "description": "Scouts are trained with espionage skills. They move swiftly to infiltrate enemy cities to spy for intelligence. The more Scouts you send, the more detailed information you will receive.",
+        "name": "Elite Scout"
+      },
+      {
+        "ap": 195,
+        "carry": 40,
+        "dp": 300,
+        "foodNeed": 150,
+        "foodUse": 6,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 450,
+        "ironNeed": 100,
+        "peopleNeed": 1,
+        "range": 60,
+        "rockNeed": 0,
+        "sid": 34,
+        "speed": 360,
+        "timeNeed": 180,
+        "type": 4,
+        "woodNeed": 500,
+        "description": "Pikemen are highly effective against enemy cavalry. Their long pikes strike fear into the hearts of enemy horsemen.",
+        "name": "Elite Pikeman"
+      },
+      {
+        "ap": 130,
+        "carry": 30,
+        "dp": 500,
+        "foodNeed": 200,
+        "foodUse": 7,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 525,
+        "ironNeed": 400,
+        "peopleNeed": 1,
+        "range": 36,
+        "rockNeed": 0,
+        "sid": 35,
+        "speed": 330,
+        "timeNeed": 270,
+        "type": 5,
+        "woodNeed": 150,
+        "description": "Legionaries are equipped with swords and shields. They are effective against Archers as their shields offer good protection.",
+        "name": "Elite Legionary"
+      },
+      {
+        "ap": 156,
+        "carry": 25,
+        "dp": 100,
+        "foodNeed": 300,
+        "foodUse": 9,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 375,
+        "ironNeed": 300,
+        "peopleNeed": 2,
+        "range": 1440,
+        "rockNeed": 0,
+        "sid": 36,
+        "speed": 300,
+        "timeNeed": 420,
+        "type": 6,
+        "woodNeed": 350,
+        "description": "Archers provide an excellent long-distance attacking option but they are vulnerable at close range. ",
+        "name": "Elite Archer"
+      },
+      {
+        "ap": 325,
+        "carry": 100,
+        "dp": 360,
+        "foodNeed": 1000,
+        "foodUse": 18,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 750,
+        "ironNeed": 500,
+        "peopleNeed": 3,
+        "range": 96,
+        "rockNeed": 0,
+        "sid": 37,
+        "speed": 1200,
+        "timeNeed": 600,
+        "type": 7,
+        "woodNeed": 600,
+        "description": "Fast and responsive, the horsemen of the Light Cavalry are the ideal troops for raiding and plundering. ",
+        "name": "Elite Light Cavalry"
+      },
+      {
+        "ap": 455,
+        "carry": 80,
+        "dp": 700,
+        "foodNeed": 2000,
+        "foodUse": 35,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 1500,
+        "ironNeed": 2500,
+        "peopleNeed": 6,
+        "range": 84,
+        "rockNeed": 0,
+        "sid": 38,
+        "speed": 720,
+        "timeNeed": 1800,
+        "type": 8,
+        "woodNeed": 500,
+        "description": "Heavily armored horsemen are a devastating weapon on the battlefield. They can attack and defend with equal skill. ",
+        "name": "Elite Armored Cavalry"
+      },
+      {
+        "ap": 13,
+        "carry": 5000,
+        "dp": 120,
+        "foodNeed": 600,
+        "foodUse": 10,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 1050,
+        "ironNeed": 350,
+        "peopleNeed": 4,
+        "range": 12,
+        "rockNeed": 0,
+        "sid": 39,
+        "speed": 180,
+        "timeNeed": 1200,
+        "type": 9,
+        "woodNeed": 1500,
+        "description": "These wagons move slowly but they can carry huge amounts of resources. Their crews have almost no combat skills.",
+        "name": "Elite Transport Wagon"
+      },
+      {
+        "ap": 585,
+        "carry": 35,
+        "dp": 320,
+        "foodNeed": 2500,
+        "foodUse": 50,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 480,
+        "ironNeed": 1800,
+        "peopleNeed": 5,
+        "range": 1680,
+        "rockNeed": 0,
+        "sid": 40,
+        "speed": 120,
+        "timeNeed": 3600,
+        "type": 10,
+        "woodNeed": 3000,
+        "description": "Ballistae can fire penetrating shots from long range. They can inflict huge damage on defensive weapons and positions. However, they are heavy and slow and therefore vulnerable to attacks at close range. ",
+        "name": "Elite Ballista"
+      },
+      {
+        "ap": 325,
+        "carry": 45,
+        "dp": 1200,
+        "foodNeed": 4000,
+        "foodUse": 100,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 7500,
+        "ironNeed": 1500,
+        "peopleNeed": 10,
+        "range": 60,
+        "rockNeed": 0,
+        "sid": 41,
+        "speed": 144,
+        "timeNeed": 5400,
+        "type": 11,
+        "woodNeed": 6000,
+        "description": "Battering Rams can wreak havoc on an enemy's fortifications and defenses. However, due to their size, they can only move slowly.  ",
+        "name": "Elite Battering Ram"
+      },
+      {
+        "ap": 780,
+        "carry": 75,
+        "dp": 400,
+        "foodNeed": 5000,
+        "foodUse": 250,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 720,
+        "ironNeed": 1200,
+        "peopleNeed": 8,
+        "range": 1800,
+        "rockNeed": 8000,
+        "sid": 42,
+        "speed": 96,
+        "timeNeed": 7200,
+        "type": 12,
+        "woodNeed": 5000,
+        "description": "Trebuchets can fire boulders and other projectiles at your enemy's city, damaging fortifications and defenses. They take time to move, however, and so they are vulnerable to attack by enemy cavalry. ",
+        "name": "Elite Trebuchet"
+      },
+      {
+        "ap": 6,
+        "carry": 200,
+        "dp": 20,
+        "foodNeed": 50,
+        "foodUse": 2,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 150,
+        "ironNeed": 10,
+        "peopleNeed": 1,
+        "range": 12,
+        "rockNeed": 0,
+        "sid": 51,
+        "speed": 216,
+        "timeNeed": 60,
+        "type": 1,
+        "woodNeed": 150,
+        "description": "Peasants can transport resources and weaponry. They have barely any combat skills.",
+        "name": "Elite Peasant"
+      },
+      {
+        "ap": 65,
+        "carry": 20,
+        "dp": 100,
+        "foodNeed": 80,
+        "foodUse": 3,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 300,
+        "ironNeed": 50,
+        "peopleNeed": 1,
+        "range": 24,
+        "rockNeed": 0,
+        "sid": 52,
+        "speed": 240,
+        "timeNeed": 30,
+        "type": 2,
+        "woodNeed": 100,
+        "description": "Auxiliaries can be recruited and trained in large numbers for a small cost. They have only basic training and few combat skills.",
+        "name": "Elite Auxiliary"
+      },
+      {
+        "ap": 26,
+        "carry": 5,
+        "dp": 40,
+        "foodNeed": 120,
+        "foodUse": 5,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 150,
+        "ironNeed": 150,
+        "peopleNeed": 1,
+        "range": 24,
+        "rockNeed": 0,
+        "sid": 53,
+        "speed": 3600,
+        "timeNeed": 120,
+        "type": 3,
+        "woodNeed": 200,
+        "description": "Scouts are trained with espionage skills. They move swiftly to infiltrate enemy cities to spy for intelligence. The more Scouts you send, the more detailed information you will receive.",
+        "name": "Elite Scout"
+      },
+      {
+        "ap": 195,
+        "carry": 40,
+        "dp": 300,
+        "foodNeed": 150,
+        "foodUse": 6,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 450,
+        "ironNeed": 100,
+        "peopleNeed": 1,
+        "range": 60,
+        "rockNeed": 0,
+        "sid": 54,
+        "speed": 360,
+        "timeNeed": 180,
+        "type": 4,
+        "woodNeed": 500,
+        "description": "Pikemen are highly effective against enemy cavalry. Their long pikes strike fear into the hearts of enemy horsemen.",
+        "name": "Elite Pikeman"
+      },
+      {
+        "ap": 130,
+        "carry": 30,
+        "dp": 500,
+        "foodNeed": 200,
+        "foodUse": 7,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 525,
+        "ironNeed": 400,
+        "peopleNeed": 1,
+        "range": 36,
+        "rockNeed": 0,
+        "sid": 55,
+        "speed": 330,
+        "timeNeed": 270,
+        "type": 5,
+        "woodNeed": 150,
+        "description": "Legionaries are equipped with swords and shields. They are effective against Archers as their shields offer good protection.",
+        "name": "Elite Legionary"
+      },
+      {
+        "ap": 156,
+        "carry": 25,
+        "dp": 100,
+        "foodNeed": 300,
+        "foodUse": 9,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 375,
+        "ironNeed": 300,
+        "peopleNeed": 2,
+        "range": 1440,
+        "rockNeed": 0,
+        "sid": 56,
+        "speed": 300,
+        "timeNeed": 420,
+        "type": 6,
+        "woodNeed": 350,
+        "description": "Archers provide an excellent long-distance attacking option but they are vulnerable at close range. ",
+        "name": "Elite Archer"
+      },
+      {
+        "ap": 325,
+        "carry": 100,
+        "dp": 360,
+        "foodNeed": 1000,
+        "foodUse": 18,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 750,
+        "ironNeed": 500,
+        "peopleNeed": 3,
+        "range": 96,
+        "rockNeed": 0,
+        "sid": 57,
+        "speed": 1200,
+        "timeNeed": 600,
+        "type": 7,
+        "woodNeed": 600,
+        "description": "Fast and responsive, the horsemen of the Light Cavalry are the ideal troops for raiding and plundering. ",
+        "name": "Elite Light Cavalry"
+      },
+      {
+        "ap": 455,
+        "carry": 80,
+        "dp": 700,
+        "foodNeed": 2000,
+        "foodUse": 35,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 1500,
+        "ironNeed": 2500,
+        "peopleNeed": 6,
+        "range": 84,
+        "rockNeed": 0,
+        "sid": 58,
+        "speed": 720,
+        "timeNeed": 1800,
+        "type": 8,
+        "woodNeed": 500,
+        "description": "Heavily armored horsemen are a devastating weapon on the battlefield. They can attack and defend with equal skill. ",
+        "name": "Elite Armored Cavalry"
+      },
+      {
+        "ap": 13,
+        "carry": 5000,
+        "dp": 120,
+        "foodNeed": 600,
+        "foodUse": 10,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 1050,
+        "ironNeed": 350,
+        "peopleNeed": 4,
+        "range": 12,
+        "rockNeed": 0,
+        "sid": 59,
+        "speed": 180,
+        "timeNeed": 1200,
+        "type": 9,
+        "woodNeed": 1500,
+        "description": "These wagons move slowly but they can carry huge amounts of resources. Their crews have almost no combat skills.",
+        "name": "Elite Transport Wagon"
+      },
+      {
+        "ap": 585,
+        "carry": 35,
+        "dp": 320,
+        "foodNeed": 2500,
+        "foodUse": 50,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 480,
+        "ironNeed": 1800,
+        "peopleNeed": 5,
+        "range": 1680,
+        "rockNeed": 0,
+        "sid": 60,
+        "speed": 120,
+        "timeNeed": 3600,
+        "type": 10,
+        "woodNeed": 3000,
+        "description": "Ballistae can fire penetrating shots from long range. They can inflict huge damage on defensive weapons and positions. However, they are heavy and slow and therefore vulnerable to attacks at close range. ",
+        "name": "Elite Ballista"
+      },
+      {
+        "ap": 325,
+        "carry": 45,
+        "dp": 1200,
+        "foodNeed": 4000,
+        "foodUse": 100,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 7500,
+        "ironNeed": 1500,
+        "peopleNeed": 10,
+        "range": 60,
+        "rockNeed": 0,
+        "sid": 61,
+        "speed": 144,
+        "timeNeed": 5400,
+        "type": 11,
+        "woodNeed": 6000,
+        "description": "Battering Rams can wreak havoc on an enemy's fortifications and defenses. However, due to their size, they can only move slowly.  ",
+        "name": "Elite Battering Ram"
+      },
+      {
+        "ap": 780,
+        "carry": 75,
+        "dp": 400,
+        "foodNeed": 5000,
+        "foodUse": 250,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 720,
+        "ironNeed": 1200,
+        "peopleNeed": 8,
+        "range": 1800,
+        "rockNeed": 8000,
+        "sid": 62,
+        "speed": 96,
+        "timeNeed": 7200,
+        "type": 12,
+        "woodNeed": 5000,
+        "description": "Trebuchets can fire boulders and other projectiles at your enemy's city, damaging fortifications and defenses. They take time to move, however, and so they are vulnerable to attack by enemy cavalry. ",
+        "name": "Elite Trebuchet"
+      },
+      {
+        "ap": 6,
+        "carry": 200,
+        "dp": 20,
+        "foodNeed": 50,
+        "foodUse": 2,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 150,
+        "ironNeed": 10,
+        "peopleNeed": 1,
+        "range": 12,
+        "rockNeed": 0,
+        "sid": 63,
+        "speed": 216,
+        "timeNeed": 60,
+        "type": 1,
+        "woodNeed": 150,
+        "description": "Peasants can transport resources and weaponry. They have barely any combat skills.",
+        "name": "Elite Peasant"
+      },
+      {
+        "ap": 65,
+        "carry": 20,
+        "dp": 100,
+        "foodNeed": 80,
+        "foodUse": 3,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 300,
+        "ironNeed": 50,
+        "peopleNeed": 1,
+        "range": 24,
+        "rockNeed": 0,
+        "sid": 64,
+        "speed": 240,
+        "timeNeed": 30,
+        "type": 2,
+        "woodNeed": 100,
+        "description": "Auxiliaries can be recruited and trained in large numbers for a small cost. They have only basic training and few combat skills.",
+        "name": "Elite Auxiliary"
+      },
+      {
+        "ap": 26,
+        "carry": 5,
+        "dp": 40,
+        "foodNeed": 120,
+        "foodUse": 5,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 150,
+        "ironNeed": 150,
+        "peopleNeed": 1,
+        "range": 24,
+        "rockNeed": 0,
+        "sid": 65,
+        "speed": 3600,
+        "timeNeed": 120,
+        "type": 3,
+        "woodNeed": 200,
+        "description": "Scouts are trained with espionage skills. They move swiftly to infiltrate enemy cities to spy for intelligence. The more Scouts you send, the more detailed information you will receive.",
+        "name": "Elite Scout"
+      },
+      {
+        "ap": 195,
+        "carry": 40,
+        "dp": 300,
+        "foodNeed": 150,
+        "foodUse": 6,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 450,
+        "ironNeed": 100,
+        "peopleNeed": 1,
+        "range": 60,
+        "rockNeed": 0,
+        "sid": 66,
+        "speed": 360,
+        "timeNeed": 180,
+        "type": 4,
+        "woodNeed": 500,
+        "description": "Pikemen are highly effective against enemy cavalry. Their long pikes strike fear into the hearts of enemy horsemen.",
+        "name": "Elite Pikeman"
+      },
+      {
+        "ap": 130,
+        "carry": 30,
+        "dp": 500,
+        "foodNeed": 200,
+        "foodUse": 7,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 525,
+        "ironNeed": 400,
+        "peopleNeed": 1,
+        "range": 36,
+        "rockNeed": 0,
+        "sid": 67,
+        "speed": 330,
+        "timeNeed": 270,
+        "type": 5,
+        "woodNeed": 150,
+        "description": "Legionaries are equipped with swords and shields. They are effective against Archers as their shields offer good protection.",
+        "name": "Elite Legionary"
+      },
+      {
+        "ap": 156,
+        "carry": 25,
+        "dp": 100,
+        "foodNeed": 300,
+        "foodUse": 9,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 375,
+        "ironNeed": 300,
+        "peopleNeed": 2,
+        "range": 1440,
+        "rockNeed": 0,
+        "sid": 68,
+        "speed": 300,
+        "timeNeed": 420,
+        "type": 6,
+        "woodNeed": 350,
+        "description": "Archers provide an excellent long-distance attacking option but they are vulnerable at close range. ",
+        "name": "Elite Archer"
+      },
+      {
+        "ap": 325,
+        "carry": 100,
+        "dp": 360,
+        "foodNeed": 1000,
+        "foodUse": 18,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 750,
+        "ironNeed": 500,
+        "peopleNeed": 3,
+        "range": 96,
+        "rockNeed": 0,
+        "sid": 69,
+        "speed": 1200,
+        "timeNeed": 600,
+        "type": 7,
+        "woodNeed": 600,
+        "description": "Fast and responsive, the horsemen of the Light Cavalry are the ideal troops for raiding and plundering. ",
+        "name": "Elite Light Cavalry"
+      },
+      {
+        "ap": 455,
+        "carry": 80,
+        "dp": 700,
+        "foodNeed": 2000,
+        "foodUse": 35,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 1500,
+        "ironNeed": 2500,
+        "peopleNeed": 6,
+        "range": 84,
+        "rockNeed": 0,
+        "sid": 70,
+        "speed": 720,
+        "timeNeed": 1800,
+        "type": 8,
+        "woodNeed": 500,
+        "description": "Heavily armored horsemen are a devastating weapon on the battlefield. They can attack and defend with equal skill. ",
+        "name": "Elite Armored Cavalry"
+      },
+      {
+        "ap": 13,
+        "carry": 5000,
+        "dp": 120,
+        "foodNeed": 600,
+        "foodUse": 10,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 1050,
+        "ironNeed": 350,
+        "peopleNeed": 4,
+        "range": 12,
+        "rockNeed": 0,
+        "sid": 71,
+        "speed": 180,
+        "timeNeed": 1200,
+        "type": 9,
+        "woodNeed": 1500,
+        "description": "These wagons move slowly but they can carry huge amounts of resources. Their crews have almost no combat skills.",
+        "name": "Elite Transport Wagon"
+      },
+      {
+        "ap": 585,
+        "carry": 35,
+        "dp": 320,
+        "foodNeed": 2500,
+        "foodUse": 50,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 480,
+        "ironNeed": 1800,
+        "peopleNeed": 5,
+        "range": 1680,
+        "rockNeed": 0,
+        "sid": 72,
+        "speed": 120,
+        "timeNeed": 3600,
+        "type": 10,
+        "woodNeed": 3000,
+        "description": "Ballistae can fire penetrating shots from long range. They can inflict huge damage on defensive weapons and positions. However, they are heavy and slow and therefore vulnerable to attacks at close range. ",
+        "name": "Elite Ballista"
+      },
+      {
+        "ap": 325,
+        "carry": 45,
+        "dp": 1200,
+        "foodNeed": 4000,
+        "foodUse": 100,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 7500,
+        "ironNeed": 1500,
+        "peopleNeed": 10,
+        "range": 60,
+        "rockNeed": 0,
+        "sid": 73,
+        "speed": 144,
+        "timeNeed": 5400,
+        "type": 11,
+        "woodNeed": 6000,
+        "description": "Battering Rams can wreak havoc on an enemy's fortifications and defenses. However, due to their size, they can only move slowly.  ",
+        "name": "Elite Battering Ram"
+      },
+      {
+        "ap": 780,
+        "carry": 75,
+        "dp": 400,
+        "foodNeed": 5000,
+        "foodUse": 250,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 720,
+        "ironNeed": 1200,
+        "peopleNeed": 8,
+        "range": 1800,
+        "rockNeed": 8000,
+        "sid": 74,
+        "speed": 96,
+        "timeNeed": 7200,
+        "type": 12,
+        "woodNeed": 5000,
+        "description": "Trebuchets can fire boulders and other projectiles at your enemy's city, damaging fortifications and defenses. They take time to move, however, and so they are vulnerable to attack by enemy cavalry. ",
+        "name": "Elite Trebuchet"
+      },
+      {
+        "ap": 50,
+        "carry": 20,
+        "dp": 50,
+        "foodNeed": 300,
+        "foodUse": 3,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 200,
+        "ironNeed": 0,
+        "peopleNeed": 3,
+        "range": 20,
+        "rockNeed": 0,
+        "sid": 1001,
+        "speed": 300,
+        "timeNeed": 30,
+        "type": 2,
+        "woodNeed": 0,
+        "description": "The ancient evil survives!",
+        "name": "Ancient Elephant"
+      },
+      {
+        "ap": 80,
+        "carry": 20,
+        "dp": 75,
+        "foodNeed": 300,
+        "foodUse": 3,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 250,
+        "ironNeed": 0,
+        "peopleNeed": 2,
+        "range": 20,
+        "rockNeed": 0,
+        "sid": 1002,
+        "speed": 300,
+        "timeNeed": 30,
+        "type": 2,
+        "woodNeed": 0,
+        "description": "The ancient evil survives!",
+        "name": "Ancient Elephant"
+      },
+      {
+        "ap": 110,
+        "carry": 30,
+        "dp": 187,
+        "foodNeed": 250,
+        "foodUse": 7,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 350,
+        "ironNeed": 0,
+        "peopleNeed": 2,
+        "range": 30,
+        "rockNeed": 0,
+        "sid": 1003,
+        "speed": 412,
+        "timeNeed": 270,
+        "type": 5,
+        "woodNeed": 0,
+        "description": "The ancient evil survives!",
+        "name": "Ancient Elephant"
+      },
+      {
+        "ap": 150,
+        "carry": 30,
+        "dp": 375,
+        "foodNeed": 500,
+        "foodUse": 7,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 490,
+        "ironNeed": 0,
+        "peopleNeed": 2,
+        "range": 30,
+        "rockNeed": 0,
+        "sid": 1004,
+        "speed": 412,
+        "timeNeed": 270,
+        "type": 5,
+        "woodNeed": 0,
+        "description": "The ancient evil survives!",
+        "name": "Ancient Elephant"
+      },
+      {
+        "ap": 252,
+        "carry": 25,
+        "dp": 100,
+        "foodNeed": 500,
+        "foodUse": 9,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 350,
+        "ironNeed": 0,
+        "peopleNeed": 2,
+        "range": 1380,
+        "rockNeed": 0,
+        "sid": 1005,
+        "speed": 100,
+        "timeNeed": 420,
+        "type": 6,
+        "woodNeed": 0,
+        "description": "The ancient evil survives!",
+        "name": "Ancient Elephant"
+      },
+      {
+        "ap": 360,
+        "carry": 40,
+        "dp": 360,
+        "foodNeed": 700,
+        "foodUse": 6,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 450,
+        "ironNeed": 0,
+        "peopleNeed": 2,
+        "range": 50,
+        "rockNeed": 0,
+        "sid": 1006,
+        "speed": 450,
+        "timeNeed": 180,
+        "type": 4,
+        "woodNeed": 0,
+        "description": "The ancient evil survives!",
+        "name": "Ancient Elephant"
+      },
+      {
+        "ap": 220,
+        "carry": 30,
+        "dp": 550,
+        "foodNeed": 1500,
+        "foodUse": 7,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 525,
+        "ironNeed": 0,
+        "peopleNeed": 2,
+        "range": 30,
+        "rockNeed": 0,
+        "sid": 1007,
+        "speed": 412,
+        "timeNeed": 270,
+        "type": 5,
+        "woodNeed": 0,
+        "description": "The ancient evil survives!",
+        "name": "Ancient Elephant"
+      },
+      {
+        "ap": 408,
+        "carry": 25,
+        "dp": 170,
+        "foodNeed": 1500,
+        "foodUse": 9,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 375,
+        "ironNeed": 0,
+        "peopleNeed": 2,
+        "range": 1500,
+        "rockNeed": 0,
+        "sid": 1008,
+        "speed": 100,
+        "timeNeed": 420,
+        "type": 6,
+        "woodNeed": 0,
+        "description": "The ancient evil survives!",
+        "name": "Ancient Elephant"
+      },
+      {
+        "ap": 525,
+        "carry": 40,
+        "dp": 525,
+        "foodNeed": 2000,
+        "foodUse": 6,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 450,
+        "ironNeed": 0,
+        "peopleNeed": 2,
+        "range": 50,
+        "rockNeed": 0,
+        "sid": 1009,
+        "speed": 450,
+        "timeNeed": 180,
+        "type": 4,
+        "woodNeed": 0,
+        "description": "The ancient evil survives!",
+        "name": "Ancient Elephant"
+      },
+      {
+        "ap": 250,
+        "carry": 30,
+        "dp": 625,
+        "foodNeed": 2000,
+        "foodUse": 7,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 525,
+        "ironNeed": 0,
+        "peopleNeed": 2,
+        "range": 30,
+        "rockNeed": 0,
+        "sid": 1010,
+        "speed": 412,
+        "timeNeed": 270,
+        "type": 5,
+        "woodNeed": 0,
+        "description": "The ancient evil survives!",
+        "name": "Ancient Elephant"
+      },
+      {
+        "ap": 420,
+        "carry": 25,
+        "dp": 175,
+        "foodNeed": 2000,
+        "foodUse": 9,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 375,
+        "ironNeed": 0,
+        "peopleNeed": 2,
+        "range": 1800,
+        "rockNeed": 0,
+        "sid": 1011,
+        "speed": 100,
+        "timeNeed": 420,
+        "type": 6,
+        "woodNeed": 0,
+        "description": "I have an axe to grind!",
+        "name": "Tauren Chieftain"
+      },
+      {
+        "ap": 787,
+        "carry": 80,
+        "dp": 787,
+        "foodNeed": 8000,
+        "foodUse": 35,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 1500,
+        "ironNeed": 0,
+        "peopleNeed": 2,
+        "range": 70,
+        "rockNeed": 0,
+        "sid": 1012,
+        "speed": 840,
+        "timeNeed": 1800,
+        "type": 8,
+        "woodNeed": 0,
+        "description": "I have an axe to grind!",
+        "name": "Tauren Chieftain"
+      },
+      {
+        "ap": 360,
+        "carry": 25,
+        "dp": 150,
+        "foodNeed": 4000,
+        "foodUse": 9,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 437,
+        "ironNeed": 0,
+        "peopleNeed": 3,
+        "range": 1800,
+        "rockNeed": 0,
+        "sid": 1013,
+        "speed": 250,
+        "timeNeed": 420,
+        "type": 6,
+        "woodNeed": 0,
+        "description": "I have an axe to grind!",
+        "name": "Tauren Chieftain"
+      },
+      {
+        "ap": 1350,
+        "carry": 35,
+        "dp": 560,
+        "foodNeed": 4000,
+        "foodUse": 50,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 560,
+        "ironNeed": 0,
+        "peopleNeed": 3,
+        "range": 1960,
+        "rockNeed": 0,
+        "sid": 1014,
+        "speed": 100,
+        "timeNeed": 3600,
+        "type": 10,
+        "woodNeed": 0,
+        "description": "I have an axe to grind!",
+        "name": "Tauren Chieftain"
+      },
+      {
+        "ap": 857,
+        "carry": 80,
+        "dp": 857,
+        "foodNeed": 8000,
+        "foodUse": 35,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 1500,
+        "ironNeed": 0,
+        "peopleNeed": 8,
+        "range": 70,
+        "rockNeed": 0,
+        "sid": 1015,
+        "speed": 900,
+        "timeNeed": 1800,
+        "type": 8,
+        "woodNeed": 0,
+        "description": "I have an axe to grind!",
+        "name": "Tauren Chieftain"
+      },
+      {
+        "ap": 1800,
+        "carry": 35,
+        "dp": 520,
+        "foodNeed": 8000,
+        "foodUse": 50,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 480,
+        "ironNeed": 0,
+        "peopleNeed": 8,
+        "range": 2100,
+        "rockNeed": 0,
+        "sid": 1016,
+        "speed": 50,
+        "timeNeed": 3600,
+        "type": 10,
+        "woodNeed": 0,
+        "description": "I have an axe to grind!",
+        "name": "Tauren Chieftain"
+      },
+      {
+        "ap": 2700,
+        "carry": 75,
+        "dp": 750,
+        "foodNeed": 8000,
+        "foodUse": 250,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 720,
+        "ironNeed": 0,
+        "peopleNeed": 8,
+        "range": 2250,
+        "rockNeed": 0,
+        "sid": 1017,
+        "speed": 40,
+        "timeNeed": 7200,
+        "type": 12,
+        "woodNeed": 0,
+        "description": "I have an axe to grind!",
+        "name": "Tauren Chieftain"
+      },
+      {
+        "ap": 1225,
+        "carry": 80,
+        "dp": 1225,
+        "foodNeed": 10000,
+        "foodUse": 35,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 2000,
+        "ironNeed": 0,
+        "peopleNeed": 8,
+        "range": 70,
+        "rockNeed": 0,
+        "sid": 1018,
+        "speed": 900,
+        "timeNeed": 1800,
+        "type": 8,
+        "woodNeed": 0,
+        "description": "I have an axe to grind!",
+        "name": "Tauren Chieftain"
+      },
+      {
+        "ap": 1800,
+        "carry": 35,
+        "dp": 640,
+        "foodNeed": 10000,
+        "foodUse": 50,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 640,
+        "ironNeed": 0,
+        "peopleNeed": 8,
+        "range": 2100,
+        "rockNeed": 0,
+        "sid": 1019,
+        "speed": 50,
+        "timeNeed": 3600,
+        "type": 10,
+        "woodNeed": 0,
+        "description": "I have an axe to grind!",
+        "name": "Tauren Chieftain"
+      },
+      {
+        "ap": 2700,
+        "carry": 75,
+        "dp": 4500,
+        "foodNeed": 10000,
+        "foodUse": 250,
+        "fromcity": 0,
+        "goldNeed": 0,
+        "hp": 960,
+        "ironNeed": 0,
+        "peopleNeed": 8,
+        "range": 2250,
+        "rockNeed": 0,
+        "sid": 1020,
+        "speed": 40,
+        "timeNeed": 7200,
+        "type": 12,
+        "woodNeed": 0,
+        "description": "I have an axe to grind!",
+        "name": "Tauren Chieftain"
+      },
+      {
+        "ap": 1000,
+        "carry": 5000,
+        "dp": 50000,
+        "foodNeed": 5000,
+        "foodUse": 5000,
+        "fromcity": 0,
+        "goldNeed": 5000,
+        "hp": 2100000000,
+        "ironNeed": 5000,
+        "peopleNeed": 127,
+        "range": 0,
+        "rockNeed": 5000,
+        "sid": 9001,
+        "speed": 0,
+        "timeNeed": 5000,
+        "type": 127,
+        "woodNeed": 5000,
+        "description": "Shadow Ghost King",
+        "name": "Shadow Ghost King"
+      },
+      {
+        "ap": 1000,
+        "carry": 5000,
+        "dp": 50000,
+        "foodNeed": 5000,
+        "foodUse": 5000,
+        "fromcity": 0,
+        "goldNeed": 5000,
+        "hp": 2100000000,
+        "ironNeed": 5000,
+        "peopleNeed": 127,
+        "range": 0,
+        "rockNeed": 5000,
+        "sid": 9002,
+        "speed": 0,
+        "timeNeed": 5000,
+        "type": 127,
+        "woodNeed": 5000,
+        "description": "Halloween Ghost King",
+        "name": "Halloween Ghost King"
+      },
+      {
+        "ap": 1000,
+        "carry": 5000,
+        "dp": 50000,
+        "foodNeed": 5000,
+        "foodUse": 5000,
+        "fromcity": 0,
+        "goldNeed": 5000,
+        "hp": 2100000000,
+        "ironNeed": 5000,
+        "peopleNeed": 127,
+        "range": 0,
+        "rockNeed": 5000,
+        "sid": 9003,
+        "speed": 0,
+        "timeNeed": 5000,
+        "type": 127,
+        "woodNeed": 5000,
+        "description": "Shadow Ghost King",
+        "name": "Shadow Ghost King"
+      },
+      {
+        "ap": 1000,
+        "carry": 5000,
+        "dp": 50000,
+        "foodNeed": 5000,
+        "foodUse": 5000,
+        "fromcity": 0,
+        "goldNeed": 5000,
+        "hp": 2100000000,
+        "ironNeed": 5000,
+        "peopleNeed": 127,
+        "range": 0,
+        "rockNeed": 5000,
+        "sid": 9004,
+        "speed": 0,
+        "timeNeed": 5000,
+        "type": 127,
+        "woodNeed": 5000,
+        "description": "Halloween Ghost King",
+        "name": "Halloween Ghost King"
+      },
+      {
+        "ap": 1000,
+        "carry": 5000,
+        "dp": 70000,
+        "foodNeed": 5000,
+        "foodUse": 5000,
+        "fromcity": 0,
+        "goldNeed": 5000,
+        "hp": 2100000000,
+        "ironNeed": 5000,
+        "peopleNeed": 127,
+        "range": 0,
+        "rockNeed": 5000,
+        "sid": 9005,
+        "speed": 0,
+        "timeNeed": 5000,
+        "type": 127,
+        "woodNeed": 5000,
+        "description": "Shadow Ghost King",
+        "name": "Shadow Ghost King"
+      },
+      {
+        "ap": 1000,
+        "carry": 5000,
+        "dp": 70000,
+        "foodNeed": 5000,
+        "foodUse": 5000,
+        "fromcity": 0,
+        "goldNeed": 5000,
+        "hp": 2100000000,
+        "ironNeed": 5000,
+        "peopleNeed": 127,
+        "range": 0,
+        "rockNeed": 5000,
+        "sid": 9006,
+        "speed": 0,
+        "timeNeed": 5000,
+        "type": 127,
+        "woodNeed": 5000,
+        "description": "Halloween Ghost King",
+        "name": "Halloween Ghost King"
+      },
+      {
+        "ap": 1000,
+        "carry": 5000,
+        "dp": 90000,
+        "foodNeed": 5000,
+        "foodUse": 5000,
+        "fromcity": 0,
+        "goldNeed": 5000,
+        "hp": 2100000000,
+        "ironNeed": 5000,
+        "peopleNeed": 127,
+        "range": 0,
+        "rockNeed": 5000,
+        "sid": 9007,
+        "speed": 0,
+        "timeNeed": 5000,
+        "type": 127,
+        "woodNeed": 5000,
+        "description": "Shadow Ghost King",
+        "name": "Shadow Ghost King"
+      },
+      {
+        "ap": 1000,
+        "carry": 5000,
+        "dp": 90000,
+        "foodNeed": 5000,
+        "foodUse": 5000,
+        "fromcity": 0,
+        "goldNeed": 5000,
+        "hp": 2100000000,
+        "ironNeed": 5000,
+        "peopleNeed": 127,
+        "range": 0,
+        "rockNeed": 5000,
+        "sid": 9008,
+        "speed": 0,
+        "timeNeed": 5000,
+        "type": 127,
+        "woodNeed": 5000,
+        "description": "Halloween Ghost King",
+        "name": "Halloween Ghost King"
+      },
+      {
+        "ap": 1000,
+        "carry": 5000,
+        "dp": 90000,
+        "foodNeed": 5000,
+        "foodUse": 5000,
+        "fromcity": 0,
+        "goldNeed": 5000,
+        "hp": 2100000000,
+        "ironNeed": 5000,
+        "peopleNeed": 127,
+        "range": 0,
+        "rockNeed": 5000,
+        "sid": 9009,
+        "speed": 0,
+        "timeNeed": 5000,
+        "type": 127,
+        "woodNeed": 5000,
+        "description": "Shadow Ghost King",
+        "name": "Shadow Ghost King"
+      },
+      {
+        "ap": 1000,
+        "carry": 5000,
+        "dp": 90000,
+        "foodNeed": 5000,
+        "foodUse": 5000,
+        "fromcity": 0,
+        "goldNeed": 5000,
+        "hp": 2100000000,
+        "ironNeed": 5000,
+        "peopleNeed": 127,
+        "range": 0,
+        "rockNeed": 5000,
+        "sid": 9010,
+        "speed": 0,
+        "timeNeed": 5000,
+        "type": 127,
+        "woodNeed": 5000,
+        "description": "Halloween Ghost King",
+        "name": "Halloween Ghost King"
+      },
+      {
+        "ap": 1000,
+        "carry": 5000,
+        "dp": 120000,
+        "foodNeed": 5000,
+        "foodUse": 5000,
+        "fromcity": 0,
+        "goldNeed": 5000,
+        "hp": 2100000000,
+        "ironNeed": 5000,
+        "peopleNeed": 127,
+        "range": 0,
+        "rockNeed": 5000,
+        "sid": 9011,
+        "speed": 0,
+        "timeNeed": 5000,
+        "type": 127,
+        "woodNeed": 5000,
+        "description": "Shadow Ghost King",
+        "name": "Shadow Ghost King"
+      },
+      {
+        "ap": 1000,
+        "carry": 5000,
+        "dp": 120000,
+        "foodNeed": 5000,
+        "foodUse": 5000,
+        "fromcity": 0,
+        "goldNeed": 5000,
+        "hp": 2100000000,
+        "ironNeed": 5000,
+        "peopleNeed": 127,
+        "range": 0,
+        "rockNeed": 5000,
+        "sid": 9012,
+        "speed": 0,
+        "timeNeed": 5000,
+        "type": 127,
+        "woodNeed": 5000,
+        "description": "Halloween Ghost King",
+        "name": "Halloween Ghost King"
+      },
+      {
+        "ap": 1000,
+        "carry": 5000,
+        "dp": 150000,
+        "foodNeed": 5000,
+        "foodUse": 5000,
+        "fromcity": 0,
+        "goldNeed": 5000,
+        "hp": 2100000000,
+        "ironNeed": 5000,
+        "peopleNeed": 127,
+        "range": 0,
+        "rockNeed": 5000,
+        "sid": 9013,
+        "speed": 0,
+        "timeNeed": 5000,
+        "type": 127,
+        "woodNeed": 5000,
+        "description": "Shadow Ghost King",
+        "name": "Shadow Ghost King"
+      },
+      {
+        "ap": 1000,
+        "carry": 5000,
+        "dp": 150000,
+        "foodNeed": 5000,
+        "foodUse": 5000,
+        "fromcity": 0,
+        "goldNeed": 5000,
+        "hp": 2100000000,
+        "ironNeed": 5000,
+        "peopleNeed": 127,
+        "range": 0,
+        "rockNeed": 5000,
+        "sid": 9014,
+        "speed": 0,
+        "timeNeed": 5000,
+        "type": 127,
+        "woodNeed": 5000,
+        "description": "Halloween Ghost King",
+        "name": "Halloween Ghost King"
+      },
+      {
+        "ap": 1000,
+        "carry": 5000,
+        "dp": 210000,
+        "foodNeed": 5000,
+        "foodUse": 5000,
+        "fromcity": 0,
+        "goldNeed": 5000,
+        "hp": 2100000000,
+        "ironNeed": 5000,
+        "peopleNeed": 127,
+        "range": 0,
+        "rockNeed": 5000,
+        "sid": 9015,
+        "speed": 0,
+        "timeNeed": 5000,
+        "type": 127,
+        "woodNeed": 5000,
+        "description": "Shadow Ghost King",
+        "name": "Shadow Ghost King"
+      },
+      {
+        "ap": 1000,
+        "carry": 5000,
+        "dp": 210000,
+        "foodNeed": 5000,
+        "foodUse": 5000,
+        "fromcity": 0,
+        "goldNeed": 5000,
+        "hp": 2100000000,
+        "ironNeed": 5000,
+        "peopleNeed": 127,
+        "range": 0,
+        "rockNeed": 5000,
+        "sid": 9016,
+        "speed": 0,
+        "timeNeed": 5000,
+        "type": 127,
+        "woodNeed": 5000,
+        "description": "Halloween Ghost King",
+        "name": "Halloween Ghost King"
+      },
+      {
+        "ap": 1000,
+        "carry": 5000,
+        "dp": 270000,
+        "foodNeed": 5000,
+        "foodUse": 5000,
+        "fromcity": 0,
+        "goldNeed": 5000,
+        "hp": 2100000000,
+        "ironNeed": 5000,
+        "peopleNeed": 127,
+        "range": 0,
+        "rockNeed": 5000,
+        "sid": 9017,
+        "speed": 0,
+        "timeNeed": 5000,
+        "type": 127,
+        "woodNeed": 5000,
+        "description": "Shadow Ghost King",
+        "name": "Shadow Ghost King"
+      },
+      {
+        "ap": 1000,
+        "carry": 5000,
+        "dp": 270000,
+        "foodNeed": 5000,
+        "foodUse": 5000,
+        "fromcity": 0,
+        "goldNeed": 5000,
+        "hp": 2100000000,
+        "ironNeed": 5000,
+        "peopleNeed": 127,
+        "range": 0,
+        "rockNeed": 5000,
+        "sid": 9018,
+        "speed": 0,
+        "timeNeed": 5000,
+        "type": 127,
+        "woodNeed": 5000,
+        "description": "Halloween Ghost King",
+        "name": "Halloween Ghost King"
+      },
+      {
+        "ap": 1000,
+        "carry": 5000,
+        "dp": 330000,
+        "foodNeed": 5000,
+        "foodUse": 5000,
+        "fromcity": 0,
+        "goldNeed": 5000,
+        "hp": 2100000000,
+        "ironNeed": 5000,
+        "peopleNeed": 127,
+        "range": 0,
+        "rockNeed": 5000,
+        "sid": 9019,
+        "speed": 0,
+        "timeNeed": 5000,
+        "type": 127,
+        "woodNeed": 5000,
+        "description": "Shadow Ghost King",
+        "name": "Shadow Ghost King"
+      },
+      {
+        "ap": 1000,
+        "carry": 5000,
+        "dp": 330000,
+        "foodNeed": 5000,
+        "foodUse": 5000,
+        "fromcity": 0,
+        "goldNeed": 5000,
+        "hp": 2100000000,
+        "ironNeed": 5000,
+        "peopleNeed": 127,
+        "range": 0,
+        "rockNeed": 5000,
+        "sid": 9020,
+        "speed": 0,
+        "timeNeed": 5000,
+        "type": 127,
+        "woodNeed": 5000,
+        "description": "Halloween Ghost King",
+        "name": "Halloween Ghost King"
+      }
+    ],
+    "cfgTalentInfoList": [
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 101001,
+        "starLimit": 5,
+        "active_info": "Use a 'War Horn' to activate this skill!",
+        "description": "Increases Infantry Attack",
+        "name": "Infantry Assault"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 102001,
+        "starLimit": 5,
+        "active_info": "Use a 'War Horn' to activate this skill!",
+        "description": "Increases Infantry Defense",
+        "name": "Infantry Defense"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 104001,
+        "starLimit": 5,
+        "active_info": "Use a 'War Horn' to activate this skill!",
+        "description": "Increases Infantry Health",
+        "name": "Infantry Bravery"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 101002,
+        "starLimit": 5,
+        "active_info": "Use a 'War Horn' to activate this skill!",
+        "description": "Increases Cavalry Attack",
+        "name": "Cavalry Assault"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 102002,
+        "starLimit": 5,
+        "active_info": "Use a 'War Horn' to activate this skill!",
+        "description": "Increases Cavalry Defense",
+        "name": "Cavalry Defense"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 104002,
+        "starLimit": 5,
+        "active_info": "Use a 'War Horn' to activate this skill!",
+        "description": "Increases Cavalry Health",
+        "name": "Cavalry Bloodbath "
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 101003,
+        "starLimit": 5,
+        "active_info": "Use a 'War Horn' to activate this skill!",
+        "description": "Increases Equipment Attack",
+        "name": "Equipment Assault"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 102003,
+        "starLimit": 5,
+        "active_info": "Use a 'War Horn' to activate this skill!",
+        "description": "Increases Equipment Defense",
+        "name": "Equipment Armor"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 103001,
+        "starLimit": 5,
+        "active_info": "Use a 'War Horn' to activate this skill!",
+        "description": "Increases Equipment Range",
+        "name": "Equipment Range"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 104003,
+        "starLimit": 5,
+        "active_info": "Use a 'War Horn' to activate this skill!",
+        "description": "Increases Equipment Health",
+        "name": "Equipment Durability"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 101004,
+        "starLimit": 4,
+        "active_info": "Use a 'War Horn' to activate this skill!",
+        "description": "Increases Legionary Attack",
+        "name": "Legionary Shield Attack"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 102004,
+        "starLimit": 4,
+        "active_info": "Use a 'War Horn' to activate this skill!",
+        "description": "Increases Legionary Defense",
+        "name": "Legionary Defense"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 104004,
+        "starLimit": 4,
+        "active_info": "Use a 'War Horn' to activate this skill!",
+        "description": "Increases Legionary Health",
+        "name": "Legionary Bravery"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 101005,
+        "starLimit": 4,
+        "active_info": "Use a 'War Horn' to activate this skill!",
+        "description": "Increases Archer Attack",
+        "name": "Archer Fierce Assault"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 102005,
+        "starLimit": 4,
+        "active_info": "Use a 'War Horn' to activate this skill!",
+        "description": "Increases Archer Defense",
+        "name": "Archer Defense"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 103002,
+        "starLimit": 5,
+        "active_info": "Use a 'War Horn' to activate this skill!",
+        "description": "Increases Archer Range",
+        "name": "Archer Range"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 104005,
+        "starLimit": 4,
+        "active_info": "Use a 'War Horn' to activate this skill!",
+        "description": "Increases Archer Health",
+        "name": "Archer Health"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 101006,
+        "starLimit": 4,
+        "active_info": "Use a 'War Horn' to activate this skill!",
+        "description": "Increases Armored Cavalry Attack",
+        "name": "Armored Cavalry Shock Attack"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 102006,
+        "starLimit": 4,
+        "active_info": "Use a 'War Horn' to activate this skill!",
+        "description": "Increases Armored Cavalry Defense",
+        "name": "Armored Cavalry Defense"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 104006,
+        "starLimit": 4,
+        "active_info": "Use a 'War Horn' to activate this skill!",
+        "description": "Increases Armored Cavalry Health",
+        "name": "Armored Cavalry Bravery"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 105001,
+        "starLimit": 4,
+        "active_info": "Use a 'War Horn' to activate this skill!",
+        "description": "Increases Armored Cavalry Speed",
+        "name": "Armored Cavalry Charge "
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 101007,
+        "starLimit": 4,
+        "active_info": "Use a 'War Horn' to activate this skill!",
+        "description": "Increases Ballista Attack",
+        "name": "Ballista Burst"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 102007,
+        "starLimit": 4,
+        "active_info": "Use a 'War Horn' to activate this skill!",
+        "description": "Increases Ballista Defense",
+        "name": "Ballista Armor"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 103003,
+        "starLimit": 5,
+        "active_info": "Use a 'War Horn' to activate this skill!",
+        "description": "Increases Ballista Range",
+        "name": "Ballista Range"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 104007,
+        "starLimit": 4,
+        "active_info": "Use a 'War Horn' to activate this skill!",
+        "description": "Increases Ballista Health",
+        "name": "Ballista Durability"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 105002,
+        "starLimit": 4,
+        "active_info": "Use a 'War Horn' to activate this skill!",
+        "description": "Increases Ballista Speed",
+        "name": "Ballista Shock Assault"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 101008,
+        "starLimit": 4,
+        "active_info": "Use a 'War Horn' to activate this skill!",
+        "description": "Increases Battering Ram Attack",
+        "name": "Battering Ram Armor"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 104008,
+        "starLimit": 4,
+        "active_info": "Use a 'War Horn' to activate this skill!",
+        "description": "Increases Battering Ram Health",
+        "name": "Battering Ram Durability"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 105003,
+        "starLimit": 4,
+        "active_info": "Use a 'War Horn' to activate this skill!",
+        "description": "Increases Battering Ram Speed",
+        "name": "Battering Ram Power"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 101009,
+        "starLimit": 4,
+        "active_info": "Use a 'War Horn' to activate this skill!",
+        "description": "Increases Trebuchet Attack",
+        "name": "Trebuchet Steel Rain"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 102008,
+        "starLimit": 4,
+        "active_info": "Use a 'War Horn' to activate this skill!",
+        "description": "Increases Trebuchet Defense",
+        "name": "Trebuchet Armor"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 103004,
+        "starLimit": 5,
+        "active_info": "Use a 'War Horn' to activate this skill!",
+        "description": "Increases Trebuchet Range",
+        "name": "Trebuchet Range"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 104009,
+        "starLimit": 4,
+        "active_info": "Use a 'War Horn' to activate this skill!",
+        "description": "Increases Trebuchet Health",
+        "name": "Trebuchet Durability"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 303001,
+        "starLimit": 5,
+        "active_info": "Use a 'Mask' to activate this skill!",
+        "description": "Increases Expedition Load",
+        "name": "Lighter Load"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 111001,
+        "starLimit": 5,
+        "active_info": "Use a 'Mask' to activate this skill!",
+        "description": "Increases Expedition Wounded Survival Rate",
+        "name": "Gods' Favor"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 301001,
+        "starLimit": 5,
+        "active_info": "Use a 'Mask' to activate this skill!",
+        "description": "Increases Expedition Speed",
+        "name": "Army Raid"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 304001,
+        "starLimit": 5,
+        "active_info": "Use a 'Mask' to activate this skill!",
+        "description": "Increases Expedition Troop Limit",
+        "name": "Army Loyalty"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 0,
+        "id": 800001,
+        "starLimit": 4,
+        "active_info": "Use a 'Chest' to activate this skill!",
+        "description": "Allows Heroes to Earn Bonus Experience",
+        "name": "Experience Bonus"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 0,
+        "id": 205001,
+        "starLimit": 5,
+        "active_info": "Use an 'Hourglass' to activate this skill!",
+        "description": "Reduces City Construction Time",
+        "name": "Craftsman Spirit"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 0,
+        "id": 302001,
+        "starLimit": 5,
+        "active_info": "Use a 'Mask' to activate this skill!",
+        "description": "Increases Transport Speed",
+        "name": "Supply Boost"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 0,
+        "id": 107001,
+        "starLimit": 4,
+        "active_info": "Use 'Scales' to activate this skill!",
+        "description": "Increases Fortification Durability",
+        "name": "Fortification Durability"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 0,
+        "id": 108001,
+        "starLimit": 5,
+        "active_info": "Use 'Scales' to activate this skill!",
+        "description": "Increases Fortification Range",
+        "name": "Fortification Range"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 0,
+        "id": 109001,
+        "starLimit": 4,
+        "active_info": "Use 'Scales' to activate this skill!",
+        "description": "Increases Fortification Attack",
+        "name": "Fortification Assault"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 0,
+        "id": 110001,
+        "starLimit": 4,
+        "active_info": "Use 'Scales' to activate this skill!",
+        "description": "Increases Fortification Defense",
+        "name": "Fortification Strength"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 0,
+        "id": 206001,
+        "starLimit": 4,
+        "active_info": "Use an 'Hourglass' to activate this skill!",
+        "description": "Reduces Fortification Building Time",
+        "name": "Fortification Production "
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 305001,
+        "starLimit": 4,
+        "active_info": "Use a 'Chest' to activate this skill!",
+        "description": "Reduces Expedition Food Consumption",
+        "name": "Army Efficiency"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 0,
+        "id": 112001,
+        "starLimit": 5,
+        "active_info": "Use a 'Mask' to activate this skill!",
+        "description": "Increases City Wounded Survival Rate",
+        "name": "Defender Toughness"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 0,
+        "id": 113001,
+        "starLimit": 5,
+        "active_info": "Use an 'Chest' to activate this skill!",
+        "description": "Increases City Wall Durability",
+        "name": "City Defense"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 0,
+        "id": 207001,
+        "starLimit": 5,
+        "active_info": "Use an 'Hourglass' to activate this skill!",
+        "description": "Reduces Infantry Training Time",
+        "name": "Infantry Spirit"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 0,
+        "id": 207002,
+        "starLimit": 5,
+        "active_info": "Use an 'Hourglass' to activate this skill!",
+        "description": "Reduces Cavalry Training Time",
+        "name": "Light Cavalry Spirit"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 0,
+        "id": 207003,
+        "starLimit": 5,
+        "active_info": "Use an 'Hourglass' to activate this skill!",
+        "description": "Reduces Equipment Building Time",
+        "name": "Equipment Master"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 114001,
+        "starLimit": 5,
+        "active_info": "Experience Bonus",
+        "description": "Decrease the health points of the enemy's troops while increasing ours.",
+        "name": "Suck blood"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 115001,
+        "starLimit": 5,
+        "active_info": "Use a 'Mask' to activate this skill",
+        "description": "When our units triggered counterattack, the damage will be increased",
+        "name": "Counterattack"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 2,
+        "id": 116001,
+        "starLimit": 5,
+        "active_info": "Use a 'War Horn' to activate this skill!",
+        "description": "When hero leads troops into battle, every 10 wisdom points will increase soldiers’ attack",
+        "name": "Attack strategy"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 2,
+        "id": 117001,
+        "starLimit": 5,
+        "active_info": "Use a 'War Horn' to activate this skill!",
+        "description": "When hero leads troops into battle, every 10 wisdom points will increase soldiers’ speed",
+        "name": "Quick Attack"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 301002,
+        "starLimit": 5,
+        "active_info": "Use a 'Mask' to activate this skill!",
+        "description": "When your hero leads your troops, the march speed of your Ballistae, Battering Rams and Trebuchets will increase",
+        "name": "Equipment Raid"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 2,
+        "id": 119001,
+        "starLimit": 5,
+        "active_info": "The ‘War Horn’ relic can activate skills!",
+        "description": "When hero leads troops into battle, every 10 wisdom points will decrease enemy soldiers’ attack",
+        "name": "Weakening Curse"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 120001,
+        "starLimit": 5,
+        "active_info": "The ‘War Horn’ relic can activate skills!",
+        "description": "When hero leads troops into battle, every 10 bravery points will increase soldiers’ HP",
+        "name": "Heroic Battle"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 121001,
+        "starLimit": 5,
+        "active_info": "Use a 'Chest' to activate this skill!",
+        "description": "When you attack a city a city, reform the enemy’s people and reduce the proportion of the Auxiliary",
+        "name": "Reform People"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 122001,
+        "starLimit": 5,
+        "active_info": "Use a 'War Horn' to activate this skill!",
+        "description": "When your hero leads your troops, the attack and speed of your Light Cavalry and Armored Cavalry will be increased.",
+        "name": "Cavalry Raid"
+      },
+      {
+        "genWeight": 51,
+        "heroType": 1,
+        "id": 123001,
+        "starLimit": 5,
+        "active_info": "Use a 'Mask' to activate this skill!",
+        "description": "Increase the wounded rate when attacking a city.",
+        "name": "Siege Prayer"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 124001,
+        "starLimit": 5,
+        "active_info": "Use a 'War Horn' to activate this skill!",
+        "description": "During attack, increase the attack range of archers by 140% when its amount is less than a certain number, and archers will always attack at first.",
+        "name": "Marksman"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 125001,
+        "starLimit": 5,
+        "active_info": "Use a 'Mask' to activate this skill!",
+        "description": "During expedition, if the amount of rams or armored cavalrys is more than some times of archers, the archers will dodge the damage in first 3 round.",
+        "name": "Bunker dodge"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 126001,
+        "starLimit": 5,
+        "active_info": "Equip 'War Horn' to active the skill.",
+        "description": "If there are only instruments in your army, increase the basic speed of instruments.",
+        "name": "Wheel Hub Strengthen"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 127001,
+        "starLimit": 5,
+        "active_info": "Equip 'Mask' to active the skill.",
+        "description": "If there is only Rams in your army, Decrease the HP and Attack of the enemy's Pikemans, Archers and Legionarys.",
+        "name": "Rams Terrorize"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 129001,
+        "starLimit": 5,
+        "active_info": "Equip 'Mask' to active the skill",
+        "description": "During attack, the defender's army on the battlefied will be decreased.",
+        "name": "Shaking Psychology"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 128001,
+        "starLimit": 5,
+        "active_info": "Equip 'War Horn' to active the skill",
+        "description": "Every 12 bravery decrease the enemy's attack during fight",
+        "name": "Power Taking"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 130001,
+        "starLimit": 5,
+        "active_info": "Equip 'War Horn' to active the skill",
+        "description": "When attack city, hire sacrifice man to join the battle according to your troops amount.",
+        "name": "Sacrifice Men"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 118001,
+        "starLimit": 5,
+        "active_info": "Equip 'War Horn' to active the skill",
+        "description": "During expedition, increase the damage of counter attack of rams, armored Cavalry, and pikeman, they will act first in first round.",
+        "name": "Heavy Strike"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 132001,
+        "starLimit": 5,
+        "active_info": "Equip 'War Horn' to active the skill",
+        "description": "During expedition, every 60 total attributes will increase damage to troops besides instruments.",
+        "name": "Burn"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 133001,
+        "starLimit": 5,
+        "active_info": "Equip 'Mask' to active the skill",
+        "description": "During expedition, increase cavalry's attack, and cavalrys will not suffer damage before they cause damage.",
+        "name": "Victory Assault"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 134001,
+        "starLimit": 5,
+        "active_info": "The ‘War Horn’ relic can activate skills!",
+        "description": "When attacking the city increase speed,  reduce Attack and Defense, additionally reduce Wounded Rate for one round every time (effects will reduce the limit of Wounded Rate)",
+        "name": "Slaughter"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 135001,
+        "starLimit": 5,
+        "active_info": "The ‘Mask’ can activate skills!",
+        "description": "During expedition, increase instrument attack, instruments will not suffer damage before they cause damage.",
+        "name": "Instrument Assault"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 136001,
+        "starLimit": 5,
+        "active_info": "The ‘War Horn’ relic can activate skills!",
+        "description": "When attacking if our troops are less than N, then they will ignore the opponent’s reduce hurt",
+        "name": "Divide into parts"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 137001,
+        "starLimit": 5,
+        "active_info": "The ‘War Horn’ relic can activate skills!",
+        "description": "When attacking if units are retreating then they will obtain additional Attack",
+        "name": "Think  before act"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 138001,
+        "starLimit": 5,
+        "active_info": "The ‘War Horn’ relic can activate skills!",
+        "description": "During expedition, unless your troops have been annihilated, the damage caused by this will never be less than the number of certain soldiers when they first enter battle",
+        "name": "Faith"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 2,
+        "id": 139001,
+        "starLimit": 5,
+        "active_info": "The ‘War Horn’ relic can activate skills!",
+        "description": "During expedition, increase these troops’ Attack based on the current Wounded Rate",
+        "name": "Anthem"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 140001,
+        "starLimit": 5,
+        "active_info": "Use sacred relic 'Scales' to activate this skill!",
+        "description": "When your Hero leads your troops, increase damage, for every 1 Leadership point your Hero has, the buffs of his bravery and wisdom can affect certain number of troops.",
+        "name": "Conqueror"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 2,
+        "id": 141001,
+        "starLimit": 5,
+        "active_info": "Use sacred relic 'Mask' to activate this skill!",
+        "description": "When your Hero leads your troops, your troops' marching speed will increase,  with chance to cut in at the head of the line when Plundering and Occupying.",
+        "name": "Gallop"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 142001,
+        "starLimit": 5,
+        "active_info": "Use sacred relic 'Mask' to activate this skill!",
+        "description": "When attacking, if the number of Trebuchet is less than a certain number, with other units in the troop, Trebuchet immune all ranged damage",
+        "name": "Crisis Prediction"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 143001,
+        "starLimit": 5,
+        "active_info": "Use sacred relic 'War Horn' to activate this skill!",
+        "description": "When attacking, the marching speed of Trebuchet will not be slower than other units in the troop, Trebuchet will have a chance to ignore the opponent’s reduce hurt",
+        "name": "Mightiness"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 144001,
+        "starLimit": 5,
+        "active_info": "The ‘War Horn’ relic can activate skills!",
+        "description": "When attacking, if equipped with Behemoth Demon of S quality, gain extra increase damage and speed",
+        "name": "Earth Affinity"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 145001,
+        "starLimit": 5,
+        "active_info": "The ‘War Horn’ relic can activate skills!",
+        "description": "When attacking, reduce enemy's speed and make it unable to move for the first several rounds",
+        "name": "Earth Confinement"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 146001,
+        "starLimit": 5,
+        "active_info": "The ‘Mask’ can activate skills!",
+        "description": "Increase the ranged attack damage of our soldiers. When attacking, reduce the suffered ranged attack damage of our soldiers.",
+        "name": "Air Supremacy"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 147001,
+        "starLimit": 5,
+        "active_info": "The ‘War Horn’ relic can activate skills!",
+        "description": "When attacking, if equipped with Gryphon of S quality, gain extra increase damage and speed",
+        "name": "Soar"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 148001,
+        "starLimit": 5,
+        "active_info": "The ‘War Horn’ relic can activate skills!",
+        "description": "When attacking, if equipped with Flash Unicorn of S quality, gain extra increase damage and speed",
+        "name": "Rainbow in Heaven"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 149001,
+        "starLimit": 5,
+        "active_info": "Use sacred relic 'Mask' to activate this skill!",
+        "description": "When attacking the city, if the battle occurs during night time (18:00 - 6:00 Server Time), any enemy soldier will be unable to land the first few hits on you for every round, which lasts for N rounds (excluding Scout)",
+        "name": "Light Deflection"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 150001,
+        "starLimit": 5,
+        "active_info": "Use a 'War Horn' to activate this skill!",
+        "description": "Attacks cause enemies to bleed, and the bleeding can stack up to 4 times. When the bleeding enemies are attacked, each stack of bleeding makes them take additional true damage equal to N% of the attacker's attack power. When attacking, the Bleeding caused can stack up to 8 times.",
+        "name": "Blood Rage"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 151001,
+        "starLimit": 5,
+        "active_info": "Use a 'Mask' to activate this skill!",
+        "description": "Upon taking fatal damage, your soldiers will not die immediately. Instead, they will continue to fight for N additional rounds and be immune to all damage. When attacking, your counterattacks will always inflict damage based on the initial number of soldiers you own.",
+        "name": "Call of Fearless"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 2,
+        "id": 152001,
+        "starLimit": 5,
+        "active_info": "Equip Artifact 'Balance of Order' to activate this skill!",
+        "description": "Your Light Cavalry and Iron Cavalry deal more damage and an additional damage for every 100 Intelligence points. When advancing while attacking, they will always dash to their target and perform attacks.",
+        "name": "Battle Wind"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 2,
+        "id": 153001,
+        "starLimit": 5,
+        "active_info": "Equip Artifact 'Balance of Order' to activate this skill!",
+        "description": "Increases the Speed for every 150 points of Intelligence. When attacking, your troops have a probability to directly kill enemies that are smaller than your troop population, and the probability is doubled for Light cavalry and Iron cavalry.",
+        "name": "Bloody Kill"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 154001,
+        "starLimit": 5,
+        "active_info": "Use a 'War Horn' to activate this skill!",
+        "description": "For every 1 legendary equipment equipped, get Increase Hurt and Reduce Hurt",
+        "name": "Legendary Blacksmith"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 2,
+        "id": 155001,
+        "starLimit": 5,
+        "active_info": "Use a 'Scale' to activate this skill!",
+        "description": "As an Official, gain additional attributes from equipment during battles (excluding set effects).",
+        "name": "Throne"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 156001,
+        "starLimit": 5,
+        "active_info": "Use a 'War Horn' to activate this skill!",
+        "description": "Increase Speed. Your attacks will put the target in a Weakened state (Weakened units have their Reduce Hurt decreased by 20%) for 2 rounds. When attacking, the Weakened state on the target can stack",
+        "name": "Hunter"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 157001,
+        "starLimit": 5,
+        "active_info": "Use a 'War Horn' to activate this skill!",
+        "description": "Increase damage. Your attacks will put the target in a Weakened state (Weakened units have their Hit Rate decreased by 80% and be immune to Blindness for 4 rounds), lasting for 2 rounds",
+        "name": "Dark Moon"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 158001,
+        "starLimit": 5,
+        "active_info": "Use a 'War Horn' to activate this skill!",
+        "description": "When attacking, if equipped with Panda of S quality, gain bonus increase damage and speed.",
+        "name": "Nature Affinity"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 2,
+        "id": 159001,
+        "starLimit": 5,
+        "active_info": "Use a 'Mask' to activate this skill!",
+        "description": "Your non-Equipment troops (excluding Scout) gain bonus speed. When attacking, their Wounded Rate will not be lower than the defender’s, and in the first N round(s) of battle, each M points of Wisdom allows them to be immune to any damage for 1 time.",
+        "name": "Thriving"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 2,
+        "id": 160001,
+        "starLimit": 5,
+        "active_info": "Use a 'Scale' to activate this skill!",
+        "description": "When attacking, if equipped with Sun-Devourer Scorpion of S quality, gain extra Increase Damage; if equipped with Flaming Tiger of S quality, gain extra Speed.",
+        "name": "Uncertainty"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 161001,
+        "starLimit": 5,
+        "active_info": "Use a 'War Horn' to activate this skill!",
+        "description": "When attacking, if you have more than 3 troops, they will get extra actions in the first 3 rounds of the battle (randomly assigned)",
+        "name": "Fate"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 162001,
+        "starLimit": 5,
+        "active_info": "Use a 'Mask' to activate this skill!",
+        "description": "When attacking, if the battle takes place during the day, the enemy’s first attack each round cannot hit you, lasting N round(s).",
+        "name": "Prophecy"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 163001,
+        "starLimit": 5,
+        "active_info": "Use a 'War Horn' to activate this skill!",
+        "description": "When the troop is attacked or counterattacks, regardless of whether they take damage, they gain Increase Damage and Speed (doubled when attacking). The effect can stack up to N times. When attacking, whenever one troop is down, all remaining troops become invincible for the next round, up to N times.",
+        "name": "Avenger"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 164001,
+        "starLimit": 5,
+        "active_info": "Use a 'War Horn' to activate this skill!",
+        "description": "For the first N rounds, all troops (excluding Scouts) whose numbers exceed a certain percentage at the start of each round can take 1 additional action during their turn and ignore counterattacks.",
+        "name": "Golden Apple"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 2,
+        "id": 165001,
+        "starLimit": 5,
+        "active_info": "Use a 'Scale' to activate this skill!",
+        "description": "As an Official, all your troops gain Adding Damage and Increase Speed. For each star, this effect increases by 30%. For attacking troops, this effect is further doubled.",
+        "name": "Pride"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 2,
+        "id": 166001,
+        "starLimit": 5,
+        "active_info": "Use a 'War Horn' to activate this skill!",
+        "description": "When attacking sealed units, deal additional damage, further increased for every 100 points of Wisdom.",
+        "name": "Shatter Seal"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 2,
+        "id": 167001,
+        "starLimit": 5,
+        "active_info": "Use a 'Mask' to activate this skill!",
+        "description": "During the first N rounds of battle, if your attacks or counterattacks deal no actual damage to the target, the target will be sealed for 1 round.",
+        "name": "Severed Limb"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 2,
+        "id": 168001,
+        "starLimit": 5,
+        "active_info": "Use a 'Scale' to activate this skill!",
+        "description": "Each 10-star Epic Hero you own, excluding those that were caught or recruited, grants all troops Adding Damage and Reduce Hurt. This effect stacks up to 5 × Sibyl's star level.",
+        "name": "Spokesperson"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 169001,
+        "starLimit": 5,
+        "active_info": "Use a 'War Horn' to activate this skill!",
+        "description": "During the first 3 rounds, enemy troops have a chance to enter the Aging state. Troops in the Aging state have reduced Speed and Dodge Rate, and cannot be immune to damage. When attacking, Aging can instead be applied during the first 5 rounds of battle.",
+        "name": "Aging"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 2,
+        "id": 170001,
+        "starLimit": 5,
+        "active_info": "Use a 'Scale' to activate this skill!",
+        "description": "As an Official, increase all base attributes. Each idle Legendary Hero in that city's villa additionally increases Agrippa's base attributes by 1%.",
+        "name": "Battle Overseer"
+      },
+      {
+        "genWeight": 50,
+        "heroType": 1,
+        "id": 171001,
+        "starLimit": 5,
+        "active_info": "Use a 'War Horn' to activate this skill!",
+        "description": "When attacking, if equipped with Venom Lizard of S quality, gain extra Adding Damage and reduce the enemy's Reduce Hurt; if equipped with Icefield Mammoth of S quality, gain extra Speed and reduce the enemy's Speed.",
+        "name": "Venomous Winter"
+      }
+    ],
+    "cfgTechnic": [
+      {
+        "tid": 1,
+        "description": "After each upgrade, Food production will increase by 10%.",
+        "name": "Agriculture"
+      },
+      {
+        "tid": 2,
+        "description": "Wood production will increase by 10% each time you upgrade this skill.",
+        "name": "Logging"
+      },
+      {
+        "tid": 3,
+        "description": "After each upgrade, Stone production will increase by 10%.",
+        "name": "Mining"
+      },
+      {
+        "tid": 4,
+        "description": "Iron production will increase by 10% each time you upgrade this skill.",
+        "name": "Smelting"
+      },
+      {
+        "tid": 5,
+        "description": "Each upgrade will increase your manufacturing speed by 10%.",
+        "name": "Manufacturing"
+      },
+      {
+        "tid": 6,
+        "description": "Every time you upgrade, the number of troops your Heroes' Leadership will affect will increase by 10%. The population they can effectively govern will also increase by 10%.",
+        "name": "Leadership"
+      },
+      {
+        "tid": 7,
+        "description": "The higher your level, the more detailed information you'll receive from your Scouts.",
+        "name": "Scouting"
+      },
+      {
+        "tid": 8,
+        "description": "Every time you upgrade this skill, your troop training speed will increase by 10%.",
+        "name": "Training"
+      },
+      {
+        "tid": 9,
+        "description": "After each upgrade, your troops' Attack will increase by 5%.",
+        "name": "Attack"
+      },
+      {
+        "tid": 10,
+        "description": "Each upgrade will increase your troops' Defense by 5%.",
+        "name": "Defense"
+      },
+      {
+        "tid": 11,
+        "description": "Each time you upgrade, your troops' load capacity will increase by 10%",
+        "name": "Logistics"
+      },
+      {
+        "tid": 12,
+        "description": "After each upgrade, the marching speed of your infantry troops will increase by 10%.",
+        "name": "Marching"
+      },
+      {
+        "tid": 13,
+        "description": "Every time you upgrade this skill, the speed of your cavalry and equipment will increase by 5%. ",
+        "name": "Riding"
+      },
+      {
+        "tid": 14,
+        "description": "Each upgrade will increase your long-range troops' range by 5%.",
+        "name": "Marksmanship"
+      },
+      {
+        "tid": 15,
+        "description": "Each upgrade will increase the storage limits of your Farms, Sawmills, Quarries, Mines and Storehouses by 10%",
+        "name": "Storage"
+      },
+      {
+        "tid": 16,
+        "description": "Each upgrade will increase your troops' HP by 5%. ",
+        "name": "Endurance"
+      },
+      {
+        "tid": 17,
+        "description": "After each upgrade, the construction speed of buildings and fortifications will increase by 10%.",
+        "name": "Construction"
+      },
+      {
+        "tid": 18,
+        "description": "After each upgrade, the strength of your walls and Fortifications will increase by 10%. ",
+        "name": "Fortification"
+      },
+      {
+        "tid": 19,
+        "description": "Every time you upgrade this skill, the recovery rate of your Fortifications will increase by 5%.",
+        "name": "Maintenance"
+      },
+      {
+        "tid": 20,
+        "description": "Each upgrade will reduce the protective ability of your opponents' Storehouses by 3%. ",
+        "name": "Plundering"
+      },
+      {
+        "tid": 21,
+        "description": "Each level Increases Recall speed by 20%",
+        "name": "Preventing desertion"
+      }
+    ],
+    "cfgTrick": [
+      {
+        "cost": 2,
+        "id": 1,
+        "usetype": 0,
+        "description": "The number of troops in the city will be shown to be 5-10 times the true amount. This will deceive enemy scouts. For every 1 Wisdom point your Hero has, the effect will last for 1 minute. Use consecutively to prolong the effect.",
+        "manual": "This strategy can only be used in your current city. ",
+        "name": "Ghost Army"
+      },
+      {
+        "cost": 2,
+        "id": 2,
+        "usetype": 0,
+        "description": "After using this strategy, the number of troops in the city will be shown to be only 10%-20% of the real figure. This will deceive enemy scouts. For every 1 Wisdom point your Hero has, the effect will last for 1 minute. Use consecutively to prolong the effect.",
+        "manual": "This strategy can only be used in your current city. ",
+        "name": "Empty City"
+      },
+      {
+        "cost": 2,
+        "id": 3,
+        "usetype": 0,
+        "description": "After using this strategy, the city's resources will be shown to be 5-10 times the real amount. For every 1 Wisdom point your Hero has, the effect will last for 1 minute. Use consecutively to prolong the effect. ",
+        "manual": "This strategy can only be used in your current city. ",
+        "name": "Lure"
+      },
+      {
+        "cost": 2,
+        "id": 4,
+        "usetype": 0,
+        "description": "The city's resources will be shown to be only 10%-20% of the real amount. For every 1 Wisdom point your Hero has, the effect will last for 1 minute. Use consecutively to prolong the effect. ",
+        "manual": "This strategy can only be used in your current city. ",
+        "name": "Bluff"
+      },
+      {
+        "cost": 15,
+        "id": 6,
+        "usetype": 1,
+        "description": "Use this strategy to instantly reduce the morale of the target city's people. For every 10 Wisdom points your hero has, enemy Morale will be reduced by 1 points. Can reduce 70 points morale maximum.Thisstrategy will not be effective on the same enemy if used again within 24 hours",
+        "manual": "This strategy can only be used on an enemy city.",
+        "name": "Demoralize"
+      },
+      {
+        "cost": 20,
+        "id": 7,
+        "usetype": 1,
+        "description": "After using this strategy, the loyalty of one of your enemy's Heroes will be reduced. For every 10 Wisdom points your Hero has, enemy loyalty will be reduced by 1 point. The lowest it can reduced to is 0. This strategy will not be effective on the same Hero if used again within 24 hours. ",
+        "manual": "This strategy can only be used on an enemy city.",
+        "name": "Seeds of Dissent"
+      },
+      {
+        "cost": 10,
+        "id": 9,
+        "usetype": 1,
+        "description": "After using this strategy, you will immediately enter a state of war with the target. For every 1 Wisdom point your Hero has, the effect will last for 1 minute. At the same time, your Prestige will reduced. This strategy will not be effective on the same enemy if used again within 6 hours. ",
+        "manual": "This strategy can only be used on an enemy city.",
+        "name": "Surprise Attack"
+      },
+      {
+        "cost": 10,
+        "id": 11,
+        "usetype": 3,
+        "description": "By successfully trapping an enemy army, marching time will be extended and the army cannot be recalled until the end of the attack. The extension in time will be determined by their hero wisdom, with every ten hero wisdom points equating to another minute of marching time. The army can then not be trapped for six hours.",
+        "manual": "This strategy can be used in Enemy Alert.",
+        "name": "Ambush"
+      },
+      {
+        "cost": 12,
+        "id": 13,
+        "usetype": 2,
+        "description": "This strategy will speed up your troops' progress and reduce their marching time. For every 1 Wisdom point your Hero has, the troops' marching speed will be increased by 2%. This strategy can't be used on the same troops again within 1 hour. ",
+        "manual": "You can implement this Strategy on the Troop Details menu when your troops are marching. ",
+        "name": "Long-Range Raid"
+      },
+      {
+        "cost": 50,
+        "id": 14,
+        "usetype": 1,
+        "description": "Each time you successfully occupy a city, the Morale of the people will decline by 5. For 1 Wisdom point, the effect will be sustained for 1 minute. This won't be effective on the same target again for 6 hours. ",
+        "manual": "This Strategy can only be used against County Cities and normal NPC cities.",
+        "name": "Morale Crusher"
+      },
+      {
+        "cost": 50,
+        "id": 15,
+        "usetype": 1,
+        "description": "Each time you successfully occupy a city, the Discontent of the people will increase by 20. For 1 Wisdom point, the effect will be sustained for 1 minute. This won't be effective on the same target again for 6 hours. ",
+        "manual": "This Strategy can only be used against County Cities and normal NPC cities.",
+        "name": "Spark of Discontent"
+      },
+      {
+        "cost": 50,
+        "id": 16,
+        "usetype": 1,
+        "description": "Once successful, your enemy will be unable to call in allied reinforcements to the city. The duration of this is determined by the difference between the heroes' wisdom, with every two points of difference equating to one minute. As well as this, the city cannot be trapped again for another 24 hours.\n* reinforcements already present in the city will not be affected\n* reinforcements who have already gone into battle will be not be affected",
+        "manual": "Strategies should only be used against enemy cities. ",
+        "name": "Isolated "
+      },
+      {
+        "cost": 200,
+        "id": 17,
+        "usetype": 1,
+        "description": "The Love Goddess Descent reduces the enemy population by 10% (Every 50 difference between 2 heroes' wisdom, effects will either increase or decrease by 1%, at the highest by 20% and at lowest by 5%), moreover the 20% of the population that was reduced will join the city of the Venus. This will not effect the same target again for another 8 hours",
+        "manual": "This scheme can only be used on enemis of the city.",
+        "name": "Love Goddess Descent"
+      },
+      {
+        "cost": 25,
+        "id": 18,
+        "usetype": 1,
+        "description": "Use this strategy on players who have employed Peace Cards or Vacation Orders, the remaining time of those cards can be checked.  If the Watch Tower level of the opponent’s city is lower than yours, then the opponent will not be able to detect your activity.",
+        "manual": "This scheme can only be used on enemies of the city.",
+        "name": "Begin Detection"
+      },
+      {
+        "cost": 50,
+        "id": 19,
+        "usetype": 1,
+        "description": "After using this strategy, you can know the time when the enemy can use peace card. When the level of enemy's Beacon tower is lower then ours, the enemy can not notice our action.",
+        "manual": "This strategy can only be used to enemy's city.",
+        "name": "Power of Insight"
+      },
+      {
+        "cost": 50,
+        "id": 20,
+        "usetype": 1,
+        "description": "After using this strategy, the goal city can not change the official hero for 30 minutes. This strategy can be used every 8 hours, one city can not be the goal again in 24 hours.",
+        "manual": "The strategy can only be used to enemy's city",
+        "name": "provoke"
+      },
+      {
+        "cost": 100,
+        "id": 21,
+        "usetype": 1,
+        "description": "Use it to let the troops in this city suffer extra real damage while being attacked, the amount of the damage equal to the 5% of the enemy's hp, it lasts for 30 minutes. CD 8 hours, each player only suffer once in 24 hours.",
+        "manual": "This strategy can only be used towards enemy's city.",
+        "name": "Burn Out"
+      },
+      {
+        "cost": 30,
+        "id": 22,
+        "usetype": 1,
+        "description": "Use this and obtain the coordinates after moving cities. This will persist for 60 minutes. This can be used once every 24 hours, once the enemy has been affected by its effect, it cannot be used for the next 8 hours",
+        "manual": "This scheme can only be used on enemies of the city.",
+        "name": "Death Stare"
+      },
+      {
+        "cost": 200,
+        "id": 23,
+        "usetype": 1,
+        "description": "Once used 3% of the soldiers in the targeted city will be wounded (each will differ by 100 in Intelligence, effects can increase or decrease by 0.5%, the most the can fluctuate by is 5%, the lowest is 1%) direct mutiny causes death, total number will not exceed 50000, the city cannot be hit again within 48 hours",
+        "manual": "This scheme can only be used on enemies of the city.",
+        "name": "Plot"
+      },
+      {
+        "cost": 10,
+        "id": 24,
+        "usetype": 0,
+        "description": "Use this and the next dispatch within 12 hours will increase troop capacity by 20% and all troops injured from battle will recover. This can be used only once every 24 hours.\n*This effect is not limited to only the current city, but can effect all cities\n*Injured Troops Recovery only works on attackers",
+        "manual": "This strategy can only be used on cities of our side.",
+        "name": "High Morale"
+      },
+      {
+        "cost": 50,
+        "id": 25,
+        "usetype": 1,
+        "description": "After using this strategy, remove enemy city's immunity to Isolate, cooldown is 168 hours.",
+        "manual": "This strategy can only be used to enemy's city.",
+        "name": "Belligerence"
+      },
+      {
+        "cost": 50,
+        "id": 26,
+        "usetype": 1,
+        "description": "Use this and the target city will encounter natural disaster for the following 3 hours, with each natural disaster reducing the population of the affected city by 5%, for every 200 Wisdom points, reduce the population by extra 1%. This strategy won't be effective on the same target again for 48 hours. ",
+        "manual": "This strategy can only be used against enemy cities. ",
+        "name": "Retribution"
+      },
+      {
+        "cost": 100,
+        "id": 27,
+        "usetype": 1,
+        "description": "After use, if the target city is attacked within the next 1 hour and the battle occurs at night (server time between 18:00-6:00), the Reduce Hurt of the defending troops is reduced by 20% and the Wounded rate is reduced by 30%. Every 10 Wisdom points extend this effect by 1 minute. A city that has been tricked cannot be tricked again within 48 hours.\n*The same effects will not stack.",
+        "manual": "This scheme can only be used on enemies of the city.",
+        "name": "Night Assault"
+      },
+      {
+        "cost": 50,
+        "id": 28,
+        "usetype": 1,
+        "description": "After using this strategy, the target city can not move within 1 hour, and all troops, whether they were originally inside the city or moved in later on, cannot escape from the city. For every 10 Wisdom points your Hero has, the effect will extend for 1 minute. This strategy will not be effective on the same enemy if used again within 48 hours. ",
+        "manual": "This strategy can only be used on an enemy city.",
+        "name": "War Caller"
+      },
+      {
+        "cost": 100,
+        "id": 29,
+        "usetype": 1,
+        "description": "After use, each time the target city is attacked within the next 1 hour, the Reduce Hurt of the defending troops is reduced by 8% and the Wounded rate is reduced by 12%, with the effect stacking up to 3 times. Every 10 Wisdom points extend the effect by 1 minute. A city that has been tricked cannot be tricked again within 72 hours. \n*The same effects will not stack.",
+        "manual": "This scheme can only be used on enemies of the city.",
+        "name": "Focus"
+      },
+      {
+        "cost": 20,
+        "id": 30,
+        "usetype": 2,
+        "description": "After use, each Wildland you occupy (up to a maximum effective number of 10% of your Strategy) will provide your troops with a 0.5% Increase Hurt and reduce enemy troop's Wounded rate by 0.2%. This strategy will not be effective if used again",
+        "manual": "You can implement this Strategy on the Troop Details menu when your troops are marching. ",
+        "name": "Wildland Lord"
+      },
+      {
+        "cost": 100,
+        "id": 31,
+        "usetype": 0,
+        "description": "When used, your next battle within 12 hours will grant your troops +15% Speed and increase enemy death rate by 5%. For every 100 points of the Official’s Intelligence, each effect is increased by an additional 1%. Can be used once every 48 hours.\n*The effect applies to all cities, not just the current one.",
+        "manual": "This scheme can only be used on the city your troops currently occupy.",
+        "name": "Master Mind"
+      },
+      {
+        "cost": 50,
+        "id": 32,
+        "usetype": 2,
+        "description": "During this battle, all enemy ranged troops are forced to advance for 4 rounds. This strategy will not be effective if used again.",
+        "manual": "You can implement this Strategy on the Troop Details menu when your troops are marching.",
+        "name": "Promise"
+      }
+    ],
+    "cfgUnionTechnic": [],
+    "cfgVipPrivilegeList": [
+      {
+        "effectValue": 10,
+        "id": 1,
+        "level": 1,
+        "type": 12
+      },
+      {
+        "effectValue": 10,
+        "id": 2,
+        "level": 1,
+        "type": 13
+      },
+      {
+        "effectValue": 10,
+        "id": 3,
+        "level": 1,
+        "type": 14
+      },
+      {
+        "effectValue": 10,
+        "id": 4,
+        "level": 1,
+        "type": 15
+      },
+      {
+        "effectValue": 10,
+        "id": 5,
+        "level": 1,
+        "type": 16
+      },
+      {
+        "effectValue": 10,
+        "id": 6,
+        "level": 1,
+        "type": 17
+      },
+      {
+        "effectValue": 20,
+        "id": 7,
+        "level": 2,
+        "type": 12
+      },
+      {
+        "effectValue": 20,
+        "id": 8,
+        "level": 2,
+        "type": 13
+      },
+      {
+        "effectValue": 20,
+        "id": 9,
+        "level": 2,
+        "type": 14
+      },
+      {
+        "effectValue": 20,
+        "id": 10,
+        "level": 2,
+        "type": 15
+      },
+      {
+        "effectValue": 20,
+        "id": 11,
+        "level": 2,
+        "type": 16
+      },
+      {
+        "effectValue": 20,
+        "id": 12,
+        "level": 2,
+        "type": 17
+      },
+      {
+        "effectValue": 10,
+        "id": 13,
+        "level": 2,
+        "type": 18
+      },
+      {
+        "effectValue": 5,
+        "id": 14,
+        "level": 2,
+        "type": 19
+      },
+      {
+        "effectValue": 5,
+        "id": 15,
+        "level": 2,
+        "type": 23
+      },
+      {
+        "effectValue": 5,
+        "id": 16,
+        "level": 3,
+        "type": 9
+      },
+      {
+        "effectValue": 2,
+        "id": 17,
+        "level": 3,
+        "type": 10
+      },
+      {
+        "effectValue": 30,
+        "id": 18,
+        "level": 3,
+        "type": 12
+      },
+      {
+        "effectValue": 30,
+        "id": 19,
+        "level": 3,
+        "type": 13
+      },
+      {
+        "effectValue": 30,
+        "id": 20,
+        "level": 3,
+        "type": 14
+      },
+      {
+        "effectValue": 30,
+        "id": 21,
+        "level": 3,
+        "type": 15
+      },
+      {
+        "effectValue": 30,
+        "id": 22,
+        "level": 3,
+        "type": 16
+      },
+      {
+        "effectValue": 30,
+        "id": 23,
+        "level": 3,
+        "type": 17
+      },
+      {
+        "effectValue": 15,
+        "id": 24,
+        "level": 3,
+        "type": 18
+      },
+      {
+        "effectValue": 10,
+        "id": 25,
+        "level": 3,
+        "type": 19
+      },
+      {
+        "effectValue": 10,
+        "id": 26,
+        "level": 3,
+        "type": 23
+      },
+      {
+        "effectValue": 4,
+        "id": 27,
+        "level": 4,
+        "type": 5
+      },
+      {
+        "effectValue": 2,
+        "id": 28,
+        "level": 4,
+        "type": 8
+      },
+      {
+        "effectValue": 10,
+        "id": 29,
+        "level": 4,
+        "type": 9
+      },
+      {
+        "effectValue": 4,
+        "id": 30,
+        "level": 4,
+        "type": 10
+      },
+      {
+        "effectValue": 40,
+        "id": 31,
+        "level": 4,
+        "type": 12
+      },
+      {
+        "effectValue": 40,
+        "id": 32,
+        "level": 4,
+        "type": 13
+      },
+      {
+        "effectValue": 40,
+        "id": 33,
+        "level": 4,
+        "type": 14
+      },
+      {
+        "effectValue": 40,
+        "id": 34,
+        "level": 4,
+        "type": 15
+      },
+      {
+        "effectValue": 40,
+        "id": 35,
+        "level": 4,
+        "type": 16
+      },
+      {
+        "effectValue": 40,
+        "id": 36,
+        "level": 4,
+        "type": 17
+      },
+      {
+        "effectValue": 20,
+        "id": 37,
+        "level": 4,
+        "type": 18
+      },
+      {
+        "effectValue": 15,
+        "id": 38,
+        "level": 4,
+        "type": 19
+      },
+      {
+        "effectValue": 15,
+        "id": 39,
+        "level": 4,
+        "type": 23
+      },
+      {
+        "effectValue": 5,
+        "id": 40,
+        "level": 5,
+        "type": 1
+      },
+      {
+        "effectValue": 5,
+        "id": 41,
+        "level": 5,
+        "type": 4
+      },
+      {
+        "effectValue": 8,
+        "id": 42,
+        "level": 5,
+        "type": 5
+      },
+      {
+        "effectValue": 4,
+        "id": 43,
+        "level": 5,
+        "type": 8
+      },
+      {
+        "effectValue": 15,
+        "id": 44,
+        "level": 5,
+        "type": 9
+      },
+      {
+        "effectValue": 6,
+        "id": 45,
+        "level": 5,
+        "type": 10
+      },
+      {
+        "effectValue": 50,
+        "id": 46,
+        "level": 5,
+        "type": 12
+      },
+      {
+        "effectValue": 50,
+        "id": 47,
+        "level": 5,
+        "type": 13
+      },
+      {
+        "effectValue": 50,
+        "id": 48,
+        "level": 5,
+        "type": 14
+      },
+      {
+        "effectValue": 50,
+        "id": 49,
+        "level": 5,
+        "type": 15
+      },
+      {
+        "effectValue": 50,
+        "id": 50,
+        "level": 5,
+        "type": 16
+      },
+      {
+        "effectValue": 50,
+        "id": 51,
+        "level": 5,
+        "type": 17
+      },
+      {
+        "effectValue": 25,
+        "id": 52,
+        "level": 5,
+        "type": 18
+      },
+      {
+        "effectValue": 20,
+        "id": 53,
+        "level": 5,
+        "type": 19
+      },
+      {
+        "effectValue": 20,
+        "id": 54,
+        "level": 5,
+        "type": 23
+      },
+      {
+        "effectValue": 10,
+        "id": 55,
+        "level": 6,
+        "type": 1
+      },
+      {
+        "effectValue": 10,
+        "id": 56,
+        "level": 6,
+        "type": 4
+      },
+      {
+        "effectValue": 12,
+        "id": 57,
+        "level": 6,
+        "type": 5
+      },
+      {
+        "effectValue": 6,
+        "id": 58,
+        "level": 6,
+        "type": 8
+      },
+      {
+        "effectValue": 20,
+        "id": 59,
+        "level": 6,
+        "type": 9
+      },
+      {
+        "effectValue": 8,
+        "id": 60,
+        "level": 6,
+        "type": 10
+      },
+      {
+        "effectValue": 1,
+        "id": 61,
+        "level": 6,
+        "type": 11
+      },
+      {
+        "effectValue": 60,
+        "id": 62,
+        "level": 6,
+        "type": 12
+      },
+      {
+        "effectValue": 60,
+        "id": 63,
+        "level": 6,
+        "type": 13
+      },
+      {
+        "effectValue": 60,
+        "id": 64,
+        "level": 6,
+        "type": 14
+      },
+      {
+        "effectValue": 60,
+        "id": 65,
+        "level": 6,
+        "type": 15
+      },
+      {
+        "effectValue": 60,
+        "id": 66,
+        "level": 6,
+        "type": 16
+      },
+      {
+        "effectValue": 60,
+        "id": 67,
+        "level": 6,
+        "type": 17
+      },
+      {
+        "effectValue": 30,
+        "id": 68,
+        "level": 6,
+        "type": 18
+      },
+      {
+        "effectValue": 25,
+        "id": 69,
+        "level": 6,
+        "type": 19
+      },
+      {
+        "effectValue": 10,
+        "id": 70,
+        "level": 6,
+        "type": 21
+      },
+      {
+        "effectValue": 25,
+        "id": 71,
+        "level": 6,
+        "type": 23
+      },
+      {
+        "effectValue": 15,
+        "id": 72,
+        "level": 7,
+        "type": 1
+      },
+      {
+        "effectValue": 5,
+        "id": 73,
+        "level": 7,
+        "type": 3
+      },
+      {
+        "effectValue": 15,
+        "id": 74,
+        "level": 7,
+        "type": 4
+      },
+      {
+        "effectValue": 16,
+        "id": 75,
+        "level": 7,
+        "type": 5
+      },
+      {
+        "effectValue": 8,
+        "id": 76,
+        "level": 7,
+        "type": 8
+      },
+      {
+        "effectValue": 25,
+        "id": 77,
+        "level": 7,
+        "type": 9
+      },
+      {
+        "effectValue": 10,
+        "id": 78,
+        "level": 7,
+        "type": 10
+      },
+      {
+        "effectValue": 1,
+        "id": 79,
+        "level": 7,
+        "type": 11
+      },
+      {
+        "effectValue": 70,
+        "id": 80,
+        "level": 7,
+        "type": 12
+      },
+      {
+        "effectValue": 70,
+        "id": 81,
+        "level": 7,
+        "type": 13
+      },
+      {
+        "effectValue": 70,
+        "id": 82,
+        "level": 7,
+        "type": 14
+      },
+      {
+        "effectValue": 70,
+        "id": 83,
+        "level": 7,
+        "type": 15
+      },
+      {
+        "effectValue": 70,
+        "id": 84,
+        "level": 7,
+        "type": 16
+      },
+      {
+        "effectValue": 70,
+        "id": 85,
+        "level": 7,
+        "type": 17
+      },
+      {
+        "effectValue": 35,
+        "id": 86,
+        "level": 7,
+        "type": 18
+      },
+      {
+        "effectValue": 30,
+        "id": 87,
+        "level": 7,
+        "type": 19
+      },
+      {
+        "effectValue": 15,
+        "id": 88,
+        "level": 7,
+        "type": 21
+      },
+      {
+        "effectValue": 30,
+        "id": 89,
+        "level": 7,
+        "type": 23
+      },
+      {
+        "effectValue": 20,
+        "id": 90,
+        "level": 8,
+        "type": 1
+      },
+      {
+        "effectValue": 10,
+        "id": 91,
+        "level": 8,
+        "type": 3
+      },
+      {
+        "effectValue": 20,
+        "id": 92,
+        "level": 8,
+        "type": 4
+      },
+      {
+        "effectValue": 20,
+        "id": 93,
+        "level": 8,
+        "type": 5
+      },
+      {
+        "effectValue": 5,
+        "id": 94,
+        "level": 8,
+        "type": 6
+      },
+      {
+        "effectValue": 5,
+        "id": 95,
+        "level": 8,
+        "type": 7
+      },
+      {
+        "effectValue": 10,
+        "id": 96,
+        "level": 8,
+        "type": 8
+      },
+      {
+        "effectValue": 30,
+        "id": 97,
+        "level": 8,
+        "type": 9
+      },
+      {
+        "effectValue": 12,
+        "id": 98,
+        "level": 8,
+        "type": 10
+      },
+      {
+        "effectValue": 1,
+        "id": 99,
+        "level": 8,
+        "type": 11
+      },
+      {
+        "effectValue": 80,
+        "id": 100,
+        "level": 8,
+        "type": 12
+      },
+      {
+        "effectValue": 80,
+        "id": 101,
+        "level": 8,
+        "type": 13
+      },
+      {
+        "effectValue": 80,
+        "id": 102,
+        "level": 8,
+        "type": 14
+      },
+      {
+        "effectValue": 80,
+        "id": 103,
+        "level": 8,
+        "type": 15
+      },
+      {
+        "effectValue": 80,
+        "id": 104,
+        "level": 8,
+        "type": 16
+      },
+      {
+        "effectValue": 80,
+        "id": 105,
+        "level": 8,
+        "type": 17
+      },
+      {
+        "effectValue": 40,
+        "id": 106,
+        "level": 8,
+        "type": 18
+      },
+      {
+        "effectValue": 35,
+        "id": 107,
+        "level": 8,
+        "type": 19
+      },
+      {
+        "effectValue": 20,
+        "id": 108,
+        "level": 8,
+        "type": 21
+      },
+      {
+        "effectValue": 10,
+        "id": 109,
+        "level": 8,
+        "type": 22
+      },
+      {
+        "effectValue": 35,
+        "id": 110,
+        "level": 8,
+        "type": 23
+      },
+      {
+        "effectValue": 25,
+        "id": 111,
+        "level": 9,
+        "type": 1
+      },
+      {
+        "effectValue": 10,
+        "id": 112,
+        "level": 9,
+        "type": 2
+      },
+      {
+        "effectValue": 15,
+        "id": 113,
+        "level": 9,
+        "type": 3
+      },
+      {
+        "effectValue": 25,
+        "id": 114,
+        "level": 9,
+        "type": 4
+      },
+      {
+        "effectValue": 24,
+        "id": 115,
+        "level": 9,
+        "type": 5
+      },
+      {
+        "effectValue": 10,
+        "id": 116,
+        "level": 9,
+        "type": 6
+      },
+      {
+        "effectValue": 10,
+        "id": 117,
+        "level": 9,
+        "type": 7
+      },
+      {
+        "effectValue": 12,
+        "id": 118,
+        "level": 9,
+        "type": 8
+      },
+      {
+        "effectValue": 35,
+        "id": 119,
+        "level": 9,
+        "type": 9
+      },
+      {
+        "effectValue": 14,
+        "id": 120,
+        "level": 9,
+        "type": 10
+      },
+      {
+        "effectValue": 1,
+        "id": 121,
+        "level": 9,
+        "type": 11
+      },
+      {
+        "effectValue": 90,
+        "id": 122,
+        "level": 9,
+        "type": 12
+      },
+      {
+        "effectValue": 90,
+        "id": 123,
+        "level": 9,
+        "type": 13
+      },
+      {
+        "effectValue": 90,
+        "id": 124,
+        "level": 9,
+        "type": 14
+      },
+      {
+        "effectValue": 90,
+        "id": 125,
+        "level": 9,
+        "type": 15
+      },
+      {
+        "effectValue": 90,
+        "id": 126,
+        "level": 9,
+        "type": 16
+      },
+      {
+        "effectValue": 90,
+        "id": 127,
+        "level": 9,
+        "type": 17
+      },
+      {
+        "effectValue": 45,
+        "id": 128,
+        "level": 9,
+        "type": 18
+      },
+      {
+        "effectValue": 40,
+        "id": 129,
+        "level": 9,
+        "type": 19
+      },
+      {
+        "effectValue": 25,
+        "id": 130,
+        "level": 9,
+        "type": 21
+      },
+      {
+        "effectValue": 15,
+        "id": 131,
+        "level": 9,
+        "type": 22
+      },
+      {
+        "effectValue": 40,
+        "id": 132,
+        "level": 9,
+        "type": 23
+      },
+      {
+        "effectValue": 30,
+        "id": 133,
+        "level": 10,
+        "type": 1
+      },
+      {
+        "effectValue": 20,
+        "id": 134,
+        "level": 10,
+        "type": 2
+      },
+      {
+        "effectValue": 20,
+        "id": 135,
+        "level": 10,
+        "type": 3
+      },
+      {
+        "effectValue": 30,
+        "id": 136,
+        "level": 10,
+        "type": 4
+      },
+      {
+        "effectValue": 28,
+        "id": 137,
+        "level": 10,
+        "type": 5
+      },
+      {
+        "effectValue": 15,
+        "id": 138,
+        "level": 10,
+        "type": 6
+      },
+      {
+        "effectValue": 15,
+        "id": 139,
+        "level": 10,
+        "type": 7
+      },
+      {
+        "effectValue": 14,
+        "id": 140,
+        "level": 10,
+        "type": 8
+      },
+      {
+        "effectValue": 40,
+        "id": 141,
+        "level": 10,
+        "type": 9
+      },
+      {
+        "effectValue": 16,
+        "id": 142,
+        "level": 10,
+        "type": 10
+      },
+      {
+        "effectValue": 1,
+        "id": 143,
+        "level": 10,
+        "type": 11
+      },
+      {
+        "effectValue": 100,
+        "id": 144,
+        "level": 10,
+        "type": 12
+      },
+      {
+        "effectValue": 100,
+        "id": 145,
+        "level": 10,
+        "type": 13
+      },
+      {
+        "effectValue": 100,
+        "id": 146,
+        "level": 10,
+        "type": 14
+      },
+      {
+        "effectValue": 100,
+        "id": 147,
+        "level": 10,
+        "type": 15
+      },
+      {
+        "effectValue": 100,
+        "id": 148,
+        "level": 10,
+        "type": 16
+      },
+      {
+        "effectValue": 100,
+        "id": 149,
+        "level": 10,
+        "type": 17
+      },
+      {
+        "effectValue": 50,
+        "id": 150,
+        "level": 10,
+        "type": 18
+      },
+      {
+        "effectValue": 50,
+        "id": 151,
+        "level": 10,
+        "type": 19
+      },
+      {
+        "effectValue": 30,
+        "id": 152,
+        "level": 10,
+        "type": 21
+      },
+      {
+        "effectValue": 20,
+        "id": 153,
+        "level": 10,
+        "type": 22
+      },
+      {
+        "effectValue": 50,
+        "id": 154,
+        "level": 10,
+        "type": 23
+      },
+      {
+        "effectValue": 1,
+        "id": 330,
+        "level": 10,
+        "type": 24
+      },
+      {
+        "effectValue": 1,
+        "id": 329,
+        "level": 9,
+        "type": 24
+      },
+      {
+        "effectValue": 1,
+        "id": 328,
+        "level": 8,
+        "type": 24
+      },
+      {
+        "effectValue": 1,
+        "id": 327,
+        "level": 7,
+        "type": 24
+      },
+      {
+        "effectValue": 1,
+        "id": 326,
+        "level": 6,
+        "type": 24
+      },
+      {
+        "effectValue": 1,
+        "id": 325,
+        "level": 5,
+        "type": 24
+      },
+      {
+        "effectValue": 1,
+        "id": 324,
+        "level": 4,
+        "type": 24
+      },
+      {
+        "effectValue": 30,
+        "id": 331,
+        "level": 11,
+        "type": 1
+      },
+      {
+        "effectValue": 30,
+        "id": 332,
+        "level": 11,
+        "type": 2
+      },
+      {
+        "effectValue": 20,
+        "id": 333,
+        "level": 11,
+        "type": 3
+      },
+      {
+        "effectValue": 30,
+        "id": 334,
+        "level": 11,
+        "type": 4
+      },
+      {
+        "effectValue": 32,
+        "id": 335,
+        "level": 11,
+        "type": 5
+      },
+      {
+        "effectValue": 15,
+        "id": 336,
+        "level": 11,
+        "type": 6
+      },
+      {
+        "effectValue": 15,
+        "id": 337,
+        "level": 11,
+        "type": 7
+      },
+      {
+        "effectValue": 16,
+        "id": 338,
+        "level": 11,
+        "type": 8
+      },
+      {
+        "effectValue": 40,
+        "id": 339,
+        "level": 11,
+        "type": 9
+      },
+      {
+        "effectValue": 18,
+        "id": 340,
+        "level": 11,
+        "type": 10
+      },
+      {
+        "effectValue": 1,
+        "id": 341,
+        "level": 11,
+        "type": 11
+      },
+      {
+        "effectValue": 110,
+        "id": 342,
+        "level": 11,
+        "type": 12
+      },
+      {
+        "effectValue": 110,
+        "id": 343,
+        "level": 11,
+        "type": 13
+      },
+      {
+        "effectValue": 110,
+        "id": 344,
+        "level": 11,
+        "type": 14
+      },
+      {
+        "effectValue": 110,
+        "id": 345,
+        "level": 11,
+        "type": 15
+      },
+      {
+        "effectValue": 110,
+        "id": 346,
+        "level": 11,
+        "type": 16
+      },
+      {
+        "effectValue": 110,
+        "id": 347,
+        "level": 11,
+        "type": 17
+      },
+      {
+        "effectValue": 55,
+        "id": 348,
+        "level": 11,
+        "type": 18
+      },
+      {
+        "effectValue": 60,
+        "id": 349,
+        "level": 11,
+        "type": 19
+      },
+      {
+        "effectValue": 35,
+        "id": 350,
+        "level": 11,
+        "type": 21
+      },
+      {
+        "effectValue": 25,
+        "id": 351,
+        "level": 11,
+        "type": 22
+      },
+      {
+        "effectValue": 60,
+        "id": 352,
+        "level": 11,
+        "type": 23
+      },
+      {
+        "effectValue": 1,
+        "id": 353,
+        "level": 11,
+        "type": 24
+      },
+      {
+        "effectValue": 10,
+        "id": 354,
+        "level": 11,
+        "type": 25
+      },
+      {
+        "effectValue": 35,
+        "id": 355,
+        "level": 12,
+        "type": 1
+      },
+      {
+        "effectValue": 40,
+        "id": 356,
+        "level": 12,
+        "type": 2
+      },
+      {
+        "effectValue": 20,
+        "id": 357,
+        "level": 12,
+        "type": 3
+      },
+      {
+        "effectValue": 30,
+        "id": 358,
+        "level": 12,
+        "type": 4
+      },
+      {
+        "effectValue": 36,
+        "id": 359,
+        "level": 12,
+        "type": 5
+      },
+      {
+        "effectValue": 20,
+        "id": 360,
+        "level": 12,
+        "type": 6
+      },
+      {
+        "effectValue": 20,
+        "id": 361,
+        "level": 12,
+        "type": 7
+      },
+      {
+        "effectValue": 18,
+        "id": 362,
+        "level": 12,
+        "type": 8
+      },
+      {
+        "effectValue": 45,
+        "id": 363,
+        "level": 12,
+        "type": 9
+      },
+      {
+        "effectValue": 20,
+        "id": 364,
+        "level": 12,
+        "type": 10
+      },
+      {
+        "effectValue": 1,
+        "id": 365,
+        "level": 12,
+        "type": 11
+      },
+      {
+        "effectValue": 120,
+        "id": 366,
+        "level": 12,
+        "type": 12
+      },
+      {
+        "effectValue": 120,
+        "id": 367,
+        "level": 12,
+        "type": 13
+      },
+      {
+        "effectValue": 120,
+        "id": 368,
+        "level": 12,
+        "type": 14
+      },
+      {
+        "effectValue": 120,
+        "id": 369,
+        "level": 12,
+        "type": 15
+      },
+      {
+        "effectValue": 120,
+        "id": 370,
+        "level": 12,
+        "type": 16
+      },
+      {
+        "effectValue": 120,
+        "id": 371,
+        "level": 12,
+        "type": 17
+      },
+      {
+        "effectValue": 60,
+        "id": 372,
+        "level": 12,
+        "type": 18
+      },
+      {
+        "effectValue": 70,
+        "id": 373,
+        "level": 12,
+        "type": 19
+      },
+      {
+        "effectValue": 40,
+        "id": 374,
+        "level": 12,
+        "type": 21
+      },
+      {
+        "effectValue": 30,
+        "id": 375,
+        "level": 12,
+        "type": 22
+      },
+      {
+        "effectValue": 70,
+        "id": 376,
+        "level": 12,
+        "type": 23
+      },
+      {
+        "effectValue": 1,
+        "id": 377,
+        "level": 12,
+        "type": 24
+      },
+      {
+        "effectValue": 15,
+        "id": 378,
+        "level": 12,
+        "type": 25
+      },
+      {
+        "effectValue": 1,
+        "id": 379,
+        "level": 12,
+        "type": 26
+      }
+    ]
+  },
+  "provenance": {
+    "database": "game_protocol_v2.db",
+    "selected_login_row": 4,
+    "successful_login_rows": [
+      4,
+      127,
+      317,
+      371,
+      533,
+      1570,
+      1942,
+      2484,
+      3018,
+      3848,
+      6662,
+      10026,
+      10310,
+      14828,
+      15288,
+      22958,
+      23711,
+      23724,
+      23743,
+      23840,
+      24228,
+      24658,
+      24834,
+      28035,
+      29699,
+      30824,
+      31154,
+      31222
+    ],
+    "catalog_variant_counts": {
+      "cfgBarracksLimitList": 1,
+      "cfgBuilding": 1,
+      "cfgDefence": 1,
+      "cfgHeroLevel": 1,
+      "cfgMonsterInfoList": 5,
+      "cfgSoldier": 1,
+      "cfgTalentInfoList": 1,
+      "cfgTechnic": 1,
+      "cfgTrick": 1,
+      "cfgUnionTechnic": 1,
+      "cfgVipPrivilegeList": 1
+    },
+    "monster_display_fixture": {
+      "selected_row": 4,
+      "matching_rows": [
+        4,
+        127,
+        317,
+        371,
+        533,
+        28035,
+        29699,
+        30824,
+        31154,
+        31222
+      ],
+      "note": "Fixed row 4 monster display catalog; other captured monster variants are not selected dynamically."
+    },
+    "native_file": "GhidraProjects/game_logic_output.c",
+    "native_login_refresh_lines": [
+      253901,
+      253905
+    ],
+    "note": "Static display/base configuration only; does not enable additional server-authoritative mutations."
+  }
+}

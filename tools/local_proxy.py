@@ -34,6 +34,9 @@ def main() -> None:
     if not path.is_file():
         parser.error("existing ewo-proxy is missing from new-set-up")
     sys.path.insert(0, str(path.parent))
+    # Apply the relay's recursive redactor to push tokens in local captures.
+    from game_protocol import _PRIVATE_KEYS
+    _PRIVATE_KEYS.update({"regid", "gcmregid"})
     spec = importlib.util.spec_from_file_location("ewo_local_proxy", path)
     assert spec and spec.loader
     proxy = importlib.util.module_from_spec(spec)

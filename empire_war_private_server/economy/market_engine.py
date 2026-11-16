@@ -132,7 +132,8 @@ class MarketEngine:
              json.dumps(frame), outcome, ret, total, int(simulated), int(tripped), consecutive))
 
     async def sell_to_user(self, user_id: int, city_id: int, request: dict[str, Any], *,
-                           frame_metadata: dict[str, int] | None = None) -> dict[str, Any]:
+                           frame_metadata: dict[str, int] | None = None,
+                           wire_city_id: int | None = None) -> dict[str, Any]:
         """Validate ownership first, then log and reject or commit one fixture sale.
 
         The Nth consecutive overflow in simulation mode is recorded, trips the
@@ -144,7 +145,8 @@ class MarketEngine:
         simulated = False
         async with self.resources._transaction() as db:
             await self._owned(db, user_id, city_id)
-            if type(request.get("cityId")) is not int or request["cityId"] != city_id:
+            expected = city_id if wire_city_id is None else wire_city_id
+            if type(request.get("cityId")) is not int or request["cityId"] != expected:
                 raise EconomyError(900102, "City is not owned by this session")
             state = await self._one(db, "SELECT * FROM market_research_state WHERE singleton=1")
             count, tripped = state["consecutive_overflows"], bool(state["breaker_tripped"])

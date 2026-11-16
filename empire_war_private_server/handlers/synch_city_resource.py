@@ -6,15 +6,14 @@ import time
 from typing import Any
 
 from ..auth.session_manager import Session
-from ..economy.resource_engine import EconomyError, ResourceEngine
+from ..economy.resource_engine import ResourceEngine
+from ..protocol.city_position import owned_city
 from ..economy.gameplay_engine import GameplayEngine
 
 
 async def synch_city_resource(request: dict[str, Any], session: Session,
                               engine: ResourceEngine, gameplay: GameplayEngine | None = None) -> dict[str, Any]:
-    city_id = request.get("cityId")
-    if type(city_id) is not int or city_id != session.city_id:
-        raise EconomyError(900102, "City is not owned by this session")
+    city_id = owned_city(request, session)
     if gameplay is not None:
         resource_wire = (await gameplay.snapshot(session.user_id, city_id))["resources"]
     else:

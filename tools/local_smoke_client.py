@@ -1,4 +1,4 @@
-"""Local login/sync check, with optional paid gameplay on a fresh synthetic city."""
+"""Local version/login/sync check, optionally exercising a fresh synthetic city."""
 
 from __future__ import annotations
 
@@ -14,7 +14,8 @@ from empire_war_private_server.network_isolation import install_loopback_guard
 from empire_war_private_server.protocol.frame_parser import FrameCodec
 
 
-async def check(config: ServerConfig, port: int, *, exercise_gameplay: bool = False) -> None:
+async def check(config: ServerConfig, port: int, *, exercise_gameplay: bool = False,
+                client_login: bool = False) -> None:
     codec = FrameCodec()
     reader, writer = await asyncio.open_connection("127.0.0.1", port)
     try:
@@ -27,9 +28,42 @@ async def check(config: ServerConfig, port: int, *, exercise_gameplay: bool = Fa
                 raise RuntimeError("local server did not return success")
             return frame.payload
 
+        version = await exchange({"type": "User", "action": "getServerVersion",
+                                  "marketId": 0, "packageChannel": "FT", "phoneOs": "android"})
+        assert version["version"] == 1719
+        assert version["marketApkUrl"] == "market://details?id=com.feelingtouch.empirewaronline"
+        print("PASS: captured Android version handshake succeeds before login.")
         login = await exchange({"type": "User", "action": "doLogin",
-            "passport": config.synthetic_passport, "password": config.synthetic_password,
-            "locale": "en_US", "phoneOs": "research", "serverId": "local", "version": 0})
+            "passport": "" if client_login else config.synthetic_passport,
+            "password": "" if client_login else config.synthetic_password,
+            "locale": "en_US", "phoneOs": "android" if client_login else "research",
+            "serverId": "local", "version": 0})
+        assert login["user"]["passport"] == config.synthetic_passport
+        if client_login:
+            print("PASS: client login maps to the synthetic account without using its supplied credentials.")
+            assert login["gameVersion"] == 1719
+            assert len(login["cfgSoldier"]) == 99 and len(login["cfgBuilding"]) == 20
+            city_id = login["city"]["cid"]
+            assert all(1 <= coord <= 500 for coord in divmod(city_id, 1000))
+            placement = await exchange({"type": "City", "action": "dummyChangePosition",
+                                        "userId": login["user"]["uid"]})
+            assert placement["targetCid"] == city_id
+            info = await exchange({"type": "User", "action": "getCityInfo", "cityId": city_id})
+            assert info["city"]["cid"] == info["memCityResource"]["cid"] == city_id
+            print("PASS: city position resolves and the client can load its owned city.")
+            for startup in (
+                {"type": "User", "action": "setUserPhoneInfo", "country": "local",
+                 "phoneOs": "android", "phoneModel": "synthetic emulator"},
+                {"type": "Mail", "action": "getUnreadCount"},
+                {"type": "Event", "action": "getApkUpgradeReward", "deviceType": "android",
+                 "packageChannel": "android", "version": 11520},
+                {"type": "Event", "action": "getLoginShowInfo"},
+                {"type": "Event", "action": "getQuestEvent"},
+                {"type": "Shop", "action": "getProductKeyList"},
+                {"type": "User", "action": "getPayInfo"},
+            ):
+                await exchange(startup)
+            print("PASS: complete static catalogs and seven synthetic startup responses are available.")
         cid = login["city"]["cid"]
         sync = await exchange({"type": "City", "action": "synchCityResource", "cityId": cid})
         assert login["memCityResource"] == sync["cityRes"]
@@ -72,13 +106,16 @@ def main() -> None:
     parser.add_argument("--port", type=int, help="1024 direct, or 9999 through a local-only proxy")
     parser.add_argument("--exercise-gameplay", action="store_true",
                         help="spend synthetic resources on a fresh Phase 2 city")
+    parser.add_argument("--client-login", action="store_true",
+                        help="test the opt-in login bridge using empty native account strings")
     args = parser.parse_args()
     config = ServerConfig.load(args.config)
     port = args.port if args.port is not None else config.port
     if not 1 <= port <= 65535:
         parser.error("port must be in 1..65535")
     install_loopback_guard()
-    asyncio.run(check(config, port, exercise_gameplay=args.exercise_gameplay))
+    asyncio.run(check(config, port, exercise_gameplay=args.exercise_gameplay,
+                      client_login=args.client_login))
 
 
 if __name__ == "__main__":

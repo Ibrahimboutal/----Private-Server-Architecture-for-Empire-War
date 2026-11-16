@@ -151,9 +151,14 @@ async def run(config: ServerConfig) -> None:
         market = MarketEngine(engine, simulate_int32_crash=config.simulate_int32_crash,
                               overflow_breaker_threshold=config.overflow_breaker_threshold,
                               simulation_delay_ms=config.simulation_delay_ms)
-    server = GameServer(config, PacketRouter(engine, sessions, gameplay, market))
+    credentials = ((config.synthetic_passport, config.synthetic_password)
+                   if config.synthetic_client_login else None)
+    server = GameServer(config, PacketRouter(engine, sessions, gameplay, market,
+                                            synthetic_credentials=credentials))
     port = await server.start()
     LOGGER.info("Research server listening on 127.0.0.1:%d; gameplay=%s", port, config.gameplay_scenario)
+    if config.synthetic_client_login:
+        LOGGER.info("Local client login bridge enabled; valid login packets select the synthetic research account")
     try:
         await server.serve_forever()
     finally:

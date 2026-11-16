@@ -10,42 +10,58 @@ from typing import Any
 from ..auth.session_manager import ConnectionContext, SessionManager
 from ..economy.resource_engine import EconomyError, ResourceEngine
 from ..economy.gameplay_engine import GameplayEngine
+from ..economy.client_catalog import load_client_catalog, merge_scenario_catalog
+from ..protocol.city_position import RESEARCH_MAP_CID, project_city_fields
+from .city_info import read_city_state
 
 
 async def do_login(request: dict[str, Any], context: ConnectionContext,
                    engine: ResourceEngine, sessions: SessionManager,
-                   gameplay: GameplayEngine | None = None) -> dict[str, Any]:
-    """Accept only seeded local credentials, returning no captured user values."""
+                   gameplay: GameplayEngine | None = None, *,
+                   synthetic_credentials: tuple[str, str] | None = None) -> dict[str, Any]:
+    """Log in locally; the opt-in client bridge always selects the seeded user.
+
+    Bridging is a local test policy, not an implementation of official account
+    authentication. Incoming account strings are validated, then discarded;
+    neither the response nor persistence receives those values. The caller
+    supplies configured synthetic credentials only when bridging is enabled.
+    """
     sessions.revoke(context.session_id)
     context.session_id = None
     passport, password = request.get("passport"), request.get("password")
-    if not isinstance(passport, str) or not isinstance(password, str):
+    # Native DoLoginRequest serializes strings even when no account string is
+    # populated. The local bridge discards them, so empty strings are valid in
+    # that mode. Strict authentication still requires nonempty credentials.
+    if (not isinstance(passport, str) or not isinstance(password, str)
+            or len(passport) > 128 or len(password) > 256):
+        raise EconomyError(900101, "Synthetic credentials required")
+    if synthetic_credentials is not None:
+        passport, password = synthetic_credentials
+    elif not passport or not password:
         raise EconomyError(900101, "Synthetic credentials required")
     identity = await engine.authenticate(passport, password)
     if identity is None:
         raise EconomyError(900101, "Invalid synthetic credentials")
     user_id, city_id = identity
-    resource = await engine.get_resources(user_id, city_id)
-    session = sessions.create(user_id, city_id)
+    map_cid = RESEARCH_MAP_CID if city_id == 1 and request.get("phoneOs") == "android" else None
+    session = sessions.create(user_id, city_id, map_city_id=map_cid)
     context.session_id = session.session_id
     # Every scalar in this shape was emptied by the offline fixture extractor.
     # These replacements are explicitly synthetic research fixture values.
     response = json.loads(files("empire_war_private_server").joinpath("data/login_shape.json").read_text(encoding="utf-8"))
     now_s = time.time_ns() // 1_000_000_000
-    response.update(type="User", action="doLogin", ret=0, memCityResource=resource.to_wire(),
+    response.update(type="User", action="doLogin", ret=0,
                     gameUUID=session.session_id, serverTime=now_s, gameTime=now_s)
     response["user"].update(uid=user_id, lastcid=city_id, name="Research User",
                             passport=passport, ip="127.0.0.1", locale="en_US")
-    response["city"].update(cid=city_id, uid=user_id, name="Research City")
-    response["cityList"] = [dict(response["city"], taketime=0)]
-    # Only explicit cost fields are available to the current emulator. Empty
-    # cfg/building/hero tables deliberately don't pretend full client readiness.
-    response["cfgSoldier"] = [dict(sid=sid, **{f"{name}Need": amount for name, amount in costs.items()})
-                              for sid, costs in sorted(engine.troop_costs.items())]
+    state, money = await read_city_state(session, engine, gameplay)
+    response.update(state)
+    # Native login refreshes ConfigManager before entering the city. Return
+    # the complete captured static catalog for those lookups; action handlers
+    # continue to enforce only supported capture-derived gameplay scenarios.
+    catalog = load_client_catalog()
     if gameplay is not None:
-        snapshot = await gameplay.snapshot(user_id, city_id)
-        response.update(gameplay.login_configuration())
-        response.update(memCityResource=snapshot["resources"], sysBuildings=snapshot["buildings"],
-                        sysCitySoldiers=snapshot["troops"], defaultBuildingQueue=1, maxBuildingQueue=1)
-        response["user"]["money"] = snapshot["money"]
-    return response
+        catalog = merge_scenario_catalog(catalog, gameplay.login_configuration())
+        response["user"]["money"] = money
+    response.update(catalog)
+    return project_city_fields(response, session)

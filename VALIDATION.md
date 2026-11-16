@@ -1,3 +1,157 @@
+# Client login and startup integration — 16 November 2026
+
+The subsequent actual-client trace passed the version check but received
+`doLogin ret=900101`: strict authentication expected the seeded local account.
+Added an explicitly configured client adapter that validates then discards the
+incoming account strings and selects only the synthetic account. The supplied
+`config.yaml` enables it; the library default remains strict. Malformed logins
+still revoke the previous session, and city ownership checks remain enforced.
+No HTTP account registration or official identity import was added.
+
+Login now includes the eleven reviewed static catalog tables and game version
+1719, instead of empty/incomplete catalogs. Added seven authenticated startup
+queries with captured wire shapes and empty synthetic mail/events/store data.
+No purchase or reward payout is enabled.
+
+Final regression command:
+
+```powershell
+.\.venv\Scripts\python.exe -m pytest -q
+```
+
+Result: **432 passed in 428.15 seconds**, no skips or failures. Tests cover
+strict-mode preservation, the opt-in bridge through the real CLI, no client
+credential persistence/echo, session revocation, city ownership, full catalogs
+compared with all 28 captured logins, static schema allowlists, startup wire
+shapes, real TCP login/startup/sync, and previous economy/market/proxy behavior.
+All 54 package/tool/test Python files parse under Python 3.11 grammar; execution
+used the existing Python 3.14 virtual environment. `git diff --check` passed.
+
+Deployment and live verification:
+
+- Verified the process owning `127.0.0.1:1024` and restarted only that private
+  server. Existing proxy and Android route remained running. Background-process
+  metadata and log paths are in `runtime/managed-server.json`.
+- `local_smoke_client.py --port 9999 --client-login` passed version handshake,
+  dummy-account mapping, full catalogs, all seven startup queries, and sync.
+- A dummy-account login sent from inside LDPlayer through owned NAT, ADB reverse
+  and the local proxy returned `ret=0`, Research User, synthetic passport, version
+  1719, 99 soldier entries and 20 building entries. No official endpoint was used
+  and the actual game was not launched or clicked by these probes.
+- The ADB diagnostic connection closes after its response, so its proxy
+  `transport ended (OSError)` line is not a failed login or process crash.
+
+Read-only crash/main/system log inspection during diagnosis found no matching
+Empire War crash marker, and the game process remained alive. The user's trace
+therefore establishes a rejected login/disconnection, not its asserted native
+crash mechanism. Actual city-screen rendering after the fix remains unverified;
+HTTP account/server discovery and registration are still outside this service.
+
+Follow-up native empty-string compatibility correction:
+
+The user's retry still received `Synthetic credentials required` at the
+adapter's input guard. Native login encoding permits empty account strings;
+those values are irrelevant to the configured synthetic identity. The adapter
+now accepts bounded empty strings while strict mode continues rejecting them.
+Null/non-string/over-limit fields still fail. The smoke client's `--client-login`
+now exercises empty strings rather than nonempty dummy strings.
+
+`pytest tests/test_client_login.py tests/test_cli.py -q`: **22 passed in 110.84
+seconds** after this correction. The 432-test full-suite result above preceded
+this small correction; these targeted checks exercise both login policies,
+actual CLI startup, and economy/market smoke paths. Python 3.11 grammar and diff
+checks passed for the correction.
+
+Reloaded only the verified private server, then observed that proxy ports
+9999/10001 and the Android reverse mapping had disappeared. Restored the local
+proxy after confirming its ports were free, then rebuilt the helper-owned
+Android route. The helper stopped only Empire War. Background proxy metadata
+is recorded in `runtime/managed-proxy.json`. The direct-server and restored-proxy
+empty-string smoke checks both passed all four stages.
+The final empty-string login probe from inside LDPlayer also passed over the
+restored route, returning Research User, `ret=0`, version 1719 and full catalogs.
+Empire War remained stopped after route restoration; city rendering still needs
+the user's next game launch. Neither the probe nor route helper launched it.
+
+# Client startup handshake fix — 16 November 2026
+
+The actual LDPlayer client reached the private server but received `900101` for
+`User/getServerVersion`, because the router required a session for every action
+except login. Read-only capture inspection established that this handshake
+precedes login and that all 28 recorded responses agree on version 1719 and the
+market URL. The public handler now returns that captured response for the
+observed Android/FT/market-0 profile without creating or renewing a session.
+
+Regression command:
+
+```powershell
+.\.venv\Scripts\python.exe -m pytest tests/test_startup.py tests/test_server.py tests/test_cli.py -q
+```
+
+Result: **47 passed in 183.85 seconds**. Coverage includes pre-login access,
+continued gameplay authentication, session preservation, unsupported platforms,
+invalid field types, captured startup ordering, and the version→login→sync
+sequence through actual mode 4 and mode 8 TCP frames. The real CLI smoke client
+now includes the version handshake. Changed Python sources parse under Python
+3.11 grammar; `git diff --check` passed.
+
+After tests passed, the exact private-server listener/process was verified and
+restarted with the fix, leaving the existing localhost proxy running. The new
+server's PID/log metadata is in `runtime/managed-server.json`. Live verification:
+
+- Updated smoke client through `127.0.0.1:9999`: version handshake, synthetic
+  login and resource synchronization all passed.
+- A version-only synthetic probe inside LDPlayer traversed the installed route
+  and received the exact captured `getServerVersion ret=0` response before login.
+
+No official account or endpoint was used by these probes. This resolves the
+specific version-handshake rejection in the supplied log; actual stock-client
+account login and city-screen loading remain unverified. HTTP startup is still
+separate. At that validation stage, local login required the synthetic fixture
+credentials; the later optional client adapter is documented above.
+
+# LDPlayer routing validation — 16 November 2026
+
+Diagnosed the running local setup, separately from the synthetic Phase 3 suite:
+
+- ADB device `emulator-5554` had `tcp:1024 -> tcp:9999`, but its NAT OUTPUT chain
+  contained no redirect. Windows smoke-client traffic therefore did not establish
+  any game-client routing.
+- Stopped only `com.feelingtouch.empirewaronline` to end its existing session.
+  Confirmed this LDPlayer kernel lacks the iptables `owner` matcher.
+- Added `tools/local_android_route.py`, with an owned `EW_LOCAL_TCP` chain,
+  per-install comment and ownership record. The existing reverse mapping was
+  reused and is not owned by this helper. No broad NAT flush or ADB restart ran.
+- Installed the IPv4 TCP destination-port-1024 route to Android loopback and
+  verified its packet counter. The rule covers the emulator's traffic on that
+  port, rather than a specific app UID.
+- A synthetic login sent from Android to `127.0.0.2:1024` traversed DNAT, ADB
+  reverse, the localhost proxy and the private server, then decoded successfully.
+  The final diagnostic printed `PASS`. No official endpoint was used for this
+  probe and no game action was sent.
+- Diagnosed ADB shell LF→CRLF expansion on this LDPlayer. A five-byte diagnostic
+  isolated it; the probe now protects stdout with base64 while keeping its input
+  stream open until a response arrives. Actual game TCP transport is unchanged.
+
+Regression command:
+
+```powershell
+.\.venv\Scripts\python.exe -m pytest tests/test_android_route.py -q
+```
+
+Result: **20 passed in 1.53 seconds**. Tests mock ADB/iptables and cover route
+ownership, pre-existing tunnel preservation, partial-install rollback, conflicts,
+idempotent start, device restart recovery, subprocess argument safety, corrupt
+ownership records, and binary probe response handling. The previous 307-test
+full-suite result below predates this helper; it was not rerun for this isolated
+tool/documentation change. The helper/tests also parse with Python 3.11 grammar.
+
+The route is installed and the game was left stopped. This is a verified TCP
+bridge, not proof that the stock client loads a city. HTTP startup/server-list
+integration and synthetic client login remain unfinished. The port-specific
+route is not full emulator network isolation; it does not redirect or block
+HTTP/HTTPS, IPv6 or other destination ports.
+
 # Phase 3 validation — 16 November 2026
 
 Final command:

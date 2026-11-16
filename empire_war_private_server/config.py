@@ -23,6 +23,7 @@ class ServerConfig:
     session_ttl_seconds: int = 3600
     synthetic_passport: str = "research-local"
     synthetic_password: str = "local-test-only"
+    synthetic_client_login: bool = False
     gameplay_scenario: str = "captured-phase2-v1"
     market_scenario: str = "captured-market-food-v1"
     simulate_int32_crash: bool = False
@@ -38,6 +39,8 @@ class ServerConfig:
             raise ValueError("unknown market_scenario")
         if type(self.simulate_int32_crash) is not bool:
             raise ValueError("simulate_int32_crash must be boolean")
+        if type(self.synthetic_client_login) is not bool:
+            raise ValueError("synthetic_client_login must be boolean")
         if self.simulate_int32_crash and self.market_scenario == "disabled":
             raise ValueError("simulation requires the market scenario")
         bounds = {"port": (1, 65535), "max_connections": (1, 128),

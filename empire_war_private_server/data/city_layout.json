@@ -1,0 +1,470 @@
+{
+  "version": 1,
+  "buildings": [
+    {
+      "bid": 1,
+      "level": 1,
+      "xy": 10,
+      "inner": 0,
+      "layout_row": 4,
+      "detail_row": 2778,
+      "view": {
+        "currBuilding": {
+          "bid": 1,
+          "description": "Production Rate: 100/hour|Employs: 10 People|Production Limit: 10,000|Researchable Skill: Agriculture Lv. 1",
+          "foodNeed": 50,
+          "goldNeed": 0,
+          "ironNeed": 150,
+          "level": 1,
+          "name": "Farm",
+          "peopleNeed": 0,
+          "rockNeed": 200,
+          "summary": "Farms produce all of your Food. Food is consumed during construction, research and training. Food is also essential to sustain your troops, either at home or on an expedition.",
+          "upgradeTime": 2.222222089767456,
+          "woodNeed": 300,
+          "conditions": []
+        },
+        "nextBuilding": {
+          "bid": 1,
+          "description": "Production Rate: 300/hour|Employs: 30 People|Production Limit: 30,000|Researchable Skill: Agriculture Lv. 2",
+          "foodNeed": 100,
+          "goldNeed": 0,
+          "ironNeed": 300,
+          "level": 2,
+          "name": "Farm",
+          "peopleNeed": 0,
+          "rockNeed": 400,
+          "summary": "Farms produce all of your Food. Food is consumed during construction, research and training. Food is also essential to sustain your troops, either at home or on an expedition.",
+          "upgradeTime": 55.5555534362793,
+          "woodNeed": 600,
+          "conditions": []
+        }
+      }
+    },
+    {
+      "bid": 2,
+      "level": 1,
+      "xy": 21,
+      "inner": 0,
+      "layout_row": 4,
+      "detail_row": 2765,
+      "view": {
+        "currBuilding": {
+          "bid": 2,
+          "description": "Production Rate: 100/hour|Employs: 10 People|Production Limit: 10,000|Researchable Skill: Logging Lv.1",
+          "foodNeed": 100,
+          "goldNeed": 0,
+          "ironNeed": 300,
+          "level": 1,
+          "name": "Sawmill",
+          "peopleNeed": 0,
+          "rockNeed": 250,
+          "summary": "Sawmills produce Wood which can be used in construction, research and the manufacturing of weapons for your troops.",
+          "upgradeTime": 2.222222089767456,
+          "woodNeed": 100,
+          "conditions": []
+        },
+        "nextBuilding": {
+          "bid": 2,
+          "description": "Production Rate: 300/hour|Employs: 30 People|Production Limit: 30,000|Researchable Skill: Logging Lv.2",
+          "foodNeed": 200,
+          "goldNeed": 0,
+          "ironNeed": 600,
+          "level": 2,
+          "name": "Sawmill",
+          "peopleNeed": 0,
+          "rockNeed": 500,
+          "summary": "Sawmills produce Wood which can be used in construction, research and the manufacturing of weapons for your troops.",
+          "upgradeTime": 55.5555534362793,
+          "woodNeed": 200,
+          "conditions": []
+        }
+      }
+    },
+    {
+      "bid": 4,
+      "level": 1,
+      "xy": 22,
+      "inner": 0,
+      "layout_row": 4,
+      "detail_row": 2740,
+      "view": {
+        "currBuilding": {
+          "bid": 4,
+          "description": "Production Rate: 100/hour|Employs: 25 People|Production Limit: 10,000|Researchable Skill: Smelting Lv.1",
+          "foodNeed": 210,
+          "goldNeed": 0,
+          "ironNeed": 200,
+          "level": 1,
+          "name": "Mine",
+          "peopleNeed": 0,
+          "rockNeed": 500,
+          "summary": "Mines produce Iron that can be used for making weapons and armor as well as in construction and research.",
+          "upgradeTime": 2.222222089767456,
+          "woodNeed": 600,
+          "conditions": []
+        },
+        "nextBuilding": {
+          "bid": 4,
+          "description": "Production Rate: 300/hour|Employs: 75 People|Production Limit: 30,000|Researchable Skill: Smelting Lv.2",
+          "foodNeed": 420,
+          "goldNeed": 0,
+          "ironNeed": 400,
+          "level": 2,
+          "name": "Mine",
+          "peopleNeed": 0,
+          "rockNeed": 1000,
+          "summary": "Mines produce Iron that can be used for making weapons and armor as well as in construction and research.",
+          "upgradeTime": 88.88888549804688,
+          "woodNeed": 1200,
+          "conditions": []
+        }
+      }
+    },
+    {
+      "bid": 3,
+      "level": 1,
+      "xy": 51,
+      "inner": 0,
+      "layout_row": 4,
+      "detail_row": 2753,
+      "view": {
+        "currBuilding": {
+          "bid": 3,
+          "description": "Production Rate: 100/hour|Employs: 20 People|Production Limit: 10,000|Researchable Skill: Mining Lv.1",
+          "foodNeed": 180,
+          "goldNeed": 0,
+          "ironNeed": 400,
+          "level": 1,
+          "name": "Quarry",
+          "peopleNeed": 0,
+          "rockNeed": 150,
+          "summary": "Quarries produce Stone which is essential for construction and research.",
+          "upgradeTime": 2.222222089767456,
+          "woodNeed": 500,
+          "conditions": []
+        },
+        "nextBuilding": {
+          "bid": 3,
+          "description": "Production Rate: 300/hour|Employs: 60 People|Production Limit: 30,000|Researchable Skill: Mining Lv.2",
+          "foodNeed": 360,
+          "goldNeed": 0,
+          "ironNeed": 800,
+          "level": 2,
+          "name": "Quarry",
+          "peopleNeed": 0,
+          "rockNeed": 300,
+          "summary": "Quarries produce Stone which is essential for construction and research.",
+          "upgradeTime": 66.66666412353516,
+          "woodNeed": 1000,
+          "conditions": []
+        }
+      }
+    },
+    {
+      "bid": 6,
+      "level": 1,
+      "xy": 120,
+      "inner": 1,
+      "layout_row": 4,
+      "detail_row": 8046,
+      "view": {
+        "currBuilding": {
+          "bid": 6,
+          "description": "Resource Sites: 12|Silver Limit: 1,000,000|Controllable Wildlands: 1|Occupants: 10",
+          "foodNeed": 200,
+          "goldNeed": 0,
+          "ironNeed": 100,
+          "level": 1,
+          "name": "Senate",
+          "peopleNeed": 0,
+          "rockNeed": 2500,
+          "summary": "The Senate is the hub of the city. Here you can adjust the tax rate and govern your people.",
+          "upgradeTime": 7.518797397613525,
+          "woodNeed": 3000,
+          "conditions": []
+        },
+        "nextBuilding": {
+          "bid": 6,
+          "description": "Resource Sites: 15|Silver Limit: 3,000,000|Controllable Wildlands: 2|Occupants: 30",
+          "foodNeed": 400,
+          "goldNeed": 0,
+          "ironNeed": 200,
+          "level": 2,
+          "name": "Senate",
+          "peopleNeed": 100,
+          "rockNeed": 5000,
+          "summary": "The Senate is the hub of the city. Here you can adjust the tax rate and govern your people.",
+          "upgradeTime": 30.0751895904541,
+          "woodNeed": 6000,
+          "conditions": []
+        }
+      }
+    },
+    {
+      "bid": 10,
+      "level": 1,
+      "xy": 132,
+      "inner": 1,
+      "layout_row": 4,
+      "detail_row": 15027,
+      "view": {
+        "currBuilding": {
+          "bid": 10,
+          "description": "Heroes you can accommodate: 1|Occupants: 3",
+          "foodNeed": 300,
+          "goldNeed": 0,
+          "ironNeed": 400,
+          "level": 1,
+          "name": "Tavern",
+          "peopleNeed": 0,
+          "rockNeed": 1000,
+          "summary": "A popular gathering place for local people. Heroes can be found and recruited in the Tavern.",
+          "upgradeTime": 131.57894897460938,
+          "woodNeed": 2000,
+          "conditions": [
+            {
+              "type": 0,
+              "collegeBuilding": false,
+              "required_bid": 5,
+              "upgradeNeedName": "House",
+              "upgradeNeedLevel": 2
+            }
+          ]
+        },
+        "nextBuilding": {
+          "bid": 10,
+          "description": "Heroes you can accommodate: 2|Occupants: 9",
+          "foodNeed": 600,
+          "goldNeed": 0,
+          "ironNeed": 800,
+          "level": 2,
+          "name": "Tavern",
+          "peopleNeed": 0,
+          "rockNeed": 2000,
+          "summary": "A popular gathering place for local people. Heroes can be found and recruited in the Tavern.",
+          "upgradeTime": 338.34588623046875,
+          "woodNeed": 4000,
+          "conditions": [
+            {
+              "type": 0,
+              "collegeBuilding": false,
+              "required_bid": 5,
+              "upgradeNeedName": "House",
+              "upgradeNeedLevel": 2
+            }
+          ]
+        },
+        "freshUnitTime": 10800
+      }
+    },
+    {
+      "bid": 11,
+      "level": 1,
+      "xy": 142,
+      "inner": 1,
+      "layout_row": 4,
+      "detail_row": 2149,
+      "view": {
+        "currBuilding": {
+          "bid": 11,
+          "description": "Heroes you can accommodate: 1|Researchable Skill: Leadership Lv. 1|Occupants: 5",
+          "foodNeed": 400,
+          "goldNeed": 0,
+          "ironNeed": 700,
+          "level": 1,
+          "name": "Villa",
+          "peopleNeed": 0,
+          "rockNeed": 1200,
+          "summary": "The Villa serves as your Heroes' residence. ",
+          "upgradeTime": 133.3333282470703,
+          "woodNeed": 2500,
+          "conditions": [
+            {
+              "type": 0,
+              "collegeBuilding": false,
+              "required_bid": 10,
+              "upgradeNeedName": "Tavern",
+              "upgradeNeedLevel": 1
+            }
+          ]
+        },
+        "nextBuilding": {
+          "bid": 11,
+          "description": "Heroes you can accommodate: 2|Researchable Skill: Leadership Lv. 2|Occupants: 15",
+          "foodNeed": 800,
+          "goldNeed": 0,
+          "ironNeed": 1400,
+          "level": 2,
+          "name": "Villa",
+          "peopleNeed": 0,
+          "rockNeed": 2400,
+          "summary": "The Villa serves as your Heroes' residence. ",
+          "upgradeTime": 444.4444274902344,
+          "woodNeed": 5000,
+          "conditions": [
+            {
+              "type": 0,
+              "collegeBuilding": false,
+              "required_bid": 10,
+              "upgradeNeedName": "Tavern",
+              "upgradeNeedLevel": 1
+            }
+          ]
+        }
+      }
+    },
+    {
+      "bid": 8,
+      "level": 1,
+      "xy": 105,
+      "inner": 1,
+      "layout_row": 14828,
+      "detail_row": 15469,
+      "view": {
+        "currBuilding": {
+          "bid": 8,
+          "description": "You can simultaneously dispatch: 1 Army|Troop Limit: 10,000|Occupants: 2",
+          "foodNeed": 100,
+          "goldNeed": 0,
+          "ironNeed": 150,
+          "level": 1,
+          "name": "Muster Field",
+          "peopleNeed": 0,
+          "rockNeed": 2000,
+          "summary": "You can dispatch troops, give orders, set strategies and check the status of your troops at the Muster Field.",
+          "upgradeTime": 67.66917419433594,
+          "woodNeed": 600,
+          "conditions": [
+            {
+              "type": 0,
+              "collegeBuilding": false,
+              "required_bid": 6,
+              "upgradeNeedName": "Senate",
+              "upgradeNeedLevel": 2
+            }
+          ]
+        },
+        "nextBuilding": {
+          "bid": 8,
+          "description": "You can simultaneously dispatch: 2 Armies|Troop Limit: 20,000|Occupants: 6",
+          "foodNeed": 200,
+          "goldNeed": 0,
+          "ironNeed": 300,
+          "level": 2,
+          "name": "Muster Field",
+          "peopleNeed": 0,
+          "rockNeed": 4000,
+          "summary": "You can dispatch troops, give orders, set strategies and check the status of your troops at the Muster Field.",
+          "upgradeTime": 285.71429443359375,
+          "woodNeed": 1200,
+          "conditions": []
+        }
+      }
+    },
+    {
+      "bid": 13,
+      "level": 1,
+      "xy": 111,
+      "inner": 1,
+      "layout_row": 14828,
+      "detail_row": 14694,
+      "view": {
+        "currBuilding": {
+          "bid": 13,
+          "description": "Trading Queue: 1|Single sale resource limit: 100,000|Occupants: 6",
+          "foodNeed": 1000,
+          "goldNeed": 0,
+          "ironNeed": 1000,
+          "level": 1,
+          "name": "Market",
+          "peopleNeed": 50,
+          "rockNeed": 1000,
+          "summary": "At the Market, you can use Silver to trade resources and treasure with merchants and other players.",
+          "upgradeTime": 293.23309326171875,
+          "woodNeed": 1000,
+          "conditions": [
+            {
+              "type": 0,
+              "collegeBuilding": false,
+              "required_bid": 17,
+              "upgradeNeedName": "Storehouse",
+              "upgradeNeedLevel": 1
+            }
+          ]
+        },
+        "nextBuilding": {
+          "bid": 13,
+          "description": "Trading Queues: 2|Single sale resource limit: 200,000|Occupants: 18",
+          "foodNeed": 2000,
+          "goldNeed": 0,
+          "ironNeed": 2000,
+          "level": 2,
+          "name": "Market",
+          "peopleNeed": 100,
+          "rockNeed": 2000,
+          "summary": "At the Market, you can use Silver to trade resources and treasure with merchants and other players.",
+          "upgradeTime": 1127.819580078125,
+          "woodNeed": 2000,
+          "conditions": []
+        }
+      }
+    },
+    {
+      "bid": 15,
+      "level": 1,
+      "xy": 154,
+      "inner": 1,
+      "layout_row": 14828,
+      "detail_row": 17302,
+      "view": {
+        "currBuilding": {
+          "bid": 15,
+          "description": "Researchable Skill: Manufacturing Lv. 1|Occupants: 4",
+          "foodNeed": 150,
+          "goldNeed": 0,
+          "ironNeed": 1500,
+          "level": 1,
+          "name": "Workshop",
+          "peopleNeed": 0,
+          "rockNeed": 500,
+          "summary": "Fortifications, siege weapons and other machinery are made at the Workshop. ",
+          "upgradeTime": 153.28466796875,
+          "woodNeed": 1500,
+          "conditions": [
+            {
+              "type": 0,
+              "collegeBuilding": false,
+              "required_bid": 4,
+              "upgradeNeedName": "Mine",
+              "upgradeNeedLevel": 1
+            }
+          ]
+        },
+        "nextBuilding": {
+          "bid": 15,
+          "description": "Researchable Skill: Manufacturing Lv. 2|Occupants: 12",
+          "foodNeed": 300,
+          "goldNeed": 0,
+          "ironNeed": 3000,
+          "level": 2,
+          "name": "Workshop",
+          "peopleNeed": 0,
+          "rockNeed": 1000,
+          "summary": "Fortifications, siege weapons and other machinery are made at the Workshop. ",
+          "upgradeTime": 467.1532897949219,
+          "woodNeed": 3000,
+          "conditions": [
+            {
+              "type": 0,
+              "collegeBuilding": false,
+              "required_bid": 4,
+              "upgradeNeedName": "Mine",
+              "upgradeNeedLevel": 1
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
